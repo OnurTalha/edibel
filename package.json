@@ -10,7 +10,8 @@
     "icons": "node scripts/generate-icons.mjs",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:seed": "tsx scripts/seed.ts"
+    "db:seed": "tsx scripts/seed.ts",
+    "db:embeddings": "tsx scripts/generate-embeddings.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.4",

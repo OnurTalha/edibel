@@ -100,10 +100,12 @@ function expandToken(token: string, out: ParsedEntry[], depth: number): void {
 
   const { name, groups } = splitEntry(token);
   const hints: string[] = [];
+  let expandedChildren = false;
 
   for (const group of groups) {
     if (hasTopLevelSeparator(group)) {
       /* Alt liste: her alt malzeme kendi girdisi olur */
+      expandedChildren = true;
       for (const sub of splitTopLevel(group)) {
         expandToken(sub, out, depth + 1);
       }
@@ -116,6 +118,7 @@ function expandToken(token: string, out: ParsedEntry[], depth: number): void {
     out.push({
       rawText: name,
       sourceHint: hints.length > 0 ? hints.join("; ") : null,
+      isCompoundParent: expandedChildren,
     });
   } else if (hints.length === 1 && depth < 4) {
     /* Ad olmadan tek paren grubu: "(還元水あめ)" gibi; içerik girdi sayılır */

@@ -25,6 +25,14 @@ export interface ParsedEntry {
    * verir; burada yorum yapılmaz.
    */
   sourceHint: string | null;
+  /*
+   * Girdi, alt listesi ayrı girdilere açılmış bir kapsayıcı ad mı
+   * (örnek: スープ(ポークエキス,豚脂) girdisindeki スープ)? Kapsayıcının
+   * içeriği zaten tek tek analiz edildiğinden, karar motoru eşleşmeyen
+   * kapsayıcı adları bilinmeyen malzeme SAYMAZ. Alt listesi olmayan yalın
+   * bir ad bu bayrağı almaz ve eşleşmezse bilinmeyen kalır.
+   */
+  isCompoundParent?: boolean;
 }
 
 export interface ParsedAllergen {
