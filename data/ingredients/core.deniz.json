@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "balik",
+    "nameTr": "Balık",
+    "nameEn": "Fish",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Balık eti; kesim şartı aranmaksızın dört mezhebe göre helaldir.",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "balik-ozu",
+    "nameTr": "Balık özü",
+    "nameEn": "Fish extract",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Balıktan elde edilen çorba ve sos bazı; Doğu Asya hazır gıdalarında çok yaygındır.",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "katsuo-ozu",
+    "nameTr": "Palamut (katsuo) özü",
+    "nameEn": "Bonito extract",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Kurutulmuş palamut balığından elde edilen öz; Japon mutfağının temel çorba bazıdır (dashi).",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "katsuobushi",
+    "nameTr": "Kurutulmuş palamut (katsuobushi)",
+    "nameEn": "Dried bonito flakes",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Kurutulup fermente edilmiş palamut balığı; rendelenerek çorba ve soslarda kullanılır.",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "niboshi",
+    "nameTr": "Kurutulmuş sardalya (niboshi)",
+    "nameEn": "Dried sardines",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Kurutulmuş küçük sardalya; Japon ve Kore mutfaklarında çorba bazı olarak kullanılır.",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "balik-sosu",
+    "nameTr": "Balık sosu",
+    "nameEn": "Fish sauce",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Balığın tuzla fermantasyonuyla üretilen sos; Kore kimchi ürünlerinde ve Güneydoğu Asya soslarında yaygındır.",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "balik-yagi",
+    "nameTr": "Balık yağı",
+    "nameEn": "Fish oil",
+    "category": "yag",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Balıktan elde edilen yağ; takviye ve zenginleştirilmiş gıdalarda kullanılır.",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "surimi",
+    "nameTr": "Balık ezmesi (surimi)",
+    "nameEn": "Surimi",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Beyaz balık etinden yapılan ezme; yengeç taklidi çubuklar ve balık kekleri bundan üretilir. Balık kısmı helaldir; ürünün diğer katkıları ayrıca değerlendirilir.",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "deniz-urunleri-ozu",
+    "nameTr": "Deniz ürünleri özü (karışık)",
+    "nameEn": "Seafood extract",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Balık ve kabuklu deniz canlılarının karışımından elde edilen öz. Hanefi mezhebinde balık dışı deniz canlısı yenmediğinden içerik netleşmedikçe şüphelidir.",
+    "rulings": "deniz-karisik"
+  },
+  {
+    "slug": "istiridye-sosu",
+    "nameTr": "İstiridye sosu",
+    "nameEn": "Oyster sauce",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "İstiridye özünden yapılan koyu sos; Çin mutfağının temel soslarındandır. Hanefi mezhebinde istiridye yenmediğinden hüküm mezhebe göre değişir.",
+    "rulings": "deniz-kabuklu"
+  },
+  {
+    "slug": "istiridye-ozu",
+    "nameTr": "İstiridye özü",
+    "nameEn": "Oyster extract",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "İstiridyeden elde edilen öz; sos ve çorba bazlarında kullanılır.",
+    "rulings": "deniz-kabuklu"
+  },
+  {
+    "slug": "kabuklu-deniz-urunu-ozu",
+    "nameTr": "Kabuklu deniz ürünü özü",
+    "nameEn": "Shellfish extract",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Midye, tarak (hotate) ve benzeri kabuklulardan elde edilen öz; Japon ve Kore hazır gıdalarında yaygındır.",
+    "rulings": "deniz-kabuklu"
+  },
+  {
+    "slug": "karides",
+    "nameTr": "Karides",
+    "nameEn": "Shrimp",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Karides ve karides özü/tozu; atıştırmalık ve hazır gıdalarda çok yaygındır. Hanefi mezhebinde balık sayılmadığı görüşü ağırlıklıdır, diğer mezheplerde helaldir.",
+    "rulings": "deniz-kabuklu"
+  },
+  {
+    "slug": "yengec",
+    "nameTr": "Yengeç",
+    "nameEn": "Crab",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Yengeç eti ve özü. Hanefi mezhebinde yenmez, diğer mezheplerde helaldir.",
+    "rulings": "deniz-kabuklu"
+  },
+  {
+    "slug": "murekkep-baligi",
+    "nameTr": "Kalamar / mürekkep balığı",
+    "nameEn": "Squid",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Kalamar eti ve mürekkebi; atıştırmalıklarda ve soslarda kullanılır. Hanefi mezhebinde balık sayılmadığından yenmez, diğer mezheplerde helaldir.",
+    "rulings": "deniz-kabuklu"
+  },
+  {
+    "slug": "ahtapot",
+    "nameTr": "Ahtapot",
+    "nameEn": "Octopus",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Ahtapot eti; takoyaki gibi ürünlerde bulunur. Hanefi mezhebinde yenmez, diğer mezheplerde helaldir.",
+    "rulings": "deniz-kabuklu"
+  },
+  {
+    "slug": "kitosan",
+    "nameTr": "Kitosan",
+    "nameEn": "Chitosan",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Karides ve yengeç kabuğundan elde edilen madde; koruyucu ve takviye olarak kullanılır. Kabuklu deniz canlısı kaynaklı olduğundan hüküm mezhebe göre değişir.",
+    "rulings": "deniz-kabuklu"
+  },
+  {
+    "slug": "nori",
+    "nameTr": "Yosun (nori)",
+    "nameEn": "Nori seaweed",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Kurutulmuş deniz yosunu yaprağı; suşi ve atıştırmalıklarda kullanılır. Deniz bitkisi olduğundan helaldir.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "kombu",
+    "nameTr": "Kelp yosunu (kombu)",
+    "nameEn": "Kombu kelp",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Kelp yosunu ve özü; Japon çorba bazlarının (dashi) bitkisel temelidir.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "wakame",
+    "nameTr": "Wakame yosunu",
+    "nameEn": "Wakame seaweed",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Çorba ve salatalarda kullanılan deniz yosunu.",
+    "rulings": "bitkisel-helal"
+  }
+]

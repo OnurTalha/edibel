@@ -1,0 +1,402 @@
+[
+  {
+    "slug": "domuz-eti",
+    "nameTr": "Domuz eti",
+    "nameEn": "Pork",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "haram",
+    "descTr": "Domuzun eti. Doğu Asya işlenmiş gıdalarında (hazır ramen, sosis, konserve, soslar) çok yaygındır.",
+    "rulings": "domuz-haram"
+  },
+  {
+    "slug": "domuz-yagi",
+    "nameTr": "Domuz yağı",
+    "nameEn": "Lard",
+    "category": "yag",
+    "sourceType": "hayvansal",
+    "defaultStatus": "haram",
+    "descTr": "Domuzdan elde edilen katı yağ. Kızartmalık yağ, hamur işleri ve hazır çorbalarda kullanılır.",
+    "rulings": "domuz-haram"
+  },
+  {
+    "slug": "domuz-derisi",
+    "nameTr": "Domuz derisi",
+    "nameEn": "Pork skin",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "haram",
+    "descTr": "Domuz derisi; atıştırmalıklarda ve jelatin hammaddesi olarak kullanılır.",
+    "rulings": "domuz-haram"
+  },
+  {
+    "slug": "domuz-ozu",
+    "nameTr": "Domuz eti özü",
+    "nameEn": "Pork extract",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "haram",
+    "descTr": "Domuz etinden elde edilen çorba ve sos bazı; tonkotsu ramen ürünlerinin temel bileşenidir.",
+    "rulings": "domuz-haram"
+  },
+  {
+    "slug": "domuz-bagirsagi",
+    "nameTr": "Domuz bağırsağı",
+    "nameEn": "Pork casing",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "haram",
+    "descTr": "Sosis kılıfı olarak kullanılan domuz bağırsağı.",
+    "rulings": "domuz-haram"
+  },
+  {
+    "slug": "domuz-kolajeni",
+    "nameTr": "Domuz kolajeni",
+    "nameEn": "Pork collagen",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "haram",
+    "descTr": "Domuz derisi ve dokusundan çıkarılan kolajen proteini; içeceklerde ve işlenmiş ette kullanılır. Jelatinden farklı olarak köklü bir kimyasal dönüşümden geçmez.",
+    "rulings": "domuz-haram"
+  },
+  {
+    "slug": "domuz-jelatini",
+    "nameTr": "Domuz jelatini",
+    "nameEn": "Pork gelatin",
+    "insCode": "428",
+    "eCode": "E428",
+    "category": "jelatin",
+    "sourceType": "hayvansal",
+    "defaultStatus": "haram",
+    "descTr": "Domuz derisi ve kemiğinden üretilen jelatin. İstihale (mahiyet değişimi) tartışması sebebiyle mezhepler arasında hüküm farkı vardır.",
+    "rulings": "domuz-istihale-ihtilafli"
+  },
+  {
+    "slug": "jelatin",
+    "nameTr": "Jelatin",
+    "nameEn": "Gelatin",
+    "insCode": "428",
+    "eCode": "E428",
+    "category": "jelatin",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Hayvan derisi ve kemiğinden üretilen jelleştirici. Doğu Asya'da kaynak belirtilmemişse çoğunlukla domuzdur; jelibon, marşmelov, kapsül ve sütlü tatlılarda yaygındır.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli",
+      "balik": "balik-helal"
+    }
+  },
+  {
+    "slug": "sigir-jelatini",
+    "nameTr": "Sığır jelatini",
+    "nameEn": "Beef gelatin",
+    "insCode": "428",
+    "eCode": "E428",
+    "category": "jelatin",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Sığır derisi ve kemiğinden üretilen jelatin. Doğu Asya'da kesim usulü genellikle İslami şartlara uymadığından şüphelidir.",
+    "rulings": "kesim-supheli"
+  },
+  {
+    "slug": "balik-jelatini",
+    "nameTr": "Balık jelatini",
+    "nameEn": "Fish gelatin",
+    "insCode": "428",
+    "eCode": "E428",
+    "category": "jelatin",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Balık derisinden üretilen jelatin; balıkta kesim şartı aranmadığından dört mezhebe göre helaldir.",
+    "rulings": "balik-helal"
+  },
+  {
+    "slug": "kolajen",
+    "nameTr": "Kolajen",
+    "nameEn": "Collagen",
+    "category": "protein",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Hayvan derisi ve bağ dokusundan çıkarılan protein; içecek, jöle ve güzellik gıdalarında yaygındır. Kaynağı belirtilmemişse şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "domuz": "domuz-haram",
+      "sigir": "kesim-supheli",
+      "balik": "balik-helal"
+    }
+  },
+  {
+    "slug": "sigir-eti",
+    "nameTr": "Sığır eti",
+    "nameEn": "Beef",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Sığır eti. Eti helal bir hayvandır; ancak Doğu Asya'da kesim usulü genellikle İslami şartlara uymadığından şüphelidir.",
+    "rulings": "kesim-supheli"
+  },
+  {
+    "slug": "tavuk-eti",
+    "nameTr": "Tavuk eti",
+    "nameEn": "Chicken",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Tavuk eti. Eti helal bir hayvandır; ancak Doğu Asya'da kesim usulü genellikle İslami şartlara uymadığından şüphelidir.",
+    "rulings": "kesim-supheli"
+  },
+  {
+    "slug": "sigir-yagi",
+    "nameTr": "Sığır yağı (don yağı)",
+    "nameEn": "Beef tallow",
+    "category": "yag",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Sığırdan elde edilen katı yağ; kızartma yağı ve hazır yemeklerde kullanılır. Kesim usulü bilinmediğinden şüphelidir.",
+    "rulings": "kesim-supheli"
+  },
+  {
+    "slug": "tavuk-yagi",
+    "nameTr": "Tavuk yağı",
+    "nameEn": "Chicken fat",
+    "category": "yag",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Tavuktan elde edilen yağ; ramen ve hazır çorbalarda yaygındır. Kesim usulü bilinmediğinden şüphelidir.",
+    "rulings": "kesim-supheli"
+  },
+  {
+    "slug": "hayvansal-yag",
+    "nameTr": "Hayvansal yağ",
+    "nameEn": "Animal fat",
+    "category": "yag",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Türü belirtilmemiş hayvansal yağ. Doğu Asya ürünlerinde domuz yağı olma olasılığı yüksektir; kaynak parantezle belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "domuz": "domuz-haram",
+      "sigir": "kesim-supheli",
+      "tavuk": "kesim-supheli",
+      "balik": "balik-helal"
+    }
+  },
+  {
+    "slug": "et-ozu",
+    "nameTr": "Et özü",
+    "nameEn": "Meat extract",
+    "category": "aroma",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Türü belirtilmemiş et özü; çorba bazları ve soslarda kullanılır. Kaynak belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "domuz": "domuz-haram",
+      "sigir": "kesim-supheli",
+      "tavuk": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "sigir-ozu",
+    "nameTr": "Sığır eti özü",
+    "nameEn": "Beef extract",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Sığır etinden elde edilen çorba ve sos bazı. Kesim usulü bilinmediğinden şüphelidir.",
+    "rulings": "kesim-supheli"
+  },
+  {
+    "slug": "tavuk-ozu",
+    "nameTr": "Tavuk özü",
+    "nameEn": "Chicken extract",
+    "category": "aroma",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Tavuktan elde edilen çorba ve sos bazı; hazır çorba ve erişte ürünlerinde çok yaygındır. Kesim usulü bilinmediğinden şüphelidir.",
+    "rulings": "kesim-supheli"
+  },
+  {
+    "slug": "sut",
+    "nameTr": "Süt",
+    "nameEn": "Milk",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "İnek sütü. Kesim gerektirmeyen hayvansal ürün olduğundan dört mezhebe göre helaldir.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "sut-tozu",
+    "nameTr": "Süt tozu",
+    "nameEn": "Milk powder",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Tam yağlı veya yağsız süt tozu; çikolata, bisküvi ve içecek tozlarında yaygındır.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "tereyagi",
+    "nameTr": "Tereyağı",
+    "nameEn": "Butter",
+    "category": "yag",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Sütten üretilen yağ; kesim gerektirmediğinden dört mezhebe göre helaldir.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "krema",
+    "nameTr": "Krema",
+    "nameEn": "Cream",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Süt kreması; tatlı ve unlu mamullerde kullanılır.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "sut-yagi",
+    "nameTr": "Süt yağı",
+    "nameEn": "Milk fat",
+    "category": "yag",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Sütten ayrıştırılan yağ; çikolata ve dondurmada yaygındır.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "peynir",
+    "nameTr": "Peynir",
+    "nameEn": "Cheese",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Peynir üretiminde kullanılan mayanın kaynağı (hayvansal veya mikrobiyal) etikette genellikle belirtilmez; hayvansal maya kesim tartışmasına tabidir.",
+    "rulings": {
+      "genel": "peynir-mayasi",
+      "mikrobiyal": "mikrobiyal-helal"
+    }
+  },
+  {
+    "slug": "peynir-mayasi",
+    "nameTr": "Peynir mayası (rennet)",
+    "nameEn": "Rennet",
+    "insCode": "1105",
+    "category": "enzim",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Sütü kestiren enzim. Dana şirdeninden veya mikrobiyal fermantasyonla üretilir; hayvansal olanda kesim usulü tartışması vardır, mikrobiyal olan sorunsuzdur.",
+    "rulings": {
+      "genel": "peynir-mayasi",
+      "mikrobiyal": "mikrobiyal-helal"
+    }
+  },
+  {
+    "slug": "peynir-alti-suyu",
+    "nameTr": "Peynir altı suyu",
+    "nameEn": "Whey",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Peynir üretiminin yan ürünü; bisküvi, çikolata ve bebek mamalarında yaygındır. Üretimde kullanılan mayanın kaynağına bağlı olarak değerlendirilir.",
+    "rulings": {
+      "genel": "peynir-mayasi",
+      "mikrobiyal": "mikrobiyal-helal"
+    }
+  },
+  {
+    "slug": "kazein",
+    "nameTr": "Kazein",
+    "nameEn": "Casein",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Süt proteini; işlenmiş peynir, kahve kreması ve şarküteri ürünlerinde kullanılır. Sütten asitle çöktürülerek elde edilir.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "laktoz",
+    "nameTr": "Laktoz (süt şekeri)",
+    "nameEn": "Lactose",
+    "category": "tatlandirici",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Sütten elde edilen şeker; şekerleme, bisküvi ve toz karışımlarda dolgu maddesi olarak yaygındır.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "yumurta",
+    "nameTr": "Yumurta",
+    "nameEn": "Egg",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Tavuk yumurtası; akı ve sarısı dahil dört mezhebe göre helaldir.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "yogurt",
+    "nameTr": "Yoğurt",
+    "nameEn": "Yogurt",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Sütün laktik asit bakterileriyle fermantasyonuyla üretilir; dört mezhebe göre helaldir.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "bal",
+    "nameTr": "Bal",
+    "nameEn": "Honey",
+    "category": "tatlandirici",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Arı balı; Kur'an'da övülen, dört mezhebe göre helal bir gıdadır.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "balmumu",
+    "nameTr": "Balmumu",
+    "nameEn": "Beeswax",
+    "insCode": "901",
+    "eCode": "E901",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Arıların salgısından elde edilen parlatıcı; şekerleme ve meyve kaplamalarında kullanılır. Bal gibi salgı ürünü sayılır.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "sellak",
+    "nameTr": "Şellak",
+    "nameEn": "Shellac",
+    "insCode": "904",
+    "eCode": "E904",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Lak böceğinin salgısından elde edilen parlatıcı; şekerleme ve draje kaplamalarında kullanılır. Böcek salgısının hükmü mezhepler arasında tartışmalıdır.",
+    "rulings": "hasere-ifrazat"
+  },
+  {
+    "slug": "l-sistein",
+    "nameTr": "L-sistein",
+    "nameEn": "L-cysteine",
+    "insCode": "920",
+    "eCode": "E920",
+    "category": "diger",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Un işleme maddesi ve aroma öncüsü. Geleneksel olarak saç veya tavuk tüyünden, günümüzde çoğunlukla fermantasyonla üretilir; kaynak belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "sentetik": "sentetik-helal",
+      "mikrobiyal": "mikrobiyal-helal",
+      "tavuk": "kesim-supheli"
+    }
+  }
+]

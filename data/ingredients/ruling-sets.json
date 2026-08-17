@@ -1,0 +1,372 @@
+{
+  "_aciklama": "Ortak hüküm kümeleri. Her küme dört mezhebin hükmünü tanımlar; '*' anahtarı dört mezhebe aynı hükmü uygular. Malzemeler bu kümelere adla başvurur; yükleme betiği kümeleri madhhab_rulings satırlarına açar. Kaynaksız hüküm eklenemez.",
+
+  "bitkisel-helal": {
+    "*": {
+      "status": "helal",
+      "principle": "esas_ibaha",
+      "reason": "Bitkisel kaynaklı gıdalar, haramlığına dair delil bulunmadıkça helaldir; bu madde hakkında yasaklayıcı bir delil yoktur.",
+      "source": "Kur'an, Bakara 2/168; el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Et'ime\" md."
+    }
+  },
+
+  "mineral-helal": {
+    "*": {
+      "status": "helal",
+      "principle": "esas_ibaha",
+      "reason": "Mineral kaynaklı maddeler hayvansal veya sarhoş edici bir unsur içermediğinden dört mezhebe göre de helaldir.",
+      "source": "el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Et'ime\" md.; OIC/SMIIC 1:2019 Helal Gıda Genel Kılavuzu"
+    }
+  },
+
+  "sentetik-helal": {
+    "*": {
+      "status": "helal",
+      "principle": "esas_ibaha",
+      "reason": "Tamamen kimyasal sentezle üretilen bu madde hayvansal hammadde veya sarhoş edici unsur içermez; eşyada asıl olan mübahlık ilkesi gereği helaldir.",
+      "source": "Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu, gıda katkı maddeleri fetvaları; OIC/SMIIC 1:2019"
+    }
+  },
+
+  "mikrobiyal-helal": {
+    "*": {
+      "status": "helal",
+      "principle": "esas_ibaha",
+      "reason": "Mikrobiyal fermantasyonla üretilen maddeler hayvansal doku içermez; fermantasyon ürünleri dört mezhebe göre de temiz ve helaldir.",
+      "source": "İslam Fıkıh Akademisi (Cidde), gıda katkı maddeleri kararları; Diyanet Din İşleri Yüksek Kurulu fetvaları"
+    }
+  },
+
+  "katki-grubu-helal": {
+    "*": {
+      "status": "helal",
+      "principle": "esas_ibaha",
+      "reason": "Bu toplu ad altında etikete yazılan maddeler mineral tuzları ve mikrobiyal veya sentetik üretilen organik asitlerdir; hayvansal kaynak veya alkol içermez ve dört mezhebe göre helaldir.",
+      "source": "Diyanet Din İşleri Yüksek Kurulu, gıda katkı maddeleri fetvaları; OIC/SMIIC 1:2019"
+    }
+  },
+
+  "hayvan-urunu-helal": {
+    "*": {
+      "status": "helal",
+      "principle": "esas_ibaha",
+      "reason": "Süt, yumurta ve bal gibi hayvanın kesimini gerektirmeyen ürünler, eti helal hayvandan geldiğinde dört mezhebe göre de helaldir.",
+      "source": "Kur'an, Nahl 16/66-69; el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Leben\" ve \"Asel\" md."
+    }
+  },
+
+  "balik-helal": {
+    "*": {
+      "status": "helal",
+      "principle": "deniz_urunleri",
+      "reason": "Balık ve balıktan elde edilen ürünler kesim şartı aranmaksızın dört mezhebe göre de helaldir.",
+      "source": "Kur'an, Mâide 5/96; el-Merğînânî, el-Hidâye, Kitâbü'z-Zebâih; Nevevî, el-Mecmû'"
+    }
+  },
+
+  "domuz-haram": {
+    "*": {
+      "status": "haram",
+      "principle": "domuz_haram",
+      "reason": "Domuz ve domuzdan elde edilen her ürün Kur'an'ın açık hükmüyle haramdır; bu konuda mezhepler arasında ihtilaf yoktur.",
+      "source": "Kur'an, Bakara 2/173; Mâide 5/3; el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Hınzîr\" md."
+    }
+  },
+
+  "muskirat-haram": {
+    "*": {
+      "status": "haram",
+      "principle": "hamr",
+      "reason": "İçecek sınıfı alkollü ürünler sarhoş edicidir; sarhoş edicinin çoğu da azı da haramdır. Dört mezhebin müftâ bih görüşü bu yöndedir.",
+      "source": "Kur'an, Mâide 5/90; Müslim, Eşribe 73; İbn Âbidîn, Reddü'l-Muhtâr, Kitâbü'l-Eşribe"
+    }
+  },
+
+  "kesim-supheli": {
+    "*": {
+      "status": "supheli",
+      "principle": "zebiha",
+      "reason": "Eti helal hayvandan gelse de Doğu Asya'da üretilen et ürünlerinde kesimin İslami usule uygunluğu bilinemez; usulsüz kesilen hayvan meyte hükmündedir. Kesim belgesi olmadıkça şüphelidir.",
+      "source": "Kur'an, Mâide 5/3; el-Merğînânî, el-Hidâye, Kitâbü'z-Zebâih; İbn Kudâme, el-Muğnî, Kitâbü'z-Zebâih"
+    }
+  },
+
+  "kaynak-belirsiz-supheli": {
+    "*": {
+      "status": "supheli",
+      "principle": "suphelerden_kacinma",
+      "reason": "Bu madde bitkisel, hayvansal veya sentetik kaynaklardan üretilebilir; etikette kaynak belirtilmedikçe hükmü kesin olarak bilinemez ve şüpheli kabul edilir.",
+      "source": "Buhârî, Îmân 39; Müslim, Müsâkât 107 (helal ve haram arasındaki şüpheli şeyler hadisi)"
+    }
+  },
+
+  "sanayi-alkol": {
+    "hanefi": {
+      "status": "helal",
+      "principle": "alkol_kaynagi",
+      "reason": "Üzüm ve hurma dışındaki kaynaklardan (tahıl, şeker kamışı, melas) üretilen ve sarhoşluk amacı taşımayan eser miktardaki sanayi alkolü, Hanefi mezhebindeki geniş görüşe göre koruyucu ve çözücü olarak kullanılabilir.",
+      "source": "Serahsî, el-Mebsût, Kitâbü'l-Eşribe; İbn Âbidîn, Reddü'l-Muhtâr, Kitâbü'l-Eşribe; Diyanet Din İşleri Yüksek Kurulu, gıdalarda alkol fetvaları"
+    },
+    "safii": {
+      "status": "haram",
+      "principle": "alkol_kaynagi",
+      "reason": "Şafii mezhebine göre her sarhoş edici madde necistir ve azı da çoğu da haramdır; kaynağına bakılmaksızın gıdaya katılan etil alkol bu hükme tabidir.",
+      "source": "Nevevî, el-Mecmû', Kitâbü'l-Et'ime; Şirbînî, Muğni'l-Muhtâc"
+    },
+    "maliki": {
+      "status": "haram",
+      "principle": "alkol_kaynagi",
+      "reason": "Maliki mezhebine göre sarhoş edici her madde hamr hükmündedir; gıdaya bilerek katılan etil alkol kaynağına bakılmaksızın caiz görülmez.",
+      "source": "Mâlik b. Enes, el-Müdevvene, Kitâbü'l-Eşribe; İbn Rüşd, Bidâyetü'l-Müctehid"
+    },
+    "hanbeli": {
+      "status": "haram",
+      "principle": "alkol_kaynagi",
+      "reason": "Hanbeli mezhebine göre çoğu sarhoş edenin azı da haramdır; gıdaya katılan etil alkol bu kapsamda değerlendirilir.",
+      "source": "İbn Kudâme, el-Muğnî, Kitâbü'l-Eşribe"
+    }
+  },
+
+  "fermantasyon-eser-alkol": {
+    "*": {
+      "status": "helal",
+      "principle": "istihlak",
+      "reason": "Doğal fermantasyon sırasında kendiliğinden oluşan eser miktardaki alkol ürün içinde vasfını yitirir ve sarhoş edici nitelik taşımaz; bu tür ürünler dört mezhebe göre de helaldir. Sonradan alkol eklenmiş çeşitler ayrıca değerlendirilir.",
+      "source": "İslam Fıkıh Akademisi (Cidde), gıdalarda alkol kararları; Diyanet Din İşleri Yüksek Kurulu, fermente gıdalar fetvası; OIC/SMIIC 1:2019"
+    }
+  },
+
+  "sirke-helal": {
+    "*": {
+      "status": "helal",
+      "principle": "istihale",
+      "reason": "Sirkeleşme, alkolün asetik aside dönüştüğü ve dört mezhebin de temizleyici kabul ettiği bir mahiyet değişimidir; tahıl, pirinç ve meyve sirkeleri helaldir. Hadiste sirke övülmüştür.",
+      "source": "Müslim, Eşribe (ni'me'l-üdmü'l-hall hadisi); el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Hall\" md."
+    }
+  },
+
+  "istihale-mezhep": {
+    "hanefi": {
+      "status": "helal",
+      "principle": "istihale",
+      "reason": "Hanefi mezhebi mahiyet değişimini (istihale) temizleyici kabul eder; kimyasal dönüşümle yeni bir madde haline gelen ürün aslının hükmünü taşımaz.",
+      "source": "İbn Âbidîn, Reddü'l-Muhtâr, Kitâbü't-Tahâre; el-Kâsânî, Bedâiu's-Sanâi'"
+    },
+    "safii": {
+      "status": "supheli",
+      "principle": "istihale",
+      "reason": "Şafii mezhebi istihaleyi yalnızca sınırlı durumlarda (kendiliğinden sirkeleşme gibi) kabul eder; insan eliyle gerçekleştirilen dönüşüm necis aslın hükmünü kaldırmaz. Bu sebeple madde şüphelidir.",
+      "source": "Nevevî, el-Mecmû', Kitâbü't-Tahâre; Şirbînî, Muğni'l-Muhtâc"
+    },
+    "maliki": {
+      "status": "helal",
+      "principle": "istihale",
+      "reason": "Maliki mezhebi istihaleyi genel olarak temizleyici kabul eder; dönüşüm tamamlandığında yeni madde helaldir.",
+      "source": "İbn Rüşd, Bidâyetü'l-Müctehid; el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"İstihâle\" md."
+    },
+    "hanbeli": {
+      "status": "supheli",
+      "principle": "istihale",
+      "reason": "Hanbeli mezhebinde ağırlıklı görüş, insan eliyle yapılan dönüşümün necis aslı temizlemediği yönündedir; bu sebeple madde şüpheli kabul edilir.",
+      "source": "İbn Kudâme, el-Muğnî, Kitâbü't-Tahâre"
+    }
+  },
+
+  "deniz-kabuklu": {
+    "hanefi": {
+      "status": "haram",
+      "principle": "deniz_urunleri",
+      "reason": "Hanefi mezhebine göre deniz canlılarından yalnızca balık helaldir; karides, midye, istiridye, yengeç, kalamar ve ahtapot gibi canlılar yenmez.",
+      "source": "el-Merğînânî, el-Hidâye, Kitâbü'z-Zebâih; İbn Âbidîn, Reddü'l-Muhtâr, Kitâbü'z-Zebâih"
+    },
+    "safii": {
+      "status": "helal",
+      "principle": "deniz_urunleri",
+      "reason": "Şafii mezhebine göre denizde yaşayan canlıların tamamı helaldir; 'Deniz avı size helal kılındı' ayeti geneldir.",
+      "source": "Kur'an, Mâide 5/96; Nevevî, el-Mecmû', Kitâbü'l-Et'ime"
+    },
+    "maliki": {
+      "status": "helal",
+      "principle": "deniz_urunleri",
+      "reason": "Maliki mezhebine göre deniz canlılarının tamamı helaldir; kesim şartı da aranmaz.",
+      "source": "Mâlik b. Enes, el-Müdevvene, Kitâbü's-Sayd; İbn Rüşd, Bidâyetü'l-Müctehid"
+    },
+    "hanbeli": {
+      "status": "helal",
+      "principle": "deniz_urunleri",
+      "reason": "Hanbeli mezhebine göre denizde yaşayan canlıların tamamı helaldir.",
+      "source": "İbn Kudâme, el-Muğnî, Kitâbü'l-Et'ime"
+    }
+  },
+
+  "deniz-karisik": {
+    "hanefi": {
+      "status": "supheli",
+      "principle": "deniz_urunleri",
+      "reason": "Karışık deniz ürünü özleri balık dışında karides, midye gibi kabuklu canlılar da içerebilir; Hanefi mezhebine göre balık dışındaki deniz canlıları yenmediğinden içerik netleşmedikçe şüphelidir.",
+      "source": "el-Merğînânî, el-Hidâye, Kitâbü'z-Zebâih; Buhârî, Îmân 39 (şüpheli şeyler hadisi)"
+    },
+    "safii": {
+      "status": "helal",
+      "principle": "deniz_urunleri",
+      "reason": "Şafii mezhebine göre deniz canlılarının tamamı helal olduğundan karışık deniz ürünü özleri de helaldir.",
+      "source": "Kur'an, Mâide 5/96; Nevevî, el-Mecmû', Kitâbü'l-Et'ime"
+    },
+    "maliki": {
+      "status": "helal",
+      "principle": "deniz_urunleri",
+      "reason": "Maliki mezhebine göre deniz canlılarının tamamı helal olduğundan karışık deniz ürünü özleri de helaldir.",
+      "source": "Mâlik b. Enes, el-Müdevvene, Kitâbü's-Sayd"
+    },
+    "hanbeli": {
+      "status": "helal",
+      "principle": "deniz_urunleri",
+      "reason": "Hanbeli mezhebine göre deniz canlılarının tamamı helal olduğundan karışık deniz ürünü özleri de helaldir.",
+      "source": "İbn Kudâme, el-Muğnî, Kitâbü'l-Et'ime"
+    }
+  },
+
+  "karmin-hasere": {
+    "hanefi": {
+      "status": "haram",
+      "principle": "hasere",
+      "reason": "Hanefi mezhebine göre haşerelerin yenmesi caiz değildir; koşnil böceğinden elde edilen karmin bu kapsamdadır.",
+      "source": "el-Merğînânî, el-Hidâye, Kitâbü'z-Zebâih; el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Haşerât\" md."
+    },
+    "safii": {
+      "status": "haram",
+      "principle": "hasere",
+      "reason": "Şafii mezhebine göre haşereler habis sayılır ve yenmez; böcek gövdesinden çıkarılan boya da bu hükme tabidir.",
+      "source": "Nevevî, el-Mecmû', Kitâbü'l-Et'ime; Kur'an, A'râf 7/157 (habâisin haramlığı)"
+    },
+    "maliki": {
+      "status": "helal",
+      "principle": "hasere",
+      "reason": "Maliki mezhebine göre zararı bulunmayan haşerelerin tezkiye niyetiyle tüketilmesi caizdir; karmin bu görüşe göre helal kabul edilir.",
+      "source": "Mâlik b. Enes, el-Müdevvene; el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Haşerât\" md."
+    },
+    "hanbeli": {
+      "status": "haram",
+      "principle": "hasere",
+      "reason": "Hanbeli mezhebine göre haşerelerin yenmesi caiz değildir (çekirge istisnadır); karmin bu kapsamdadır.",
+      "source": "İbn Kudâme, el-Muğnî, Kitâbü'l-Et'ime"
+    }
+  },
+
+  "hasere-ifrazat": {
+    "hanefi": {
+      "status": "supheli",
+      "principle": "hasere",
+      "reason": "Böcek salgısı böceğin gövdesini yemek sayılmasa da Hanefi kaynaklarında bu tür salgıların gıdada kullanımına dair açık bir cevaz yerleşmemiştir; temkinen şüpheli kabul edilir.",
+      "source": "el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Haşerât\" md.; Diyanet Din İşleri Yüksek Kurulu, gıda katkı maddeleri fetvaları"
+    },
+    "safii": {
+      "status": "supheli",
+      "principle": "hasere",
+      "reason": "Şafii mezhebinde böcek gövdesi yenmez; salgının hükmü tartışmalıdır ve temkinen şüpheli kabul edilir.",
+      "source": "Nevevî, el-Mecmû', Kitâbü'l-Et'ime"
+    },
+    "maliki": {
+      "status": "helal",
+      "principle": "hasere",
+      "reason": "Maliki mezhebinin haşereler konusundaki geniş görüşü gereği böcek salgısı ürünler helal kabul edilir.",
+      "source": "Mâlik b. Enes, el-Müdevvene; el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Haşerât\" md."
+    },
+    "hanbeli": {
+      "status": "supheli",
+      "principle": "hasere",
+      "reason": "Hanbeli mezhebinde böcek gövdesi yenmez; salgının hükmü açık olmadığından temkinen şüpheli kabul edilir.",
+      "source": "İbn Kudâme, el-Muğnî, Kitâbü'l-Et'ime"
+    }
+  },
+
+  "domuz-istihale-ihtilafli": {
+    "hanefi": {
+      "status": "supheli",
+      "principle": "istihale",
+      "reason": "Hanefi mezhebi istihaleyi kabul etse de jelatin ve benzeri türevlerde dönüşümün tam gerçekleşip gerçekleşmediği çağdaş alimler arasında tartışmalıdır; domuz kaynaklı türev temkinen şüpheli kabul edilir.",
+      "source": "İbn Âbidîn, Reddü'l-Muhtâr, Kitâbü't-Tahâre; İslam Fıkıh Akademisi (Cidde), jelatin kararları; Diyanet Din İşleri Yüksek Kurulu, jelatin fetvası"
+    },
+    "safii": {
+      "status": "haram",
+      "principle": "istihale",
+      "reason": "Şafii mezhebi istihaleyi dar yorumlar; domuzdan elde edilen türev, dönüşüm iddiasına rağmen necis aslın hükmünü taşır ve haramdır.",
+      "source": "Nevevî, el-Mecmû', Kitâbü't-Tahâre; Şirbînî, Muğni'l-Muhtâc"
+    },
+    "maliki": {
+      "status": "supheli",
+      "principle": "istihale",
+      "reason": "Maliki mezhebi istihaleyi kabul eder; ancak jelatin üretimindeki dönüşümün tam istihale sayılıp sayılmayacağı tartışmalı olduğundan domuz kaynaklı türev temkinen şüpheli kabul edilir.",
+      "source": "İbn Rüşd, Bidâyetü'l-Müctehid; el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"İstihâle\" md."
+    },
+    "hanbeli": {
+      "status": "haram",
+      "principle": "istihale",
+      "reason": "Hanbeli mezhebi insan eliyle yapılan dönüşümü temizleyici saymaz; domuz kaynaklı türev haramdır.",
+      "source": "İbn Kudâme, el-Muğnî, Kitâbü't-Tahâre"
+    }
+  },
+
+  "peynir-mayasi": {
+    "hanefi": {
+      "status": "helal",
+      "principle": "maya_enzim",
+      "reason": "Ebû Hanîfe'ye göre peynir mayası hayvanın ölümünden etkilenmez; usulüne uygun kesilmemiş hayvandan alınan maya dahi temizdir ve peynir yapımında kullanılabilir.",
+      "source": "el-Kâsânî, Bedâiu's-Sanâi'; el-Fetâva'l-Hindiyye, Kitâbü'l-Kerâhiye"
+    },
+    "safii": {
+      "status": "supheli",
+      "principle": "maya_enzim",
+      "reason": "Şafii mezhebine göre meyteden alınan maya necistir; kesim usulü bilinmeyen hayvandan elde edilen maya ile yapılan ürün şüphelidir.",
+      "source": "Nevevî, el-Mecmû', Kitâbü't-Tahâre"
+    },
+    "maliki": {
+      "status": "supheli",
+      "principle": "maya_enzim",
+      "reason": "Maliki mezhebinde ağırlıklı görüş meyteden alınan mayanın necis olduğu yönündedir; kaynağı belirsiz hayvansal maya şüphelidir.",
+      "source": "el-Mevsûatü'l-Fıkhiyyetü'l-Kuveytiyye, \"Cübn\" md."
+    },
+    "hanbeli": {
+      "status": "supheli",
+      "principle": "maya_enzim",
+      "reason": "Hanbeli mezhebinde meyte mayası hakkında iki rivayet vardır; İbn Teymiyye cevaz görüşünü savunsa da mezhepte ağırlıklı görüş temkinlidir.",
+      "source": "İbn Kudâme, el-Muğnî; İbn Teymiyye, Mecmûu'l-Fetâvâ, XXI (peynir mayası)"
+    }
+  },
+
+  "tuzlu-pisirme-alkolu": {
+    "hanefi": {
+      "status": "supheli",
+      "principle": "hamr",
+      "reason": "Tuz eklenerek içilemez hale getirilmiş pişirme alkolü sarhoşluk amacıyla tüketilemez; ancak sake kaynaklı olması sebebiyle Hanefi mezhebinde dahi temkinen şüpheli kabul edilir.",
+      "source": "İbn Âbidîn, Reddü'l-Muhtâr, Kitâbü'l-Eşribe; Diyanet Din İşleri Yüksek Kurulu, gıdalarda alkol fetvaları"
+    },
+    "safii": {
+      "status": "haram",
+      "principle": "hamr",
+      "reason": "Şafii mezhebine göre sarhoş edici içkiden üretilen ürün, tuzlanmış olsa da necis aslın hükmünü taşır ve haramdır.",
+      "source": "Nevevî, el-Mecmû', Kitâbü'l-Et'ime"
+    },
+    "maliki": {
+      "status": "haram",
+      "principle": "hamr",
+      "reason": "Maliki mezhebine göre hamr hükmündeki içkiden elde edilen ürün haramdır; tuzlama bu hükmü kaldırmaz.",
+      "source": "Mâlik b. Enes, el-Müdevvene, Kitâbü'l-Eşribe"
+    },
+    "hanbeli": {
+      "status": "haram",
+      "principle": "hamr",
+      "reason": "Hanbeli mezhebine göre sarhoş edici içkiden üretilen ürün haramdır; içilemez hale getirilmesi hükmü değiştirmez.",
+      "source": "İbn Kudâme, el-Muğnî, Kitâbü'l-Eşribe"
+    }
+  },
+
+  "aroma-tasiyici-supheli": {
+    "*": {
+      "status": "supheli",
+      "principle": "suphelerden_kacinma",
+      "reason": "Aroma karışımlarının bileşimi etikette açıklanmaz; hayvansal kaynaklı bileşen veya etil alkol taşıyıcı içerebilir. Bileşimi bilinemediğinden şüpheli kabul edilir.",
+      "source": "Buhârî, Îmân 39; Müslim, Müsâkât 107; OIC/SMIIC 1:2019 (aroma maddeleri hükümleri)"
+    }
+  }
+}

@@ -1,0 +1,132 @@
+[
+  {
+    "slug": "sorbitol",
+    "nameTr": "Sorbitol",
+    "nameEn": "Sorbitol",
+    "insCode": "420",
+    "eCode": "E420",
+    "category": "tatlandirici",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Mısır nişastasından üretilen şeker alkolü; nemlendirici ve tatlandırıcı olarak çok yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "ksilitol",
+    "nameTr": "Ksilitol",
+    "nameEn": "Xylitol",
+    "insCode": "967",
+    "eCode": "E967",
+    "category": "tatlandirici",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Bitkisel kaynaklardan üretilen şeker alkolü; sakız ve şekerlemelerde yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "maltitol",
+    "nameTr": "Maltitol",
+    "nameEn": "Maltitol",
+    "insCode": "965",
+    "eCode": "E965",
+    "category": "tatlandirici",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Nişastadan üretilen şeker alkolü (還元水あめ dahil); şekersiz ürünlerde yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "eritritol",
+    "nameTr": "Eritritol",
+    "nameEn": "Erythritol",
+    "insCode": "968",
+    "eCode": "E968",
+    "category": "tatlandirici",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Glikozun mayayla fermantasyonuyla üretilen şeker alkolü.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "aspartam",
+    "nameTr": "Aspartam",
+    "nameEn": "Aspartame",
+    "insCode": "951",
+    "eCode": "E951",
+    "category": "tatlandirici",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Sentetik yoğun tatlandırıcı; Japon etiketlerinde fenilalanin uyarısıyla birlikte yazılır.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "asesulfam-k",
+    "nameTr": "Asesulfam potasyum",
+    "nameEn": "Acesulfame K",
+    "insCode": "950",
+    "eCode": "E950",
+    "category": "tatlandirici",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Sentetik yoğun tatlandırıcı; içeceklerde yaygındır.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "sukraloz",
+    "nameTr": "Sukraloz",
+    "nameEn": "Sucralose",
+    "insCode": "955",
+    "eCode": "E955",
+    "category": "tatlandirici",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Şekerden türetilen sentetik yoğun tatlandırıcı.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "sakkarin",
+    "nameTr": "Sakkarin",
+    "nameEn": "Saccharin",
+    "insCode": "954",
+    "eCode": "E954",
+    "category": "tatlandirici",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Sentetik yoğun tatlandırıcı; turşu ürünlerinde görülür.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "stevia",
+    "nameTr": "Stevia (steviol glikozitleri)",
+    "nameEn": "Steviol glycosides",
+    "insCode": "960",
+    "eCode": "E960",
+    "category": "tatlandirici",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Stevia bitkisinin yaprağından elde edilen tatlandırıcı.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "glisirrizin",
+    "nameTr": "Meyan kökü tatlandırıcısı (glisirrizin)",
+    "nameEn": "Licorice (glycyrrhizin)",
+    "insCode": "958",
+    "eCode": "E958",
+    "category": "tatlandirici",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Meyan kökünden elde edilen tatlandırıcı (甘草 / カンゾウ); Japon turşu ve soslarında yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "trehaloz",
+    "nameTr": "Trehaloz",
+    "nameEn": "Trehalose",
+    "category": "tatlandirici",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Nişastadan enzimatik yolla üretilen şeker; Japon gıdalarında nem tutucu olarak son derece yaygındır.",
+    "rulings": "mikrobiyal-helal"
+  }
+]

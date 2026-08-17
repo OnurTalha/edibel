@@ -1,0 +1,392 @@
+[
+  {
+    "slug": "emulgator-genel",
+    "nameTr": "Emülgatör (kaynak belirtilmemiş)",
+    "nameEn": "Emulsifier (unspecified)",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Etikette yalnızca 乳化剤 / 유화제 / 乳化剂 yazıldığında hangi emülgatör olduğu bilinemez; bitkisel veya hayvansal yağdan üretilmiş olabilir. Kaynak parantezde belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "soya": "bitkisel-helal",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "lesitin",
+    "nameTr": "Lesitin",
+    "nameEn": "Lecithin",
+    "insCode": "322",
+    "eCode": "E322",
+    "category": "emulgator",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Çoğunlukla soya veya ayçiçeğinden, bazen yumurtadan elde edilen emülgatör; çikolata ve unlu mamullerde çok yaygındır. Her üç kaynak da helaldir.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "gliserin",
+    "nameTr": "Gliserin (gliserol)",
+    "nameEn": "Glycerol",
+    "insCode": "422",
+    "eCode": "E422",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Nemlendirici ve tatlandırıcı; bitkisel yağdan, petrokimyasal sentezle veya hayvansal yağdan üretilebilir. Kaynak belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "soya": "bitkisel-helal",
+      "sentetik": "sentetik-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "mono-digliserit",
+    "nameTr": "Yağ asitlerinin mono ve digliseritleri",
+    "nameEn": "Mono- and diglycerides of fatty acids",
+    "insCode": "471",
+    "eCode": "E471",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "En yaygın emülgatör; ekmek, margarin, dondurma ve hazır gıdalarda bulunur. Yağ asidi kaynağı bitkisel (çoğunlukla palm) veya hayvansal olabilir; belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "soya": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "sukroz-yag-esterleri",
+    "nameTr": "Sükroz yağ asidi esterleri",
+    "nameEn": "Sucrose esters of fatty acids",
+    "insCode": "473",
+    "eCode": "E473",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Şeker ve yağ asitlerinden üretilen emülgatör; Japon şekerleme ve içeceklerinde yaygındır. Yağ asidi kaynağı belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "sorbitan-esterleri",
+    "nameTr": "Sorbitan yağ asidi esterleri",
+    "nameEn": "Sorbitan esters of fatty acids",
+    "insCode": "491",
+    "eCode": "E491",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Sorbitol ve yağ asitlerinden üretilen emülgatör grubu. Yağ asidi kaynağı belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "poligliserol-esterleri",
+    "nameTr": "Poligliserol yağ asidi esterleri",
+    "nameEn": "Polyglycerol esters of fatty acids",
+    "insCode": "475",
+    "eCode": "E475",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Pasta ve dondurmalarda kullanılan emülgatör. Gliserol ve yağ asidi kaynakları belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "polisorbat",
+    "nameTr": "Polisorbatlar",
+    "nameEn": "Polysorbates",
+    "insCode": "433",
+    "eCode": "E433",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Polisorbat 20/60/80 emülgatör grubu; dondurma ve soslarda kullanılır. Yağ asidi kaynağı belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "datem",
+    "nameTr": "DATEM (diasetil tartarik asit esterleri)",
+    "nameEn": "DATEM",
+    "insCode": "472e",
+    "eCode": "E472e",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Ekmek ve unlu mamullerde hamur güçlendirici emülgatör. Yağ asidi kaynağı belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "stearoil-laktilat",
+    "nameTr": "Sodyum/kalsiyum stearoil laktilat",
+    "nameEn": "Stearoyl lactylates",
+    "insCode": "481",
+    "eCode": "E481",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Unlu mamullerde kullanılan emülgatör. Stearik asit kaynağı belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "yag-asidi-tuzlari",
+    "nameTr": "Yağ asidi tuzları (Ca/Mg stearat)",
+    "nameEn": "Salts of fatty acids",
+    "insCode": "470",
+    "eCode": "E470",
+    "category": "emulgator",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Topaklanma önleyici olarak tablet ve toz gıdalarda kullanılır. Stearik asit kaynağı belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "bitkisel": "bitkisel-helal",
+      "palm": "bitkisel-helal",
+      "domuz": "domuz-istihale-ihtilafli",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "pektin",
+    "nameTr": "Pektin",
+    "nameEn": "Pectin",
+    "insCode": "440",
+    "eCode": "E440",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Elma ve narenciye kabuğundan elde edilen jelleştirici; reçel ve jölelerde jelatinin bitkisel alternatifidir.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "karagenan",
+    "nameTr": "Karagenan",
+    "nameEn": "Carrageenan",
+    "insCode": "407",
+    "eCode": "E407",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Kırmızı deniz yosunundan elde edilen jelleştirici; sütlü tatlılar ve işlenmiş ette kullanılır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "agar",
+    "nameTr": "Agar-agar",
+    "nameEn": "Agar",
+    "insCode": "406",
+    "eCode": "E406",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Deniz yosunundan elde edilen jelleştirici (寒天); Japon tatlılarında jelatinin geleneksel bitkisel alternatifidir.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "ksantan-gam",
+    "nameTr": "Ksantan gam",
+    "nameEn": "Xanthan gum",
+    "insCode": "415",
+    "eCode": "E415",
+    "category": "diger",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Bakteriyel fermantasyonla üretilen kıvam verici; sos ve içeceklerde yaygındır.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "guar-gam",
+    "nameTr": "Guar gam",
+    "nameEn": "Guar gum",
+    "insCode": "412",
+    "eCode": "E412",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Guar fasulyesinden elde edilen kıvam verici.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "keciboynuzu-gami",
+    "nameTr": "Keçiboynuzu gamı",
+    "nameEn": "Locust bean gum",
+    "insCode": "410",
+    "eCode": "E410",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Keçiboynuzu çekirdeğinden elde edilen kıvam verici; dondurmada yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "arap-zamki",
+    "nameTr": "Arap zamkı (akasya gamı)",
+    "nameEn": "Gum arabic",
+    "insCode": "414",
+    "eCode": "E414",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Akasya ağacının salgısından elde edilen gam; şekerleme ve içeceklerde kullanılır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "tamarind-gam",
+    "nameTr": "Demirhindi (tamarind) gamı",
+    "nameEn": "Tamarind seed gum",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Demirhindi çekirdeğinden elde edilen kıvam verici; Japon sos ve tatlılarında yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "gellan-gam",
+    "nameTr": "Gellan gam",
+    "nameEn": "Gellan gum",
+    "insCode": "418",
+    "eCode": "E418",
+    "category": "diger",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Bakteriyel fermantasyonla üretilen jelleştirici; bitkisel süt ve jöle ürünlerinde kullanılır.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "kurdlan",
+    "nameTr": "Kurdlan",
+    "nameEn": "Curdlan",
+    "category": "diger",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Bakteriyel fermantasyonla üretilen jelleştirici; Doğu Asya'da erişte ve işlenmiş gıdalarda kullanılır.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "cmc",
+    "nameTr": "Karboksimetil selüloz (CMC)",
+    "nameEn": "Carboxymethyl cellulose",
+    "insCode": "466",
+    "eCode": "E466",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Bitkisel selülozdan üretilen kıvam verici; dondurma ve içeceklerde yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "seluloz",
+    "nameTr": "Selüloz",
+    "nameEn": "Cellulose",
+    "insCode": "460",
+    "eCode": "E460",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Bitki liflerinden elde edilen dolgu ve topaklanma önleyici; rendelenmiş peynir ürünlerinde yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "aljinat",
+    "nameTr": "Aljinik asit ve aljinatlar",
+    "nameEn": "Alginates",
+    "insCode": "400",
+    "eCode": "E400",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Kahverengi deniz yosunundan elde edilen kıvam verici; yapay havyar ve soslarda kullanılır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "kivam-arttirici-polisakkarit",
+    "nameTr": "Kıvam artırıcı polisakkaritler",
+    "nameEn": "Thickening polysaccharides",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Japon etiketlerinde 増粘多糖類 olarak geçen toplu ifade; bitkisel ve mikrobiyal gamların karışımıdır. Bileşenlerin tamamı bitkisel veya mikrobiyal kaynaklı olduğundan helaldir.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "modifiye-nisasta",
+    "nameTr": "Modifiye nişasta",
+    "nameEn": "Modified starch",
+    "insCode": "1404-1452",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Kimyasal veya fiziksel işlemden geçirilmiş bitkisel nişasta (加工デンプン); hazır gıdalarda çok yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "dekstrin",
+    "nameTr": "Dekstrin",
+    "nameEn": "Dextrin",
+    "insCode": "1400",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Nişastanın parçalanmasıyla elde edilen dolgu maddesi; toz gıdalarda çok yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "konjak",
+    "nameTr": "Konjak (glukomannan)",
+    "nameEn": "Konjac",
+    "insCode": "425",
+    "eCode": "E425",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Konjak bitkisinin kökünden elde edilen jelleştirici; Japon jöle ve eriştelerinde (shirataki) kullanılır.",
+    "rulings": "bitkisel-helal"
+  }
+]

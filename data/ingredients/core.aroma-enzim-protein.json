@@ -1,0 +1,211 @@
+[
+  {
+    "slug": "msg",
+    "nameTr": "Monosodyum glutamat (MSG)",
+    "nameEn": "Monosodium glutamate",
+    "insCode": "621",
+    "eCode": "E621",
+    "category": "aroma",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Şeker kamışı veya nişastanın fermantasyonuyla üretilen lezzet artırıcı. Japon etiketlerindeki 調味料（アミノ酸等） ifadesi genellikle bu maddeyi belirtir.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "inosinat",
+    "nameTr": "Disodyum inosinat",
+    "nameEn": "Disodium inosinate",
+    "insCode": "631",
+    "eCode": "E631",
+    "category": "aroma",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Lezzet artırıcı nükleotit. Balıktan, etten veya fermantasyonla üretilebilir; kaynak belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "mikrobiyal": "mikrobiyal-helal",
+      "balik": "balik-helal",
+      "domuz": "domuz-haram",
+      "sigir": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "guanilat",
+    "nameTr": "Disodyum guanilat",
+    "nameEn": "Disodium guanylate",
+    "insCode": "627",
+    "eCode": "E627",
+    "category": "aroma",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Lezzet artırıcı nükleotit; çoğunlukla maya fermantasyonuyla üretilir ancak kaynak belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "mikrobiyal": "mikrobiyal-helal",
+      "balik": "balik-helal"
+    }
+  },
+  {
+    "slug": "maya-ozu",
+    "nameTr": "Maya özü",
+    "nameEn": "Yeast extract",
+    "category": "aroma",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Mayadan elde edilen lezzet artırıcı (酵母エキス / 효모추출물); hazır çorba ve atıştırmalıklarda çok yaygındır.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "maya",
+    "nameTr": "Maya",
+    "nameEn": "Yeast",
+    "category": "diger",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Ekmek ve fermantasyon mayası; tek hücreli mantar olduğundan helaldir.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "protein-hidrolizati",
+    "nameTr": "Protein hidrolizatı",
+    "nameEn": "Hydrolyzed protein",
+    "category": "aroma",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Proteinin parçalanmasıyla elde edilen lezzet verici (タンパク加水分解物). Soya, buğday, et veya jelatinden üretilebilir; kaynak belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "soya": "bitkisel-helal",
+      "bitkisel": "bitkisel-helal",
+      "misir": "bitkisel-helal",
+      "balik": "balik-helal",
+      "domuz": "domuz-haram",
+      "sigir": "kesim-supheli",
+      "tavuk": "kesim-supheli"
+    }
+  },
+  {
+    "slug": "enzim-genel",
+    "nameTr": "Enzim (kaynak belirtilmemiş)",
+    "nameEn": "Enzyme (unspecified)",
+    "category": "enzim",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Etikette yalnızca 酵素 / 효소 yazıldığında enzimin mikrobiyal mi hayvansal mı olduğu bilinemez. Günümüzde çoğu gıda enzimi mikrobiyaldir ancak belirtilmedikçe şüphelidir.",
+    "rulings": {
+      "genel": "kaynak-belirsiz-supheli",
+      "mikrobiyal": "mikrobiyal-helal",
+      "bitkisel": "bitkisel-helal"
+    }
+  },
+  {
+    "slug": "aroma-guclendirici",
+    "nameTr": "Aroma güçlendirici (toplu ad)",
+    "nameEn": "Flavor enhancer (generic)",
+    "category": "aroma",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Kore etiketlerinde 향미증진제 olarak geçen toplu ad. Genellikle MSG veya nükleotitlerdir; hangi madde olduğu belirtilmedikçe şüphelidir.",
+    "rulings": "kaynak-belirsiz-supheli"
+  },
+  {
+    "slug": "aroma",
+    "nameTr": "Aroma verici",
+    "nameEn": "Flavoring",
+    "category": "aroma",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Etikette 香料 / 향료 / 食用香精 olarak geçen aroma karışımı. Bileşimi açıklanmaz; hayvansal bileşen veya etil alkol taşıyıcı içerebilir.",
+    "rulings": "aroma-tasiyici-supheli"
+  },
+  {
+    "slug": "vanilin",
+    "nameTr": "Vanilin (sentetik vanilya)",
+    "nameEn": "Vanillin",
+    "category": "aroma",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Sentetik olarak üretilen vanilya aroması; alkollü ekstre olan doğal vanilya ekstresinden farklıdır.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "soya-proteini",
+    "nameTr": "Soya proteini",
+    "nameEn": "Soy protein",
+    "category": "protein",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Soya fasulyesinden elde edilen protein (大豆たん白); işlenmiş gıdalarda et ikamesi ve doku verici olarak yaygındır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "bugday-gluteni",
+    "nameTr": "Buğday proteini (gluten)",
+    "nameEn": "Wheat gluten",
+    "category": "protein",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Buğdaydan elde edilen protein (小麦たん白); erişte ve işlenmiş gıdalarda kullanılır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "sut-proteini",
+    "nameTr": "Süt proteini",
+    "nameEn": "Milk protein",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Sütten elde edilen protein konsantresi (乳たん白).",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "vitamin-mineral-premiks",
+    "nameTr": "Vitaminler ve mineraller (zenginleştirici)",
+    "nameEn": "Vitamins and minerals (fortification)",
+    "category": "diger",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Etikette 栄養強化剤, ビタミンB1, 葉酸, 鉄 gibi adlarla geçen zenginleştiriciler; sentetik veya mikrobiyal üretilir.",
+    "rulings": "katki-grubu-helal"
+  },
+  {
+    "slug": "yumurta-kabugu-kalsiyumu",
+    "nameTr": "Yumurta kabuğu kalsiyumu",
+    "nameEn": "Eggshell calcium",
+    "category": "diger",
+    "sourceType": "hayvansal",
+    "defaultStatus": "helal",
+    "descTr": "Yumurta kabuğundan elde edilen kalsiyum (卵殻カルシウム); Japon gıdalarında yaygın zenginleştiricidir.",
+    "rulings": "hayvan-urunu-helal"
+  },
+  {
+    "slug": "laktik-asit-bakterileri",
+    "nameTr": "Laktik asit bakterileri",
+    "nameEn": "Lactic acid bacteria",
+    "category": "diger",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Fermente içecek ve gıdalarda kullanılan probiyotik bakteriler (乳酸菌 / 유산균).",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "kafein",
+    "nameTr": "Kafein",
+    "nameEn": "Caffeine",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Çay ve kahveden elde edilen veya sentezlenen uyarıcı; enerji içeceklerinde kullanılır.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "katekin",
+    "nameTr": "Katekin (yeşil çay ekstresi)",
+    "nameEn": "Catechin (green tea extract)",
+    "category": "koruyucu",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Yeşil çaydan elde edilen antioksidan (カテキン); Japon gıdalarında koruyucu olarak kullanılır.",
+    "rulings": "bitkisel-helal"
+  }
+]

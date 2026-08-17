@@ -1,0 +1,654 @@
+{
+  "id": "38ad2de4-0248-4480-9153-fa877e2e42ad",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.fiqh_principles": {
+      "name": "fiqh_principles",
+      "schema": "",
+      "columns": {
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title_tr": {
+          "name": "title_tr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "explanation_tr": {
+          "name": "explanation_tr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ingredient_aliases": {
+      "name": "ingredient_aliases",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "ingredient_id": {
+          "name": "ingredient_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "alias": {
+          "name": "alias",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "alias_language",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "script": {
+          "name": "script",
+          "type": "alias_script",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "translation_tr": {
+          "name": "translation_tr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "aliases_alias_idx": {
+          "name": "aliases_alias_idx",
+          "columns": [
+            {
+              "expression": "alias",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "aliases_alias_trgm_idx": {
+          "name": "aliases_alias_trgm_idx",
+          "columns": [
+            {
+              "expression": "alias",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "gin_trgm_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "ingredient_aliases_ingredient_id_ingredients_id_fk": {
+          "name": "ingredient_aliases_ingredient_id_ingredients_id_fk",
+          "tableFrom": "ingredient_aliases",
+          "tableTo": "ingredients",
+          "columnsFrom": [
+            "ingredient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "aliases_ingredient_alias_lang_unique": {
+          "name": "aliases_ingredient_alias_lang_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "ingredient_id",
+            "alias",
+            "language"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ingredients": {
+      "name": "ingredients",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "canonical_name_tr": {
+          "name": "canonical_name_tr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "canonical_name_en": {
+          "name": "canonical_name_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ins_code": {
+          "name": "ins_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "e_code": {
+          "name": "e_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cns_code": {
+          "name": "cns_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "category": {
+          "name": "category",
+          "type": "ingredient_category",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_type": {
+          "name": "source_type",
+          "type": "ingredient_source_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "default_status": {
+          "name": "default_status",
+          "type": "halal_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description_tr": {
+          "name": "description_tr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "embedding": {
+          "name": "embedding",
+          "type": "vector(768)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "ingredients_canonical_en_unique": {
+          "name": "ingredients_canonical_en_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "canonical_name_en"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.madhhab_rulings": {
+      "name": "madhhab_rulings",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "ingredient_id": {
+          "name": "ingredient_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "resolved_source": {
+          "name": "resolved_source",
+          "type": "resolved_source",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "madhhab": {
+          "name": "madhhab",
+          "type": "madhhab",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "ruling_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "principle_key": {
+          "name": "principle_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reasoning_tr": {
+          "name": "reasoning_tr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_ref": {
+          "name": "source_ref",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "rulings_ingredient_idx": {
+          "name": "rulings_ingredient_idx",
+          "columns": [
+            {
+              "expression": "ingredient_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "madhhab_rulings_ingredient_id_ingredients_id_fk": {
+          "name": "madhhab_rulings_ingredient_id_ingredients_id_fk",
+          "tableFrom": "madhhab_rulings",
+          "tableTo": "ingredients",
+          "columnsFrom": [
+            "ingredient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "madhhab_rulings_principle_key_fiqh_principles_key_fk": {
+          "name": "madhhab_rulings_principle_key_fiqh_principles_key_fk",
+          "tableFrom": "madhhab_rulings",
+          "tableTo": "fiqh_principles",
+          "columnsFrom": [
+            "principle_key"
+          ],
+          "columnsTo": [
+            "key"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "rulings_ingredient_source_madhhab_unique": {
+          "name": "rulings_ingredient_source_madhhab_unique",
+          "nullsNotDistinct": true,
+          "columns": [
+            "ingredient_id",
+            "resolved_source",
+            "madhhab"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.scans": {
+      "name": "scans",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "device_id": {
+          "name": "device_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "detected_language": {
+          "name": "detected_language",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "raw_text": {
+          "name": "raw_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "translated_text": {
+          "name": "translated_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parsed_ingredients": {
+          "name": "parsed_ingredients",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "verdict": {
+          "name": "verdict",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.source_hints": {
+      "name": "source_hints",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "pattern": {
+          "name": "pattern",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "hint_language",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "resolved_source": {
+          "name": "resolved_source",
+          "type": "resolved_source",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "translation_tr": {
+          "name": "translation_tr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "source_hints_pattern_lang_unique": {
+          "name": "source_hints_pattern_lang_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "pattern",
+            "language"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.unmatched_terms": {
+      "name": "unmatched_terms",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "term": {
+          "name": "term",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "model_translation_tr": {
+          "name": "model_translation_tr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "occurrence_count": {
+          "name": "occurrence_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        },
+        "last_seen_at": {
+          "name": "last_seen_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "unmatched_term_lang_unique": {
+          "name": "unmatched_term_lang_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "term",
+            "language"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.alias_language": {
+      "name": "alias_language",
+      "schema": "public",
+      "values": [
+        "ja",
+        "ko",
+        "zh_hans",
+        "zh_hant",
+        "en",
+        "tr"
+      ]
+    },
+    "public.alias_script": {
+      "name": "alias_script",
+      "schema": "public",
+      "values": [
+        "katakana",
+        "hiragana",
+        "kanji",
+        "hangul",
+        "han",
+        "latin"
+      ]
+    },
+    "public.ingredient_category": {
+      "name": "ingredient_category",
+      "schema": "public",
+      "values": [
+        "emulgator",
+        "renklendirici",
+        "jelatin",
+        "enzim",
+        "alkol_turevi",
+        "aroma",
+        "tatlandirici",
+        "koruyucu",
+        "yag",
+        "protein",
+        "diger"
+      ]
+    },
+    "public.hint_language": {
+      "name": "hint_language",
+      "schema": "public",
+      "values": [
+        "ja",
+        "ko",
+        "zh_hans",
+        "zh_hant"
+      ]
+    },
+    "public.madhhab": {
+      "name": "madhhab",
+      "schema": "public",
+      "values": [
+        "hanefi",
+        "safii",
+        "maliki",
+        "hanbeli"
+      ]
+    },
+    "public.resolved_source": {
+      "name": "resolved_source",
+      "schema": "public",
+      "values": [
+        "domuz",
+        "sigir",
+        "tavuk",
+        "balik",
+        "soya",
+        "misir",
+        "palm",
+        "bitkisel",
+        "mikrobiyal",
+        "sentetik",
+        "bilinmiyor"
+      ]
+    },
+    "public.ruling_status": {
+      "name": "ruling_status",
+      "schema": "public",
+      "values": [
+        "helal",
+        "haram",
+        "mekruh",
+        "supheli"
+      ]
+    },
+    "public.ingredient_source_type": {
+      "name": "ingredient_source_type",
+      "schema": "public",
+      "values": [
+        "bitkisel",
+        "hayvansal",
+        "mikrobiyal",
+        "sentetik",
+        "belirsiz"
+      ]
+    },
+    "public.halal_status": {
+      "name": "halal_status",
+      "schema": "public",
+      "values": [
+        "helal",
+        "haram",
+        "supheli"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

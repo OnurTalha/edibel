@@ -1,0 +1,57 @@
+[
+  {
+    "key": "esas_ibaha",
+    "titleTr": "Eşyada asıl olan mübahlıktır",
+    "explanationTr": "Hakkında yasaklayıcı bir delil bulunmayan yiyecekler temelde helaldir. Bitkisel ürünler, mineraller ve zararsız sentetik maddeler bu ilke gereği dört mezhebe göre de helal kabul edilir."
+  },
+  {
+    "key": "suphelerden_kacinma",
+    "titleTr": "Şüpheli şeylerden kaçınma",
+    "explanationTr": "Helal mi haram mı olduğu kesin olarak bilinemeyen maddelerden uzak durmak esastır. Kaynağı belirsiz katkı maddeleri bu ilke gereği şüpheli sayılır; sistem emin olmadığı hiçbir maddeye helal demez."
+  },
+  {
+    "key": "domuz_haram",
+    "titleTr": "Domuzun haramlığı",
+    "explanationTr": "Domuz eti ve domuzdan elde edilen ürünler Kur'an'ın açık hükmüyle haramdır. Bu konuda dört mezhep arasında görüş ayrılığı yoktur; domuzun eti, yağı, derisi ve diğer parçaları hükme dahildir."
+  },
+  {
+    "key": "hamr",
+    "titleTr": "Sarhoş edici içeceklerin haramlığı",
+    "explanationTr": "Sarhoş edici içecekler ve çoğu sarhoş eden şeyin azı haramdır. Şarap, sake, mirin ve pişirme şarabı gibi içecek sınıfı alkollü ürünler dört mezhebe göre de bu kapsamdadır."
+  },
+  {
+    "key": "alkol_kaynagi",
+    "titleTr": "Alkolün kaynağına göre değerlendirilmesi",
+    "explanationTr": "Hanefi mezhebinde üzüm ve hurma dışındaki kaynaklardan (tahıl, şeker kamışı, patates gibi) üretilen ve sarhoşluk amacı taşımayan sanayi alkolü hakkında daha geniş bir görüş vardır. Şafii, Maliki ve Hanbeli mezhepleri ise her türlü etil alkolü aynı hükümde tutarak daha dar yorum yapar. Japon gıdalarındaki 酒精 ve Kore gıdalarındaki 주정 koruyucusu bu ihtilafın en sık karşılaşılan örneğidir."
+  },
+  {
+    "key": "istihale",
+    "titleTr": "İstihale (mahiyet değişimi)",
+    "explanationTr": "Haram veya necis bir maddenin kimyasal dönüşümle bambaşka özelliklere sahip yeni bir maddeye dönüşmesidir. Hanefi ve Maliki mezhepleri bu dönüşümü genel olarak temizleyici kabul eder; Şafii mezhebi en dar yorumu yapar, Hanbeli mezhebi de dar yorumlar. Jelatin, bazı yağ türevleri ve şarap yan ürünleri bu ilkeye tabidir."
+  },
+  {
+    "key": "istihlak",
+    "titleTr": "İstihlak (eser miktarda karışım)",
+    "explanationTr": "Çok küçük miktardaki bir maddenin büyük bir kütle içinde vasfını tamamen yitirerek kaybolmasıdır. Doğal fermantasyonla kendiliğinden oluşan eser alkol (soya sosu, sirke, ekmek mayası ürünleri) ve aroma taşıyıcılarındaki iz miktar çözücüler bu ilkeyle değerlendirilir."
+  },
+  {
+    "key": "zebiha",
+    "titleTr": "Kesim şartı ve Ehl-i kitap kesimi",
+    "explanationTr": "Eti helal hayvanların (sığır, tavuk, koyun) tüketilebilmesi için İslami usule uygun kesilmesi şarttır; usulüne uygun kesilmeyen hayvan meyte (leş) hükmündedir. Ehl-i kitabın kestiği tartışmalı ayrıntılarla birlikte kabul görür; ancak Japonya, Kore ve Çin'de üretilen et ürünlerinde kesim genellikle İslami şartlara da Ehl-i kitap tanımına da uymaz. Bu sebeple bu ülkelerde üretilen sığır ve tavuk kaynaklı maddeler şüpheli kabul edilir."
+  },
+  {
+    "key": "deniz_urunleri",
+    "titleTr": "Deniz ürünlerinin kapsamı",
+    "explanationTr": "Hanefi mezhebi deniz canlılarından yalnızca balığı helal sayar; karides, midye, istiridye, yengeç, kalamar ve ahtapot gibi canlılar yenmez. Şafii, Maliki ve Hanbeli mezhepleri deniz canlılarının tamamına daha geniş yaklaşır ve bunları helal kabul eder. İstiridye sosu, kabuklu deniz ürünü özleri ve kitosan bu farkın örnekleridir."
+  },
+  {
+    "key": "hasere",
+    "titleTr": "Haşere kaynaklı maddeler",
+    "explanationTr": "Böcek ve haşerelerin yenmesi Hanefi, Şafii ve Hanbeli mezheplerine göre caiz değildir (çekirge istisnadır). Maliki mezhebi ise zararı olmayan haşerelerin tezkiye ile yenebileceği görüşündedir. Koşnil böceğinden elde edilen karmin boyası bu ihtilafın tipik örneğidir. Bal, balmumu ve şellak gibi böcek salgıları ise böceğin kendisini yemek sayılmadığından ayrı değerlendirilir."
+  },
+  {
+    "key": "maya_enzim",
+    "titleTr": "Peynir mayası ve hayvansal enzimler",
+    "explanationTr": "Usulüne uygun kesilmemiş hayvandan alınan peynir mayası (rennet) konusunda Hanefi mezhebinde, mayanın ölümden etkilenmeyeceği görüşüne dayanan bir genişlik vardır. Şafii mezhebi meyteden alınan mayayı necis sayarak dar yorumlar; Maliki ve Hanbeli mezheplerinde de ağırlıklı görüş temkinlidir. Mikrobiyal (fermantasyon kaynaklı) maya ve enzimler ise dört mezhebe göre de sorunsuzdur."
+  }
+]

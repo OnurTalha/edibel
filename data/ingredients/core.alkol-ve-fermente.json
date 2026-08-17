@@ -1,0 +1,234 @@
+[
+  {
+    "slug": "etil-alkol-sanayi",
+    "nameTr": "Etil alkol (sanayi alkolü)",
+    "nameEn": "Ethyl alcohol (food-grade ethanol)",
+    "category": "alkol_turevi",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "supheli",
+    "descTr": "Tahıl, şeker kamışı veya melastan fermantasyonla üretilen etil alkol. Japon gıdalarında 酒精, Kore gıdalarında 주정 adıyla koruyucu olarak son derece yaygındır. Mezhepler arası farkın en sık karşılaşılan örneğidir.",
+    "rulings": "sanayi-alkol"
+  },
+  {
+    "slug": "joso-alkol",
+    "nameTr": "Mayalanmış alkol (jōzō alkol)",
+    "nameEn": "Brewed alcohol",
+    "category": "alkol_turevi",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "supheli",
+    "descTr": "Japon içecek ve gıdalarına katılan, fermantasyonla üretilmiş alkol (醸造アルコール). Alkol kaynağı üzüm ve hurma dışıdır; hüküm mezhebe göre değişir.",
+    "rulings": "sanayi-alkol"
+  },
+  {
+    "slug": "mirin",
+    "nameTr": "Mirin",
+    "nameEn": "Mirin",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "haram",
+    "descTr": "Yaklaşık yüzde on dört alkol içeren tatlı Japon pirinç şarabı; soslarda ve teriyaki ürünlerinde yaygındır. İçecek sınıfı alkollü ürün olduğundan dört mezhebe göre haramdır.",
+    "rulings": "muskirat-haram"
+  },
+  {
+    "slug": "mirin-fu",
+    "nameTr": "Mirin benzeri çeşni (düşük alkollü)",
+    "nameEn": "Mirin-style seasoning",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "supheli",
+    "descTr": "Alkol oranı yüzde birin altında tutulan mirin taklidi çeşni (みりん風調味料). İçerdiği az miktar alkol sebebiyle sanayi alkolüyle aynı çerçevede, mezhebe göre değerlendirilir.",
+    "rulings": "sanayi-alkol"
+  },
+  {
+    "slug": "ryorishu",
+    "nameTr": "Pişirme sakesi",
+    "nameEn": "Cooking sake",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "haram",
+    "descTr": "Tuz eklenerek içilemez hale getirilmiş pişirme amaçlı sake (料理酒). Sake kaynaklı olduğundan hüküm mezhebe göre değişmekle birlikte temkinli yaklaşım esastır.",
+    "rulings": "tuzlu-pisirme-alkolu"
+  },
+  {
+    "slug": "hakko-chomiryo",
+    "nameTr": "Fermente çeşni (alkollü)",
+    "nameEn": "Fermented seasoning (alcoholic)",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "haram",
+    "descTr": "Mirin benzeri, alkol içeren ve tuzlanarak içilemez hale getirilen Japon fermente çeşnisi (発酵調味料). Soslarda ve hazır yemeklerde yaygındır.",
+    "rulings": "tuzlu-pisirme-alkolu"
+  },
+  {
+    "slug": "sake",
+    "nameTr": "Sake (pirinç şarabı)",
+    "nameEn": "Sake (rice wine)",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "haram",
+    "descTr": "Pirinçten mayalanan Japon alkollü içkisi; Kore'de cheongju, Çin'de mijiu benzerleridir. Sarhoş edici içki olduğundan dört mezhebe göre haramdır.",
+    "rulings": "muskirat-haram"
+  },
+  {
+    "slug": "shaoxing-sarabi",
+    "nameTr": "Shaoxing şarabı (Çin pirinç şarabı)",
+    "nameEn": "Shaoxing wine",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "haram",
+    "descTr": "Çin mutfağında pişirmede yaygın kullanılan fermente pirinç şarabı (料酒 / 紹興酒 / 黄酒). Sarhoş edici içki olduğundan haramdır.",
+    "rulings": "muskirat-haram"
+  },
+  {
+    "slug": "sarap",
+    "nameTr": "Şarap",
+    "nameEn": "Wine",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "haram",
+    "descTr": "Üzümden yapılan alkollü içki; soslarda ve tatlılarda bileşen olarak geçebilir. Hamrın kendisi olduğundan dört mezhebe göre haramdır.",
+    "rulings": "muskirat-haram"
+  },
+  {
+    "slug": "bira",
+    "nameTr": "Bira",
+    "nameEn": "Beer",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "haram",
+    "descTr": "Arpadan mayalanan alkollü içki; bazı soslarda ve hamurlarda bileşen olarak geçebilir.",
+    "rulings": "muskirat-haram"
+  },
+  {
+    "slug": "sake-kasu",
+    "nameTr": "Sake tortusu (sake kasu)",
+    "nameEn": "Sake lees",
+    "category": "alkol_turevi",
+    "sourceType": "bitkisel",
+    "defaultStatus": "haram",
+    "descTr": "Sake üretiminden kalan, yaklaşık yüzde sekiz alkol içeren tortu (酒粕); turşu, çorba ve tatlılarda kullanılır. Alkollü içki türevi olduğundan haram kabul edilir.",
+    "rulings": "muskirat-haram"
+  },
+  {
+    "slug": "soya-sosu",
+    "nameTr": "Soya sosu",
+    "nameEn": "Soy sauce",
+    "category": "aroma",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Soya ve buğdayın doğal fermantasyonuyla üretilen sos. Fermantasyon sırasında kendiliğinden eser miktarda alkol oluşur; bu istihlak ilkesiyle değerlendirilir ve helaldir. Alkol eklenmiş çeşitlerde 酒精 ayrıca etikette görünür.",
+    "rulings": "fermantasyon-eser-alkol"
+  },
+  {
+    "slug": "miso",
+    "nameTr": "Miso (fermente soya ezmesi)",
+    "nameEn": "Miso paste",
+    "category": "aroma",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Soya fasulyesinin koji ile fermantasyonuyla üretilen Japon ezmesi; çorba ve soslarda yaygındır.",
+    "rulings": "fermantasyon-eser-alkol"
+  },
+  {
+    "slug": "doenjang",
+    "nameTr": "Doenjang (Kore soya ezmesi)",
+    "nameEn": "Doenjang (Korean soybean paste)",
+    "category": "aroma",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Fermente Kore soya fasulyesi ezmesi; çorba ve soslarda kullanılır.",
+    "rulings": "fermantasyon-eser-alkol"
+  },
+  {
+    "slug": "gochujang",
+    "nameTr": "Gochujang (Kore biber ezmesi)",
+    "nameEn": "Gochujang (Korean chili paste)",
+    "category": "aroma",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Fermente Kore acı biber ezmesi. Ezmenin kendisi bitkisel ve helaldir; bazı ürünlere ayrıca alkol (주정) eklenir ve bu, etikette ayrı madde olarak görünür.",
+    "rulings": "fermantasyon-eser-alkol"
+  },
+  {
+    "slug": "doubanjiang",
+    "nameTr": "Doubanjiang (Çin biber-bakla ezmesi)",
+    "nameEn": "Doubanjiang (chili bean paste)",
+    "category": "aroma",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Fermente bakla ve acı biber ezmesi (豆瓣酱); Sichuan mutfağının temel çeşnisidir.",
+    "rulings": "fermantasyon-eser-alkol"
+  },
+  {
+    "slug": "tianmianjiang",
+    "nameTr": "Tatlı un ezmesi (tianmianjiang)",
+    "nameEn": "Sweet bean sauce",
+    "category": "aroma",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Fermente un ve soya bazlı tatlı Çin sosu (甜面酱); Pekin ördeği ve noodle soslarında kullanılır.",
+    "rulings": "fermantasyon-eser-alkol"
+  },
+  {
+    "slug": "sirke",
+    "nameTr": "Sirke (tahıl / pirinç sirkesi)",
+    "nameEn": "Vinegar",
+    "insCode": "260",
+    "eCode": "E260",
+    "category": "koruyucu",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Tahıl, pirinç veya meyveden üretilen sirke. Sirkeleşme dört mezhebin de temizleyici kabul ettiği bir dönüşümdür.",
+    "rulings": "sirke-helal"
+  },
+  {
+    "slug": "sarap-sirkesi",
+    "nameTr": "Şarap sirkesi",
+    "nameEn": "Wine vinegar",
+    "category": "koruyucu",
+    "sourceType": "bitkisel",
+    "defaultStatus": "supheli",
+    "descTr": "Şaraptan üretilen sirke (balzamik dahil). Şarabın insan eliyle sirkeye dönüştürülmesi istihale tartışmasına tabidir; hüküm mezhebe göre değişir.",
+    "rulings": "istihale-mezhep"
+  },
+  {
+    "slug": "koji",
+    "nameTr": "Koji (pirinç mayası kültürü)",
+    "nameEn": "Koji culture",
+    "category": "diger",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Pirinç üzerinde yetiştirilen küf kültürü (米麹); miso, soya sosu ve turşuların fermantasyon başlatıcısıdır.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "amazake",
+    "nameTr": "Amazake (tatlı pirinç içeceği)",
+    "nameEn": "Amazake",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "supheli",
+    "descTr": "Tatlı Japon pirinç içeceği. Koji ile yapılan türü alkolsüzdür; sake tortusuyla yapılan türü alkol içerir. Etiketten hangi tür olduğu anlaşılamadığından şüphelidir.",
+    "rulings": "kaynak-belirsiz-supheli"
+  },
+  {
+    "slug": "natto",
+    "nameTr": "Natto (fermente soya)",
+    "nameEn": "Natto",
+    "category": "protein",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Bacillus bakterisiyle fermente edilmiş soya fasulyesi; geleneksel Japon gıdasıdır.",
+    "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "kimchi",
+    "nameTr": "Kimchi",
+    "nameEn": "Kimchi",
+    "category": "diger",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Fermente Kore lahana turşusu; hazır eriştelerde bileşen olarak geçer. Fermantasyonda oluşan eser alkol istihlak ilkesiyle değerlendirilir. İçindeki balık sosu da helaldir.",
+    "rulings": "fermantasyon-eser-alkol"
+  }
+]
