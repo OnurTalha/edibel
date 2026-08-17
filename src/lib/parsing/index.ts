@@ -15,7 +15,7 @@ export {
 } from "./normalize";
 export { detectLanguage } from "./script";
 export { extractIngredientSection } from "./section";
-export { extractAllergenLine } from "./allergen";
+export { extractAllergenLine, containsPorkMarker } from "./allergen";
 export { tokenizeIngredients, splitTopLevel, splitEntry } from "./tokenize";
 
 /*

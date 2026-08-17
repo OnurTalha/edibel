@@ -208,16 +208,22 @@ async function hasPorkVariantRuling(ingredientId: string): Promise<boolean> {
   return rows.length > 0;
 }
 
-async function recordUnmatched(term: string, language: string): Promise<void> {
+async function recordUnmatched(
+  term: string,
+  language: string,
+  modelTranslationTr: string | null,
+): Promise<void> {
   if (term.length < 2) return;
   await db
     .insert(unmatchedTerms)
-    .values({ term, language })
+    .values({ term, language, modelTranslationTr })
     .onConflictDoUpdate({
       target: [unmatchedTerms.term, unmatchedTerms.language],
       set: {
         occurrenceCount: sql`${unmatchedTerms.occurrenceCount} + 1`,
         lastSeenAt: sql`now()`,
+        /* Model çevirisi ilk geldiğinde doldurulur, sonra korunur */
+        modelTranslationTr: sql`COALESCE(${unmatchedTerms.modelTranslationTr}, ${modelTranslationTr})`,
       },
     });
 }
@@ -322,7 +328,7 @@ export async function matchIngredient(
   /* Eşleşme yok: asla helal sayılmaz, bilinmeyen olarak kaydedilir */
   if (!result) {
     if (opts.recordUnmatched !== false) {
-      await recordUnmatched(term, opts.language);
+      await recordUnmatched(term, opts.language, input.modelTranslationTr ?? null);
     }
     return {
       ...base,

@@ -50,6 +50,11 @@ const ZH_PATTERNS: AllergenPattern[] = [
 
 const PORK_MARKERS = /豚|돼지|猪|豬/;
 
+/* Metinde domuz işareti var mı; alerjen satırı üzerinde deterministik denetim */
+export function containsPorkMarker(text: string): boolean {
+  return PORK_MARKERS.test(text);
+}
+
 export function extractAllergenLine(
   normalizedText: string,
   language: DetectedLanguage,

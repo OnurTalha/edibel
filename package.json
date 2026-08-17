@@ -14,6 +14,7 @@
     "db:embeddings": "tsx scripts/generate-embeddings.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.117.1",
     "@tanstack/react-query": "^5.101.4",
     "drizzle-orm": "^0.45.2",
     "next": "^15.5.23",

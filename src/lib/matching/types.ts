@@ -42,6 +42,12 @@ export interface MatchInput {
   sourceHint: string | null;
   /* Alt listesi açılmış kapsayıcı ad (bkz. parsing.ParsedEntry) */
   isCompoundParent?: boolean;
+  /*
+   * Modelin bu terim için ürettiği Türkçe çeviri. Karara girmez; yalnızca
+   * eşleşmeyen terimlerle birlikte unmatched_terms tablosuna yazılır ve
+   * içerik ekleme işini kolaylaştırır.
+   */
+  modelTranslationTr?: string | null;
 }
 
 export interface MatchResult {
