@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/*
+ * Doğu Asya karakterlerini eksiksiz gösteren yazı tipi yığını.
+ * Sıralama: önce sistem Latin yazı tipleri, ardından Japonca (Hiragino Sans,
+ * Yu Gothic, Meiryo), Korece (Apple SD Gothic Neo, Malgun Gothic) ve
+ * Çince (PingFang SC/TC, Microsoft YaHei/JhengHei) geri dönüş zincirleri.
+ * Faz 7'de özgün etiket metinleri lang="ja" / "ko" / "zh" ile işaretlenerek
+ * tarayıcının dil bazlı yazı tipi seçimi ayrıca desteklenecektir.
+ */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Hiragino Sans", "Yu Gothic UI", "Yu Gothic",
+    Meiryo, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
+    "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+
+  /* Çentikli ekranlar için güvenli alan payları (viewport-fit=cover ile) */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Açık tema renkleri */
+  --background: #f8faf8;
+  --foreground: #17211b;
+  --surface: #ffffff;
+  --muted: #5b6660;
+}
+
+/* Koyu tema: kullanıcının sistem tercihine uyar (kamera ekranı hariç her
+   ekran iki temayı da destekler; kamera ekranı Faz 7'de her zaman koyu olur) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #101513;
+    --foreground: #e8ede9;
+    --surface: #1a211d;
+    --muted: #93a099;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-sans);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+  /* Ana gövdede yatay kaydırma bulunmaz (bkz. CLAUDE.md, Bölüm 8) */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Uygulama yalnızca mobil için tasarlanır (390px esas, 320px alt sınır).
+ * Masaüstünde sayfa mobil genişlikte ortalanmış tek sütun olarak gösterilir.
+ */
+.mobile-shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  padding-top: var(--safe-area-top);
+  padding-bottom: var(--safe-area-bottom);
+}

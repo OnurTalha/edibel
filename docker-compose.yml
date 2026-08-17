@@ -1,0 +1,31 @@
+# Geliştirme ortamı veritabanı.
+# Üretim dosyası Faz 9'da deploy/compose.prod.yml olarak ayrıca hazırlanacaktır.
+#
+# Bağlama kuralı: hiçbir kapsayıcı 0.0.0.0 üzerine bağlanmaz. Docker, ana
+# bilgisayarın güvenlik duvarını atladığı için port eşlemeleri her zaman
+# 127.0.0.1 ile sınırlanır (bkz. CLAUDE.md, Bölüm 13).
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: edibel-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: edibel
+      POSTGRES_PASSWORD: edibel_dev
+      POSTGRES_DB: edibel
+    ports:
+      # 5432 yerine 5433: geliştirme makinesindeki olası yerel PostgreSQL
+      # kurulumuyla çakışmayı önler
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - edibel-db-data:/var/lib/postgresql/data
+      # İlk açılışta pg_trgm ve pgvector eklentilerini etkinleştirir
+      - ./deploy/db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U edibel -d edibel"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  edibel-db-data:

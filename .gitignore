@@ -1,0 +1,26 @@
+# bağımlılıklar
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# üretim
+/build
+
+# hata ayıklama
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ortam değişkenleri: gerçek anahtarlar depoya asla girmez
+.env
+.env.*
+!.env.example
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# işletim sistemi
+.DS_Store
