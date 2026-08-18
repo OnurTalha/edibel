@@ -77,11 +77,42 @@ export const analysisResultSchema = z.object({
 
 export type AnalysisResult = z.infer<typeof analysisResultSchema>;
 
-/* /api/analyze isteği: tarayıcıda küçültülmüş JPEG/PNG/WebP, base64 */
-export const analyzeRequestSchema = z.object({
-  imageBase64: z.string().min(100),
-  mediaType: z.enum(["image/jpeg", "image/png", "image/webp"]),
-  deviceId: z.string().min(1).max(128),
-});
+/*
+ * /api/analyze isteği iki biçimdedir:
+ *  - image: tarayıcıda kırpılıp küçültülmüş JPEG/PNG/WebP, base64
+ *  - text : kullanıcının sonuç ekranında düzelttiği ham etiket metni
+ *           (okuma hatalarını düzeltip yeniden analiz için)
+ */
+export const analyzeRequestSchema = z.discriminatedUnion("mode", [
+  z.object({
+    mode: z.literal("image"),
+    imageBase64: z.string().min(100),
+    mediaType: z.enum(["image/jpeg", "image/png", "image/webp"]),
+    deviceId: z.string().min(1).max(128),
+  }),
+  z.object({
+    mode: z.literal("text"),
+    rawText: z.string().min(2).max(6000),
+    deviceId: z.string().min(1).max(128),
+  }),
+]);
 
 export type AnalyzeRequest = z.infer<typeof analyzeRequestSchema>;
+
+/*
+ * /api/scans/[scanId] yanıtı: kaydedilmiş sonuç nesnesi ve sonuçta geçen
+ * fıkhi ilkelerin açıklamaları (sonuç ekranındaki "Gerekçeler" bölümü).
+ */
+export const fiqhPrincipleSchema = z.object({
+  key: z.string(),
+  titleTr: z.string(),
+  explanationTr: z.string(),
+});
+
+export const scanResponseSchema = z.object({
+  result: analysisResultSchema,
+  principles: z.array(fiqhPrincipleSchema),
+});
+
+export type FiqhPrincipleView = z.infer<typeof fiqhPrincipleSchema>;
+export type ScanResponse = z.infer<typeof scanResponseSchema>;

@@ -61,6 +61,12 @@ export interface VisionClient {
     imageBase64: string,
     mediaType: "image/jpeg" | "image/png" | "image/webp",
   ): Promise<VisionOutput>;
+  /*
+   * Kullanıcının sonuç ekranında düzelttiği ham etiket metnini yeniden
+   * yapılandırır ve çevirir. Fotoğraf yoktur; özgün metin kullanıcıdan
+   * gelir ve olduğu gibi korunur.
+   */
+  analyzeText(rawText: string): Promise<VisionOutput>;
 }
 
 /*
@@ -93,9 +99,9 @@ class AnthropicVisionClient implements VisionClient {
     this.client = new Anthropic({ apiKey, timeout: 110_000, maxRetries: 1 });
   }
 
-  async analyzeLabel(
-    imageBase64: string,
-    mediaType: "image/jpeg" | "image/png" | "image/webp",
+  private async run(
+    content: Anthropic.ContentBlockParam[],
+    failureMessage: string,
   ): Promise<VisionOutput> {
     /* Şemaya uymayan çıktı için bir kez yeniden dene (Bölüm 11) */
     let lastError: unknown;
@@ -106,25 +112,7 @@ class AnthropicVisionClient implements VisionClient {
           max_tokens: 16000,
           system: SYSTEM_PROMPT,
           output_config: { format: zodOutputFormat(visionOutputSchema) },
-          messages: [
-            {
-              role: "user",
-              content: [
-                {
-                  type: "image",
-                  source: {
-                    type: "base64",
-                    media_type: mediaType,
-                    data: imageBase64,
-                  },
-                },
-                {
-                  type: "text",
-                  text: "Read this food label and produce the structured output.",
-                },
-              ],
-            },
-          ],
+          messages: [{ role: "user", content }],
         });
 
         if (response.stop_reason === "refusal") {
@@ -146,9 +134,46 @@ class AnthropicVisionClient implements VisionClient {
       }
     }
     throw new VisionReadError(
-      "Etiket okunamadı. Fotoğrafı daha yakından, parlamasız ve net çekip yeniden deneyin.",
+      failureMessage,
       lastError instanceof Error ? lastError.message : String(lastError),
     );
+  }
+
+  async analyzeLabel(
+    imageBase64: string,
+    mediaType: "image/jpeg" | "image/png" | "image/webp",
+  ): Promise<VisionOutput> {
+    return this.run(
+      [
+        {
+          type: "image",
+          source: { type: "base64", media_type: mediaType, data: imageBase64 },
+        },
+        {
+          type: "text",
+          text: "Read this food label and produce the structured output.",
+        },
+      ],
+      "Etiket okunamadı. Fotoğrafı daha yakından, parlamasız ve net çekip yeniden deneyin.",
+    );
+  }
+
+  async analyzeText(rawText: string): Promise<VisionOutput> {
+    const output = await this.run(
+      [
+        {
+          type: "text",
+          text: `The following is the ingredients text of a food label, corrected by the user. Structure and translate it exactly as it is written. Do not add, remove, or fix any character.\n\n<label_text>\n${rawText}\n</label_text>`,
+        },
+      ],
+      "Metin çözümlenemedi. Metni sadeleştirip yeniden deneyin.",
+    );
+    /*
+     * Özgün metnin tek doğru kaynağı kullanıcının girdisidir; modelin
+     * rawBlock alanı yeniden yazmış olabileceğinden dikkate alınmaz
+     * (eşleştirme yalnızca özgün metin üzerinden yapılır).
+     */
+    return { ...output, rawBlock: rawText };
   }
 }
 

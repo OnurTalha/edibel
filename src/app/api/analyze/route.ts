@@ -38,9 +38,9 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  const { imageBase64, mediaType, deviceId } = parsedBody.data;
+  const input = parsedBody.data;
 
-  if (imageBase64.length > MAX_BASE64_LENGTH) {
+  if (input.mode === "image" && input.imageBase64.length > MAX_BASE64_LENGTH) {
     return NextResponse.json(
       { error: "Fotoğraf çok büyük. Lütfen uygulama içinden yeniden çekin." },
       { status: 413 },
@@ -49,8 +49,12 @@ export async function POST(request: Request) {
 
   try {
     const vision = getVisionClient();
-    const visionOutput = await vision.analyzeLabel(imageBase64, mediaType);
-    const result = await runAnalysis(visionOutput, deviceId);
+    /* Fotoğraf yolu ile düzeltilmiş metin yolu aynı hattan geçer */
+    const visionOutput =
+      input.mode === "image"
+        ? await vision.analyzeLabel(input.imageBase64, input.mediaType)
+        : await vision.analyzeText(input.rawText);
+    const result = await runAnalysis(visionOutput, input.deviceId);
     return NextResponse.json(result);
   } catch (err) {
     if (err instanceof VisionReadError || err instanceof AnalysisError) {
