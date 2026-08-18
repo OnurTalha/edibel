@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { sql } from "@/db/client";
+import { getSql } from "@/db/client";
+import { errorKind, logEvent } from "@/lib/logger";
 
 /*
  * Sağlık rotası: uygulamanın ayakta olduğunu, veritabanına ulaşılabildiğini
@@ -12,7 +13,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    const rows = await sql<{ extname: string }[]>`
+    const rows = await getSql()<{ extname: string }[]>`
       SELECT extname FROM pg_extension WHERE extname IN ('pg_trgm', 'vector')
     `;
     const installed = new Set(rows.map((r) => r.extname));
@@ -30,8 +31,9 @@ export async function GET() {
       },
       { status: ok ? 200 : 503 },
     );
-  } catch {
-    // Hata ayrıntısı istemciye sızdırılmaz; günlükleme Faz 9'da eklenecek
+  } catch (err) {
+    // Hata ayrıntısı istemciye sızdırılmaz, yalnızca günlüğe türü yazılır
+    logEvent("error", "health.database_unreachable", { kind: errorKind(err) });
     return NextResponse.json(
       { status: "error", database: "unreachable" },
       { status: 503 },

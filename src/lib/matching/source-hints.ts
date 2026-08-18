@@ -1,4 +1,4 @@
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { sourceHints } from "@/db/schema";
 import type { DetectedLanguage } from "@/lib/parsing";
 import type { ResolvedSource } from "./types";
@@ -25,7 +25,7 @@ let cache: HintRow[] | null = null;
 
 async function loadHints(): Promise<HintRow[]> {
   if (cache) return cache;
-  const rows = await db
+  const rows = await getDb()
     .select({
       pattern: sourceHints.pattern,
       language: sourceHints.language,

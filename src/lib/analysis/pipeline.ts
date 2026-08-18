@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { scans } from "@/db/schema";
 import type { VisionOutput } from "@/lib/ai/vision";
 import {
@@ -195,7 +195,7 @@ export async function runAnalysis(
    * Tarama kaydı: fotoğraf SAKLANMAZ; yalnızca çıkarılan metin ve sonuç
    * saklanır (bkz. CLAUDE.md, Bölüm 6, scans).
    */
-  await db.insert(scans).values({
+  await getDb().insert(scans).values({
     id: scanId,
     deviceId,
     detectedLanguage: language,

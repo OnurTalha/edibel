@@ -1,0 +1,80 @@
+# Edibel üretim yığını (bkz. CLAUDE.md, Bölüm 13).
+#
+# ANA BİLGİSAYARA BAĞLAMA KURALI: hiçbir kapsayıcı 0.0.0.0 üzerine
+# eşlenmez. Docker, ana bilgisayarın güvenlik duvarı kurallarını atlar;
+# 0.0.0.0 eşlemesi servisi farkında olmadan doğrudan internete açar.
+# Bu sebeple bütün port eşlemeleri 127.0.0.1:PORT:PORT biçimindedir.
+# Dışarıya yalnızca nginx (80/443) açıktır.
+#
+# Gerçek değerler bu dosyada bulunmaz; deploy/.env dosyasından okunur.
+
+name: edibel
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: edibel-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?deploy/.env içinde tanımlanmalı}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?deploy/.env içinde tanımlanmalı}
+      POSTGRES_DB: ${POSTGRES_DB:?deploy/.env içinde tanımlanmalı}
+      # Türkçe/Japonca/Korece/Çince metinler için UTF-8
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    ports:
+      # Yalnızca yerel arayüz: içerik yükleme ve yedekleme için SSH tüneliyle
+      # erişilir, internete açılmaz.
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - edibel-db-data:/var/lib/postgresql/data
+      # pg_trgm ve pgvector eklentilerini ilk açılışta kurar
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: edibel-app:latest
+    container_name: edibel-app
+    restart: unless-stopped
+    # Model anahtarları dahil bütün ortam değişkenleri buradan gelir
+    env_file:
+      - .env
+    ports:
+      # nginx bu adrese ters vekil yapar
+      - "127.0.0.1:3200:3200"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3200/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    logging:
+      # Yapılandırılmış JSON günlükleri; kişisel veri yazılmaz
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  edibel-db-data:

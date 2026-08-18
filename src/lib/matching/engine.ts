@@ -1,5 +1,5 @@
 import { and, eq, inArray, sql } from "drizzle-orm";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import {
   ingredientAliases,
   ingredients,
@@ -53,7 +53,7 @@ interface AliasHit {
 
 /* Yöntem 1 + 2: aday yazımların takma ad tablosunda aranması */
 async function lookupAliases(candidates: string[]): Promise<AliasHit[]> {
-  const rows = await db
+  const rows = await getDb()
     .select({
       alias: ingredientAliases.alias,
       language: ingredientAliases.language,
@@ -87,7 +87,7 @@ async function lookupCanonicalName(
   term: string,
 ): Promise<MatchedIngredient | null> {
   const lowered = term.toLowerCase();
-  const rows = await db
+  const rows = await getDb()
     .select(INGREDIENT_FIELDS)
     .from(ingredients)
     .where(
@@ -107,7 +107,7 @@ interface FuzzyHit {
 async function lookupFuzzy(candidates: string[]): Promise<FuzzyHit | null> {
   let best: FuzzyHit | null = null;
   for (const cand of candidates) {
-    const rows = (await db.execute(sql`
+    const rows = (await getDb().execute(sql`
       SELECT i.id, i.canonical_name_tr, i.canonical_name_en, i.ins_code,
              i.e_code, i.category, i.source_type, i.default_status,
              i.description_tr, a.translation_tr,
@@ -163,7 +163,7 @@ async function lookupEmbedding(term: string): Promise<EmbeddingHit | null> {
   }
 
   const vecLiteral = `[${vector.join(",")}]`;
-  const rows = (await db.execute(sql`
+  const rows = (await getDb().execute(sql`
     SELECT i.id, i.canonical_name_tr, i.canonical_name_en, i.ins_code,
            i.e_code, i.category, i.source_type, i.default_status,
            i.description_tr,
@@ -195,7 +195,7 @@ async function lookupEmbedding(term: string): Promise<EmbeddingHit | null> {
 
 /* Malzemenin domuz kaynağına özel hükmü var mı (alerjen kuralı için) */
 async function hasPorkVariantRuling(ingredientId: string): Promise<boolean> {
-  const rows = await db
+  const rows = await getDb()
     .select({ id: madhhabRulings.id })
     .from(madhhabRulings)
     .where(
@@ -214,7 +214,7 @@ async function recordUnmatched(
   modelTranslationTr: string | null,
 ): Promise<void> {
   if (term.length < 2) return;
-  await db
+  await getDb()
     .insert(unmatchedTerms)
     .values({ term, language, modelTranslationTr })
     .onConflictDoUpdate({

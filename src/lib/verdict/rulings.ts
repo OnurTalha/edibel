@@ -1,5 +1,5 @@
 import { inArray } from "drizzle-orm";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { madhhabRulings } from "@/db/schema";
 import type { MatchResult } from "@/lib/matching";
 import type { AppliedRuling, MadhhabKey, RulingStatus, VerdictItem } from "./types";
@@ -78,7 +78,7 @@ export async function buildVerdictItems(
     ids.length === 0
       ? []
       : (
-          await db
+          await getDb()
             .select({
               ingredientId: madhhabRulings.ingredientId,
               resolvedSource: madhhabRulings.resolvedSource,

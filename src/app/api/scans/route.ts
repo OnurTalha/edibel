@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { desc, eq } from "drizzle-orm";
 import { z } from "zod";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { scans } from "@/db/schema";
+import { errorKind, logEvent } from "@/lib/logger";
 import {
   analysisResultSchema,
   type ScanList,
@@ -44,7 +45,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const rows = await db
+    const rows = await getDb()
       .select({
         id: scans.id,
         createdAt: scans.createdAt,
@@ -75,7 +76,7 @@ export async function GET(request: Request) {
     const response: ScanList = { scans: items };
     return NextResponse.json(response);
   } catch (err) {
-    console.error("scan list route error:", err);
+    logEvent("error", "scans.list_error", { kind: errorKind(err) });
     return NextResponse.json(
       { error: "Geçmiş yüklenemedi. Lütfen biraz sonra tekrar deneyin." },
       { status: 500 },

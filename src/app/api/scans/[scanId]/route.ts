@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { eq, inArray } from "drizzle-orm";
 import { z } from "zod";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { fiqhPrinciples, scans } from "@/db/schema";
+import { errorKind, logEvent } from "@/lib/logger";
 import { analysisResultSchema, type ScanResponse } from "@/lib/schemas";
 
 /*
@@ -32,7 +33,7 @@ export async function GET(
   }
 
   try {
-    const rows = await db
+    const rows = await getDb()
       .select({ verdict: scans.verdict })
       .from(scans)
       .where(eq(scans.id, parsedParams.data.scanId))
@@ -70,7 +71,7 @@ export async function GET(
 
     const principles =
       principleKeys.length > 0
-        ? await db
+        ? await getDb()
             .select({
               key: fiqhPrinciples.key,
               titleTr: fiqhPrinciples.titleTr,
@@ -83,7 +84,7 @@ export async function GET(
     const response: ScanResponse = { result: result.data, principles };
     return NextResponse.json(response);
   } catch (err) {
-    console.error("scan route error:", err);
+    logEvent("error", "scan.read_error", { kind: errorKind(err) });
     return NextResponse.json(
       { error: "Sonuç yüklenemedi. Lütfen biraz sonra tekrar deneyin." },
       { status: 500 },

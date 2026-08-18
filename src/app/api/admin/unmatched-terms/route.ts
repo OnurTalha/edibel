@@ -1,8 +1,10 @@
 import { timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { desc } from "drizzle-orm";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { unmatchedTerms } from "@/db/schema";
+import { errorKind, hashIdentifier, logEvent } from "@/lib/logger";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { STR } from "@/lib/ui/strings";
 
 /*
@@ -34,13 +36,37 @@ export async function GET(request: Request) {
     );
   }
 
+  /*
+   * Anahtar denemesi kaba kuvvete karşı sınırlanır. İstemci adresi yalnızca
+   * sayaç anahtarı olarak kullanılır; günlüğe adres değil, geri
+   * döndürülemez kısa özeti yazılır.
+   */
+  const clientAddress =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "bilinmiyor";
+  const attempts = checkRateLimit(`admin:${clientAddress}`, 20);
+  if (!attempts.allowed) {
+    logEvent("warn", "admin.rate_limited", {
+      clientHash: hashIdentifier(clientAddress),
+    });
+    return NextResponse.json(
+      { error: STR.rateLimited },
+      {
+        status: 429,
+        headers: { "Retry-After": String(attempts.retryAfterSeconds) },
+      },
+    );
+  }
+
   const provided = request.headers.get("x-admin-token") ?? "";
   if (!tokenMatches(provided, expected)) {
+    logEvent("warn", "admin.unauthorized", {
+      clientHash: hashIdentifier(clientAddress),
+    });
     return NextResponse.json({ error: STR.adminTokenWrong }, { status: 401 });
   }
 
   try {
-    const rows = await db
+    const rows = await getDb()
       .select()
       .from(unmatchedTerms)
       .orderBy(desc(unmatchedTerms.occurrenceCount), desc(unmatchedTerms.lastSeenAt))
@@ -57,7 +83,7 @@ export async function GET(request: Request) {
       })),
     });
   } catch (err) {
-    console.error("admin unmatched-terms route error:", err);
+    logEvent("error", "admin.list_error", { kind: errorKind(err) });
     return NextResponse.json(
       { error: "Liste yüklenemedi. Lütfen biraz sonra tekrar deneyin." },
       { status: 500 },

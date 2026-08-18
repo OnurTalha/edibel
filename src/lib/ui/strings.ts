@@ -224,6 +224,8 @@ export const STR = {
   resultNotFound:
     "Bu tarama bulunamadı. Ana sayfadan yeni bir tarama başlatabilirsiniz.",
   genericError: "Bir sorun oluştu. Lütfen tekrar deneyin.",
+  rateLimited:
+    "Kısa sürede çok fazla tarama yaptınız. Lütfen bir dakika bekleyip tekrar deneyin.",
   offlineError:
     "İnternet bağlantısı kurulamadı. Bağlantınızı kontrol edip tekrar deneyin.",
   goHome: "Ana sayfa",
