@@ -163,6 +163,61 @@ export const STR = {
   disclaimer:
     "Bu sonuçlar bilgilendirme amaçlıdır ve dini bir fetva niteliği taşımaz. Kesin bilgi için resmi helal belgelendirme kuruluşlarına başvurunuz.",
 
+  /* Faz 8: geçmiş, ayarlar, çevrimdışı, hata ekranları, yönetim sayfası */
+  historyLink: "Geçmiş taramalar",
+  historyTitle: "Geçmiş taramalar",
+  historyEmpty:
+    "Henüz tarama yapmadınız. Ana sayfadan ilk taramanızı başlatabilirsiniz.",
+  historyStoredNote:
+    "Taramalar bu cihaza ait anonim bir kimlikle saklanır. Fotoğraflar sunucuda tutulmaz, yalnızca okunan metin ve sonuç saklanır.",
+  historyUnmatched: (n: number) => `${n} bilinmeyen malzeme`,
+
+  settingsLink: "Ayarlar",
+  settingsTitle: "Ayarlar",
+  settingsMadhhabTitle: "Mezhebiniz",
+  settingsMadhhabHelp:
+    "Seçim yaparsanız sonuç ekranında önce sizin mezhebinizin hükmü gösterilir. Seçim yapmazsanız dört mezhep birlikte gösterilir. Bu tercih yalnızca gösterimi değiştirir; hüküm her zaman dört mezhep için hesaplanır.",
+  settingsMadhhabNone: "Belirtmek istemiyorum",
+  settingsCameraTitle: "Kamera yöntemi",
+  settingsCameraHelp:
+    "Telefon kamerası tam çözünürlüklü fotoğraf verir ve varsayılan yöntemdir. Canlı görüntü sayfa içinde hizalama çerçevesi gösterir.",
+  settingsStoredLocally: "Tercihleriniz yalnızca bu cihazda saklanır.",
+
+  verdictAccordingTo: (madhhab: string) => `${madhhab} mezhebine göre`,
+  verdictOtherMadhhabs: "Diğer mezhepler",
+
+  offlineBanner: "Çevrimdışısınız. Yeni tarama yapılamaz.",
+  offlineTitle: "Bağlantı yok",
+  offlineBody:
+    "İnternet bağlantısı kurulamadı. Daha önce görüntülediğiniz sonuçlara bakabilir, bağlantı gelince yeni tarama yapabilirsiniz.",
+  offlineRetry: "Tekrar dene",
+
+  errorTitle: "Bir sorun oluştu",
+  errorBody:
+    "Beklenmeyen bir durum oluştu. Sayfayı yenileyip tekrar deneyebilirsiniz.",
+  notFoundTitle: "Sayfa bulunamadı",
+  notFoundBody:
+    "Aradığınız sayfa yok. Ana sayfadan yeni bir tarama başlatabilirsiniz.",
+
+  adminTitle: "Eşleşmeyen terimler",
+  adminIntro:
+    "Etiketlerde karşılaşılan ancak içerik veritabanında bulunmayan malzeme adları. En sık görülenler önce listelenir.",
+  adminTokenLabel: "Yönetim anahtarı",
+  adminTokenSubmit: "Giriş",
+  adminTokenWrong: "Anahtar doğrulanamadı.",
+  adminNotConfigured:
+    "Yönetim arayüzü yapılandırılmamış. Sunucuda ADMIN_TOKEN tanımlanmalıdır.",
+  adminEmpty: "Eşleşmeyen terim kaydı yok.",
+  adminRefresh: "Yenile",
+  adminLogout: "Çıkış",
+  adminFilter: "Terim ara",
+  adminTotal: (n: number) => `${n} terim`,
+  adminColumnTerm: "Terim",
+  adminColumnLanguage: "Dil",
+  adminColumnTranslation: "Model çevirisi",
+  adminColumnCount: "Sayı",
+  adminColumnLastSeen: "Son görülme",
+
   newScan: "Yeni tarama",
   back: "Geri",
   loading: "Yükleniyor...",

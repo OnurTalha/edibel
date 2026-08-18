@@ -2,10 +2,14 @@
 
 import {
   analysisResultSchema,
+  scanListSchema,
   scanResponseSchema,
+  unmatchedTermsSchema,
   type AnalysisResult,
   type AnalyzeRequest,
+  type ScanListItem,
   type ScanResponse,
+  type UnmatchedTermView,
 } from "@/lib/schemas";
 import { STR } from "@/lib/ui/strings";
 
@@ -71,6 +75,35 @@ export async function fetchScan(scanId: string): Promise<ScanResponse> {
   const parsed = scanResponseSchema.safeParse(payload);
   if (!parsed.success) throw new ApiError(STR.genericError);
   return parsed.data;
+}
+
+export async function fetchScanList(
+  deviceId: string,
+): Promise<ScanListItem[]> {
+  const response = await fetch(
+    `/api/scans?deviceId=${encodeURIComponent(deviceId)}`,
+  );
+  const payload = await readJson(response);
+  if (!response.ok) throw new ApiError(errorFromPayload(payload));
+
+  const parsed = scanListSchema.safeParse(payload);
+  if (!parsed.success) throw new ApiError(STR.genericError);
+  return parsed.data.scans;
+}
+
+export async function fetchUnmatchedTerms(
+  token: string,
+): Promise<UnmatchedTermView[]> {
+  const response = await fetch("/api/admin/unmatched-terms", {
+    headers: { "x-admin-token": token },
+    cache: "no-store",
+  });
+  const payload = await readJson(response);
+  if (!response.ok) throw new ApiError(errorFromPayload(payload));
+
+  const parsed = unmatchedTermsSchema.safeParse(payload);
+  if (!parsed.success) throw new ApiError(STR.genericError);
+  return parsed.data.terms;
 }
 
 export function isAbortError(error: unknown): boolean {

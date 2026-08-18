@@ -116,3 +116,36 @@ export const scanResponseSchema = z.object({
 
 export type FiqhPrincipleView = z.infer<typeof fiqhPrincipleSchema>;
 export type ScanResponse = z.infer<typeof scanResponseSchema>;
+
+/* /api/scans?deviceId=... yanıtı: cihazın geçmiş taramaları */
+export const scanListItemSchema = z.object({
+  scanId: z.string(),
+  createdAt: z.string(),
+  detectedLanguage: detectedLanguageSchema,
+  verdict: analysisResultSchema.shape.verdict,
+  unmatchedCount: z.number().int(),
+  preview: z.string(),
+});
+
+export const scanListSchema = z.object({
+  scans: z.array(scanListItemSchema),
+});
+
+export type ScanListItem = z.infer<typeof scanListItemSchema>;
+export type ScanList = z.infer<typeof scanListSchema>;
+
+/* /api/admin/unmatched-terms yanıtı: içerik veritabanını büyütme listesi */
+export const unmatchedTermSchema = z.object({
+  id: z.string(),
+  term: z.string(),
+  language: z.string(),
+  modelTranslationTr: z.string().nullable(),
+  occurrenceCount: z.number().int(),
+  lastSeenAt: z.string(),
+});
+
+export const unmatchedTermsSchema = z.object({
+  terms: z.array(unmatchedTermSchema),
+});
+
+export type UnmatchedTermView = z.infer<typeof unmatchedTermSchema>;

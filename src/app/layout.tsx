@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
+import { OfflineBanner } from "@/components/OfflineBanner";
+import { ServiceWorkerRegistrar } from "@/components/ServiceWorkerRegistrar";
 
 export const metadata: Metadata = {
   title: "Edibel",
@@ -46,7 +48,11 @@ export default function RootLayout({
     <html lang="tr">
       <body>
         <Providers>
-          <div className="mobile-shell">{children}</div>
+          <div className="mobile-shell">
+            <OfflineBanner />
+            {children}
+          </div>
+          <ServiceWorkerRegistrar />
         </Providers>
       </body>
     </html>

@@ -31,6 +31,22 @@ export default function HomePage() {
         </Link>
         <p className="text-center text-sm text-muted">{STR.scanDescription}</p>
         <p className="text-center text-xs text-muted">{STR.appHint}</p>
+
+        {/* İkinci derece bağlantılar (bkz. CLAUDE.md, Bölüm 9: Ekran 1) */}
+        <nav className="mt-2 flex w-full max-w-[320px] gap-2">
+          <Link
+            href="/gecmis"
+            className="flex min-h-[48px] flex-1 items-center justify-center rounded-2xl bg-surface px-3 text-sm font-medium ring-1 ring-black/5 dark:ring-white/10"
+          >
+            {STR.historyLink}
+          </Link>
+          <Link
+            href="/ayarlar"
+            className="flex min-h-[48px] flex-1 items-center justify-center rounded-2xl bg-surface px-3 text-sm font-medium ring-1 ring-black/5 dark:ring-white/10"
+          >
+            {STR.settingsLink}
+          </Link>
+        </nav>
       </div>
 
       <p className="mt-10 text-center text-[11px] leading-relaxed text-muted">
