@@ -29,8 +29,23 @@ import type {
 
 /* Bulanık eşleşme alt sınırı; altındaki benzerlikler eşleşme sayılmaz */
 const FUZZY_THRESHOLD = 0.45;
-/* Gömme eşleşmesi için en büyük kosinüs uzaklığı */
-const EMBEDDING_MAX_DISTANCE = 0.35;
+/*
+ * Gömme eşleşmesi için en büyük kosinüs uzaklığı (güven = 1 - uzaklık).
+ *
+ * Değer, gerçek vektörlerle ölçülerek belirlenmiştir. Veritabanında takma
+ * adı bulunmayan ama gerçekten malzeme olan yazımlar (豚の脂肪, 돼지 기름,
+ * 昆虫由来の赤色色素 gibi) 0.85-0.91 güven aralığında eşleşir; malzeme
+ * OLMAYAN metinler (son kullanma tarihi, üretici adı, adres, pişirme
+ * talimatı, uydurma madde adları) 0.76-0.83 aralığında kalır. Eşik bu iki
+ * kümenin arasına konur.
+ *
+ * Kaçırılan eşleşme güvenlidir: terim bilinmeyen sayılır ve sonuç ŞÜPHELİ
+ * olur. Yanlış eşleşme ise tanınmayan bir maddeyi tanıdık bir malzeme
+ * yerine koyar ve sonucu yanlışlıkla helale çekebilir. Bu sebeple eşik
+ * bilinçli olarak temkinli seçilmiştir (bkz. CLAUDE.md, Bölüm 7: sistem
+ * emin olmadığı hiçbir durumda helal demez).
+ */
+const EMBEDDING_MAX_DISTANCE = 0.15;
 
 const INGREDIENT_FIELDS = {
   id: ingredients.id,
