@@ -7,7 +7,7 @@ import {
   unmatchedTerms,
 } from "@/db/schema";
 import { getEmbeddingClient } from "@/lib/ai/embedding";
-import { buildCandidates } from "./candidates";
+import { buildCandidates, stripQuantityAnnotations } from "./candidates";
 import { resolveSourceHint } from "./source-hints";
 import type {
   MatchInput,
@@ -249,6 +249,8 @@ export async function matchIngredient(
 ): Promise<MatchResult> {
   const term = input.rawText;
   const candidates = buildCandidates(term, opts.language);
+  /* Gömme sorgusu da miktar bildiriminden arındırılmış adı kullanır */
+  const searchTerm = stripQuantityAnnotations(term) || term;
 
   const base: Omit<
     MatchResult,
@@ -328,7 +330,7 @@ export async function matchIngredient(
 
   /* Yöntem 4: gömme benzerliği (seyrek; harici arayüz) */
   if (!result) {
-    const emb = await lookupEmbedding(term);
+    const emb = await lookupEmbedding(searchTerm);
     if (emb) {
       result = {
         ...base,
@@ -343,7 +345,16 @@ export async function matchIngredient(
   /* Eşleşme yok: asla helal sayılmaz, bilinmeyen olarak kaydedilir */
   if (!result) {
     if (opts.recordUnmatched !== false) {
-      await recordUnmatched(term, opts.language, input.modelTranslationTr ?? null);
+      /*
+       * Kayıt, miktar bildiriminden arındırılmış adla yapılır; aksi halde
+       * 오징어90.3% ve 오징어52% aynı malzeme için ayrı satırlar üretir ve
+       * yönetim sayfasındaki sayaç anlamını yitirir.
+       */
+      await recordUnmatched(
+        searchTerm,
+        opts.language,
+        input.modelTranslationTr ?? null,
+      );
     }
     return {
       ...base,

@@ -26,7 +26,20 @@ const MARKERS: Record<string, SectionMarkers> = {
     ],
   },
   ko: {
-    start: [/원재료명/, /원재료/, /성분명/, /성분/],
+    /*
+     * Kore etiketlerinde başlık sıklıkla "원재료명 및 함량" (malzeme adı ve
+     * miktarı) biçiminde bileşiktir. Bileşik biçimler önce yazılır; aynı
+     * konumda eşleşen başlıklardan EN UZUNU seçilir, aksi halde "및 함량"
+     * parçası listeye malzeme gibi düşer.
+     */
+    start: [
+      /원재료명\s*및\s*함량/,
+      /원재료\s*및\s*함량/,
+      /원재료명/,
+      /원재료/,
+      /성분명/,
+      /성분/,
+    ],
     end: [
       /영양정보/, /영양성분/, /식품유형/, /품목보고번호/, /유통기한/,
       /소비기한/, /보관방법/, /제조원/, /판매원/, /내용량/,
@@ -64,12 +77,17 @@ export function extractIngredientSection(
     return { headerFound: false, sectionText: normalizedText };
   }
 
-  /* En erken eşleşen başlangıç başlığı bulunur */
+  /* En erken eşleşen başlangıç başlığı; aynı konumda en uzunu kazanır */
   let startIdx = -1;
   let startLen = 0;
   for (const re of markers.start) {
     const m = re.exec(normalizedText);
-    if (m && (startIdx === -1 || m.index < startIdx)) {
+    if (!m) continue;
+    if (
+      startIdx === -1 ||
+      m.index < startIdx ||
+      (m.index === startIdx && m[0].length > startLen)
+    ) {
       startIdx = m.index;
       startLen = m[0].length;
     }
@@ -82,6 +100,13 @@ export function extractIngredientSection(
   let section = normalizedText.slice(startIdx + startLen);
   /* Başlıktan hemen sonra gelen iki nokta ve boşluklar atılır */
   section = section.replace(/^[\s:：]+/, "");
+  /*
+   * Başlık listede olmayan bir ekle uzatılmışsa ("... 및 함량 :",
+   * "... 及び添加物：") iki noktaya kadar olan kısa parça da atılır.
+   * Yalnızca ayırıcı içermeyen kısa parçalar temizlenir; gerçek bir
+   * malzeme adının silinmemesi için sınır dardır.
+   */
+  section = section.replace(/^[^,、;()（）]{1,10}[:：]\s*/, "");
 
   /* Başlangıçtan sonraki en erken bitiş işaretinde kesilir */
   let endIdx = section.length;
