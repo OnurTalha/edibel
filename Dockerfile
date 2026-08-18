@@ -12,7 +12,10 @@ RUN npm ci
 # 2) Derleme
 FROM node:22-alpine AS builder
 WORKDIR /app
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    # Az bellekli sunucularda derlemenin diğer servisleri düşürmemesi için
+    # Node yığını sınırlanır; bu proje için 1 GB fazlasıyla yeterlidir.
+    NODE_OPTIONS=--max-old-space-size=1024
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
