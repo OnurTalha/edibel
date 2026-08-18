@@ -207,5 +207,26 @@
     "defaultStatus": "helal",
     "descTr": "Yeşil çaydan elde edilen antioksidan (カテキン); Japon gıdalarında koruyucu olarak kullanılır.",
     "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "sodyum-suksinat",
+    "nameTr": "Sodyum süksinat",
+    "nameEn": "Sodium succinate",
+    "insCode": "364",
+    "category": "aroma",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Deniz ürünü tadını güçlendiren tuz (호박산나트륨 / コハク酸ナトリウム); hazır çorba ve atıştırmalıklarda kullanılır. Kimyasal sentez veya mikrobiyal fermantasyonla üretilir.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "cesni-sivisi",
+    "nameTr": "Çeşni sıvısı (toplu ad)",
+    "nameEn": "Seasoning liquid",
+    "category": "aroma",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Kore etiketlerinde 조미액 biçiminde geçen toplu ad; içeriği et suyu, deniz ürünü özü veya bitkisel çeşni olabilir ve kaynak belirtilmedikçe bilinemez.",
+    "rulings": "kaynak-belirsiz-supheli"
   }
 ]

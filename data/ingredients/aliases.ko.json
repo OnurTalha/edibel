@@ -73,7 +73,7 @@
   "sarap-sirkesi": ["와인식초", "포도주식초", { "alias": "발사믹식초", "translationTr": "balzamik sirke" }],
   "koji": ["누룩", "쌀누룩", "입국"],
   "natto": ["낫토", { "alias": "청국장", "translationTr": "fermente soya (çonggukcang)" }],
-  "kimchi": ["김치", "배추김치", "김치분말"],
+  "kimchi": ["김치", "배추김치", "김치분말", { "alias": "김치국물", "translationTr": "kimchi suyu" }],
 
   "emulgator-genel": ["유화제"],
   "lesitin": ["레시틴", { "alias": "대두레시틴", "translationTr": "soya lesitini" }, "해바라기레시틴"],
@@ -132,7 +132,7 @@
   "malik-asit": ["사과산", "말산"],
   "tartarik-asit": ["주석산", "타르타르산"],
   "fumarik-asit": ["푸마르산", "푸말산"],
-  "fosfatlar": ["인산염", "폴리인산나트륨", "피로인산나트륨", "제이인산나트륨"],
+  "fosfatlar": ["인산염", "폴리인산나트륨", "피로인산나트륨", "제이인산나트륨", { "alias": "메타인산나트륨", "translationTr": "sodyum metafosfat" }],
   "sorbik-asit": ["소르빈산", "소르빈산칼륨"],
   "benzoik-asit": ["안식향산", "안식향산나트륨"],
   "sodyum-nitrit": ["아질산나트륨", { "alias": "발색제", "translationTr": "renk sabitleyici (nitrit)" }],
@@ -180,7 +180,7 @@
 
   "bugday-unu": ["밀가루", "소맥분", "박력분", "강력분"],
   "bugday": ["밀", "소맥", "통밀"],
-  "pirinc": ["쌀", "백미", "쌀가루", "찹쌀"],
+  "pirinc": ["쌀", "백미", "쌀가루", "찹쌀", { "alias": "찹쌀풀", "translationTr": "yapışkan pirinç lapası" }, { "alias": "쌀풀", "translationTr": "pirinç lapası" }],
   "misir": ["옥수수", "콘", "스위트콘"],
   "nisasta": ["전분", "녹말", { "alias": "감자전분", "translationTr": "patates nişastası" }, { "alias": "옥수수전분", "translationTr": "mısır nişastası" }, { "alias": "타피오카전분", "translationTr": "tapyoka nişastası" }],
   "seker": ["설탕", "백설탕", "황설탕", "정백당"],
@@ -208,10 +208,10 @@
   "hidrojenize-yag": ["경화유", "부분경화유", "수소첨가유지"],
   "shortening": ["쇼트닝"],
   "margarin": ["마가린"],
-  "tuz": ["소금", "정제소금", "천일염", "식염"],
+  "tuz": ["소금", "정제소금", "천일염", "식염", { "alias": "재제염", "translationTr": "rafine tuz" }],
   "baharat": ["향신료", "혼합양념", "스파이스"],
   "karabiber": ["후추", "흑후추", "후춧가루"],
-  "aci-biber": ["고추", "고춧가루", "홍고추", "청양고추"],
+  "aci-biber": ["고추", "고춧가루", { "alias": "고추가루", "translationTr": "kırmızı biber tozu" }, "홍고추", "청양고추"],
   "curry-tozu": ["카레분말", "카레가루"],
   "sogan": ["양파", "양파분말"],
   "sarimsak": ["마늘", "마늘분말", "다진마늘"],
@@ -230,5 +230,11 @@
   "yuzu": ["유자", { "alias": "유자청", "translationTr": "yuzu marmelatı" }],
   "ume": ["매실", { "alias": "매실청", "translationTr": "erik şurubu" }],
   "uzum": ["포도", { "alias": "포도과즙", "translationTr": "üzüm suyu" }],
-  "portakal": ["오렌지", { "alias": "오렌지과즙", "translationTr": "portakal suyu" }, { "alias": "감귤", "translationTr": "mandalina" }]
+  "portakal": ["오렌지", { "alias": "오렌지과즙", "translationTr": "portakal suyu" }, { "alias": "감귤", "translationTr": "mandalina" }],
+  "kabuklu-deniz-urunleri": ["조개류", "패류", { "alias": "조갯살", "translationTr": "kabuklu deniz ürünü eti" }],
+  "hunnap": ["대추", { "alias": "대추농축액", "translationTr": "hünnap konsantresi" }],
+  "malt-surubu": ["엿", { "alias": "가루엿", "translationTr": "toz malt şurubu" }, { "alias": "조청", "translationTr": "geleneksel tahıl şurubu" }],
+  "sodyum-suksinat": ["호박산나트륨", "호박산이나트륨", "호박산"],
+  "cesni-sivisi": ["조미액", { "alias": "조미액기스", "translationTr": "çeşni özü" }],
+  "cesnili-yag": ["조미유"]
 }

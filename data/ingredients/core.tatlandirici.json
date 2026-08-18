@@ -128,5 +128,15 @@
     "defaultStatus": "helal",
     "descTr": "Nişastadan enzimatik yolla üretilen şeker; Japon gıdalarında nem tutucu olarak son derece yaygındır.",
     "rulings": "mikrobiyal-helal"
+  },
+  {
+    "slug": "malt-surubu",
+    "nameTr": "Malt şurubu",
+    "nameEn": "Malt syrup",
+    "category": "tatlandirici",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Çimlendirilmiş tahılın nişastasının şekere dönüştürülmesiyle elde edilen şurup; Kore'de 엿 adıyla gochujang, şekerleme ve soslarda kullanılır.",
+    "rulings": "bitkisel-helal"
   }
 ]

@@ -235,5 +235,9 @@
   "yuzu": ["ゆず", "柚子", "ユズ"],
   "ume": ["梅", "うめ", { "alias": "梅干し", "translationTr": "Japon eriği turşusu" }, "梅肉"],
   "uzum": ["ぶどう", "ブドウ", "葡萄", { "alias": "ぶどう果汁", "translationTr": "üzüm suyu" }],
-  "portakal": ["オレンジ", { "alias": "オレンジ果汁", "translationTr": "portakal suyu" }, { "alias": "みかん", "translationTr": "mandalina" }]
+  "portakal": ["オレンジ", { "alias": "オレンジ果汁", "translationTr": "portakal suyu" }, { "alias": "みかん", "translationTr": "mandalina" }],
+  "natto-bakterisi": [{ "alias": "納豆菌", "translationTr": "natto bakterisi" }],
+  "sodyum-suksinat": [{ "alias": "コハク酸ナトリウム", "translationTr": "sodyum süksinat" }, { "alias": "コハク酸", "translationTr": "süksinik asit" }],
+  "kabuklu-deniz-urunleri": [{ "alias": "貝類", "translationTr": "kabuklu deniz ürünleri" }],
+  "hunnap": [{ "alias": "ナツメ", "translationTr": "hünnap" }]
 }

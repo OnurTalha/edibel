@@ -230,5 +230,15 @@
     "defaultStatus": "helal",
     "descTr": "Fermente Kore lahana turşusu; hazır eriştelerde bileşen olarak geçer. Fermantasyonda oluşan eser alkol istihlak ilkesiyle değerlendirilir. İçindeki balık sosu da helaldir.",
     "rulings": "fermantasyon-eser-alkol"
+  },
+  {
+    "slug": "natto-bakterisi",
+    "nameTr": "Natto bakterisi (Bacillus subtilis)",
+    "nameEn": "Natto bacteria (Bacillus subtilis natto)",
+    "category": "diger",
+    "sourceType": "mikrobiyal",
+    "defaultStatus": "helal",
+    "descTr": "Soya fasulyesini natto'ya dönüştüren fermantasyon bakterisi; Japon etiketlerinde 納豆菌 olarak yazılır.",
+    "rulings": "mikrobiyal-helal"
   }
 ]

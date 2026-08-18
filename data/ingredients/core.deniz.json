@@ -198,5 +198,15 @@
     "defaultStatus": "helal",
     "descTr": "Çorba ve salatalarda kullanılan deniz yosunu.",
     "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "kabuklu-deniz-urunleri",
+    "nameTr": "Kabuklu deniz ürünleri (toplu ad)",
+    "nameEn": "Shellfish",
+    "category": "protein",
+    "sourceType": "hayvansal",
+    "defaultStatus": "supheli",
+    "descTr": "Midye, istiridye, tarak ve benzeri kabuklu deniz canlıları için kullanılan toplu ad; Kore etiketlerinde 조개류 biçiminde geçer. Hanefi mezhebinde balık dışı deniz canlısı yenmediğinden hüküm mezhepler arasında farklılaşır.",
+    "rulings": "deniz-kabuklu"
   }
 ]

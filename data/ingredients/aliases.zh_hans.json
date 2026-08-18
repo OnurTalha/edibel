@@ -230,5 +230,9 @@
   "yuzu": ["柚子", "香橙"],
   "ume": ["梅子", "话梅", "青梅"],
   "uzum": ["葡萄", { "alias": "葡萄汁", "translationTr": "üzüm suyu" }],
-  "portakal": ["橙", "橙子", { "alias": "橙汁", "translationTr": "portakal suyu" }, { "alias": "柑橘", "translationTr": "mandalina" }]
+  "portakal": ["橙", "橙子", { "alias": "橙汁", "translationTr": "portakal suyu" }, { "alias": "柑橘", "translationTr": "mandalina" }],
+  "sodyum-suksinat": [{ "alias": "琥珀酸钠", "translationTr": "sodyum süksinat" }],
+  "kabuklu-deniz-urunleri": [{ "alias": "贝类", "translationTr": "kabuklu deniz ürünleri" }],
+  "hunnap": [{ "alias": "红枣", "translationTr": "hünnap" }],
+  "malt-surubu": [{ "alias": "麦芽糖浆", "translationTr": "malt şurubu" }]
 }

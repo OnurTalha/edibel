@@ -134,5 +134,12 @@
   "baharat": ["spices", "spice"],
   "karabiber": ["black pepper", "pepper"],
   "aci-biber": ["chili pepper", "red pepper", "chili powder"],
-  "curry-tozu": ["curry powder"]
+  "curry-tozu": ["curry powder"],
+  "kabuklu-deniz-urunleri": ["shellfish", "clams"],
+  "hunnap": ["jujube", "red date"],
+  "malt-surubu": ["malt syrup"],
+  "sodyum-suksinat": ["sodium succinate", "disodium succinate"],
+  "natto-bakterisi": ["bacillus subtilis natto"],
+  "cesni-sivisi": ["seasoning liquid"],
+  "cesnili-yag": ["seasoned oil"]
 }
