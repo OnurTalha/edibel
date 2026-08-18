@@ -50,7 +50,29 @@ class GeminiEmbeddingClient implements EmbeddingClient {
       signal: AbortSignal.timeout(20_000),
     });
     if (!res.ok) {
-      throw new Error(`Gömme isteği başarısız: HTTP ${res.status}`);
+      /*
+       * Sağlayıcının gerekçesi hataya eklenir (yapılandırma sorunları böyle
+       * anlaşılır). Bu metin yalnızca sunucu günlüğüne ve betik çıktısına
+       * gider, kullanıcıya gösterilmez; API anahtarı hiçbir zaman yazılmaz.
+       */
+      const detail = await res
+        .text()
+        .then((text) => {
+          try {
+            const parsed = JSON.parse(text) as {
+              error?: { status?: string; message?: string };
+            };
+            return parsed.error?.message
+              ? `${parsed.error.status ?? ""} ${parsed.error.message}`.trim()
+              : text.slice(0, 200);
+          } catch {
+            return text.slice(0, 200);
+          }
+        })
+        .catch(() => "");
+      throw new Error(
+        `Gömme isteği başarısız: HTTP ${res.status}${detail ? ` — ${detail}` : ""}`,
+      );
     }
     const data = (await res.json()) as {
       embeddings: { values: number[] }[];
