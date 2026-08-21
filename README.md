@@ -1,8 +1,9 @@
 # Edibel
 
-Paketli gıdaların içindekiler etiketini telefon kamerasıyla okuyup malzemeleri
-helal açısından değerlendiren, sonucu dört mezhebe (Hanefi, Şafii, Maliki,
-Hanbeli) göre ayrı ayrı gösteren mobil web uygulaması.
+Paketli gıdaların içindekiler etiketini ve lokanta menülerini telefon
+kamerasıyla okuyup malzemeleri helal açısından değerlendiren, sonucu dört
+mezhebe (Hanefi, Şafii, Maliki, Hanbeli) göre ayrı ayrı gösteren mobil web
+uygulaması.
 
 Japonca, Korece ve Çince etiketler için tasarlandı; arayüz Türkçedir.
 
@@ -39,6 +40,29 @@ bunu göz önünde bulundurun.
 Sonuç ekranı önce tek bir karar kartı gösterir; aşağı kaydırınca içindekilerin
 satır satır Türkçe çevirisi, alerjen bildirimi, sorunlu malzemeler, mezhep
 karşılaştırma tablosu, fıkhi gerekçeler ve okunan ham metin yer alır.
+
+### Menü taraması
+
+O ülkelerde gezerken lokanta menüsü de taranabilir. Menüde etiketten farklı
+olarak **malzemeler yazmaz**, yalnızca yemeğin adı yazar; malzemeler yemeğin
+ne olduğundan çıkarılır (mutfak bilgisi, dini hüküm değil). Çıkan malzemeler
+aynı eşleştirme ve karar motorundan geçer, hüküm yine yalnızca veritabanından
+gelir.
+
+Bu çıkarım okuma kadar güvenilir olmadığı için menü kararı **hiçbir yemek
+için "helal" demez**; sözlük ayrıdır:
+
+| Karar | Anlamı |
+|---|---|
+| **Kaçının** | Yemeği tanımlayan bir malzeme dört mezhebe göre de haram (tonkotsu ramen ↔ domuz kemiği suyu) |
+| **Sorun** | Sorunlu veya belirsiz madde var; lokantaya sorulması gerekir |
+| **Muhtemelen uygun** | Bilinen sorunlu madde yok — kesinlik iddia edilmez |
+
+Sonuç ekranı yemek listesi biçimindedir; her yemekte sorulması gereken
+maddeler şiddet sırasına göre listelenir ve yemeğe dokununca çıkarılan
+malzemeler, mezhep hükümleri ve kaynak referansları açılır. Kesin uygunluk
+bildirilmemesinin sebepleri (pişirme farkı, kesim usulü, ortak yağ ve tezgâh)
+ekranda açıkça yazılıdır.
 
 ## Tasarımın değişmez ilkeleri
 

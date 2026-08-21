@@ -6,6 +6,7 @@ import { scans } from "@/db/schema";
 import { errorKind, logEvent } from "@/lib/logger";
 import {
   analysisResultSchema,
+  menuResultSchema,
   type ScanList,
   type ScanListItem,
 } from "@/lib/schemas";
@@ -32,6 +33,13 @@ const summarySchema = analysisResultSchema.pick({
   detectedLanguage: true,
 });
 
+/* Menü taramasının özeti: yemek sayısı ve karar dağılımı */
+const menuSummarySchema = menuResultSchema.pick({
+  detectedLanguage: true,
+  dishes: true,
+  summary: true,
+});
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const parsed = querySchema.safeParse({
@@ -49,6 +57,7 @@ export async function GET(request: Request) {
       .select({
         id: scans.id,
         createdAt: scans.createdAt,
+        scanType: scans.scanType,
         detectedLanguage: scans.detectedLanguage,
         rawText: scans.rawText,
         verdict: scans.verdict,
@@ -60,10 +69,30 @@ export async function GET(request: Request) {
 
     const items: ScanListItem[] = [];
     for (const row of rows) {
+      if (row.scanType === "menu") {
+        const menu = menuSummarySchema.safeParse(row.verdict);
+        if (!menu.success) continue;
+        items.push({
+          scanType: "menu",
+          scanId: row.id,
+          createdAt: row.createdAt.toISOString(),
+          detectedLanguage: menu.data.detectedLanguage,
+          dishCount: menu.data.dishes.length,
+          summary: menu.data.summary,
+          /* Önizleme: ilk yemeklerin Türkçe adları */
+          preview: menu.data.dishes
+            .map((dish) => dish.nameTr)
+            .join(", ")
+            .slice(0, PREVIEW_LENGTH),
+        });
+        continue;
+      }
+
       const summary = summarySchema.safeParse(row.verdict);
       /* Okunamayan eski kayıt listeyi bozmaz, atlanır */
       if (!summary.success) continue;
       items.push({
+        scanType: "etiket",
         scanId: row.id,
         createdAt: row.createdAt.toISOString(),
         detectedLanguage: summary.data.detectedLanguage,

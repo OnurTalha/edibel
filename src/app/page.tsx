@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CameraIcon } from "@/components/icons";
+import { CameraIcon, MenuIcon } from "@/components/icons";
 import { STR } from "@/lib/ui/strings";
 
 /*
@@ -30,6 +30,22 @@ export default function HomePage() {
           <span className="text-xl font-semibold">{STR.scan}</span>
         </Link>
         <p className="text-center text-sm text-muted">{STR.scanDescription}</p>
+
+        {/*
+         * İkinci tarama yolu: lokanta menüsü. Etiket taraması birincil
+         * eylemdir ve büyük kalır; menü ikincil ama tam genişlikte ve
+         * dokunulabilir alan sınırının üstündedir (bkz. CLAUDE.md, Bölüm 8).
+         */}
+        <Link
+          href="/menu"
+          className="flex min-h-[60px] w-full max-w-[320px] items-center justify-center gap-3 rounded-2xl bg-surface px-5 text-[16px] font-semibold ring-1 ring-black/5 transition-transform active:scale-[0.98] dark:ring-white/10"
+        >
+          <MenuIcon className="h-6 w-6" />
+          {STR.scanMenu}
+        </Link>
+        <p className="text-center text-sm text-muted">
+          {STR.menuScanDescription}
+        </p>
         <p className="text-center text-xs text-muted">{STR.appHint}</p>
 
         {/* İkinci derece bağlantılar (bkz. CLAUDE.md, Bölüm 9: Ekran 1) */}

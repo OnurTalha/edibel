@@ -8,7 +8,7 @@
  * /api/scans/... yanıtları önbellekten sunulabilir.
  */
 
-const VERSION = "edibel-v2";
+const VERSION = "edibel-v3";
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 const OFFLINE_URL = "/cevrimdisi";

@@ -2,6 +2,7 @@ import { Section } from "@/components/result/Section";
 import { StatusIcon, statusColor, statusLabel } from "@/components/result/status";
 import type { AnalysisResult } from "@/lib/schemas";
 import { htmlLang } from "@/lib/ui/lang";
+import { MADHHAB_ORDER } from "@/lib/ui/madhhab";
 import { STR } from "@/lib/ui/strings";
 
 /*
@@ -12,7 +13,6 @@ import { STR } from "@/lib/ui/strings";
  * (Bölüm 8).
  */
 
-const MADHHABS = ["hanefi", "safii", "maliki", "hanbeli"] as const;
 
 export function MadhhabTable({ result }: { result: AnalysisResult }) {
   if (result.problematicIngredients.length === 0) return null;
@@ -27,7 +27,7 @@ export function MadhhabTable({ result }: { result: AnalysisResult }) {
               <th className="px-3 py-2.5 font-semibold">
                 {STR.tableIngredient}
               </th>
-              {MADHHABS.map((madhhab) => (
+              {MADHHAB_ORDER.map((madhhab) => (
                 <th key={madhhab} className="px-3 py-2.5 font-semibold">
                   {STR.madhhabNames[madhhab]}
                 </th>
@@ -55,7 +55,7 @@ export function MadhhabTable({ result }: { result: AnalysisResult }) {
                       {item.matchedNameTr}
                     </span>
                   </th>
-                  {MADHHABS.map((madhhab) => {
+                  {MADHHAB_ORDER.map((madhhab) => {
                     /* Hüküm yoksa malzeme eşleşmemiştir: bilinmiyor */
                     const status = byMadhhab.get(madhhab) ?? "bilinmiyor";
                     return (

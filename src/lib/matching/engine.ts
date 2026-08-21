@@ -337,7 +337,19 @@ export async function matchIngredient(
         method: "embedding",
         confidence: 1 - emb.distance,
         ingredient: emb.ingredient,
-        translationTr: emb.ingredient.canonicalNameTr,
+        /*
+         * Gömme eşleşmesi BENZERLİK eşleşmesidir, kimlik eşleşmesi değil:
+         * ほうれん草 (ıspanak) veritabanındaki en yakın komşusu olan
+         * lahanaya bağlanabilir. Bu, hüküm için kabul edilebilir bir
+         * yaklaşıklıktır (eşik 0.85 ile dar tutulmuştur) ama ÇEVİRİ için
+         * değildir: kullanıcıya "ほうれん草 — Lahana" göstermek yanlış
+         * bilgidir ve CLAUDE.md Bölüm 1'deki doğrulama hakkını çürütür.
+         *
+         * Bu sebeple gömme eşleşmesinde veritabanı çevirisi İDDİA EDİLMEZ.
+         * Gösterilecek çeviri modelden gelir ve arayüzde "otomatik" olarak
+         * işaretlenir; hüküm ise eşleşen malzemeden okunmaya devam eder.
+         */
+        translationTr: null,
       };
     }
   }

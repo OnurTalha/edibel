@@ -203,12 +203,22 @@ export const madhhabRulings = pgTable(
   ],
 );
 
+/*
+ * Tarama türü. "etiket" paketli gıdanın içindekiler etiketidir; "menu"
+ * lokanta menüsüdür. İkisi farklı çıkarım güvenine sahiptir: etikette
+ * malzemeler YAZILIDIR, menüde yemek adından ÇIKARILIR. Bu ayrım karar
+ * katmanına kadar taşınır (bkz. src/lib/verdict/menu.ts).
+ */
+export const scanTypeEnum = pgEnum("scan_type", ["etiket", "menu"]);
+
 export const scans = pgTable("scans", {
   id: uuid("id").primaryKey().defaultRandom(),
   deviceId: text("device_id").notNull(),
+  scanType: scanTypeEnum("scan_type").notNull().default("etiket"),
   detectedLanguage: text("detected_language").notNull(),
   rawText: text("raw_text").notNull(),
   translatedText: text("translated_text").notNull(),
+  /* Etiket taramasında ayrıştırılan malzemeler, menüde yemek başına çıkarım */
   parsedIngredients: jsonb("parsed_ingredients").notNull(),
   verdict: jsonb("verdict").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true })

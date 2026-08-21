@@ -25,6 +25,17 @@ export function CameraIcon({ className }: IconProps) {
   );
 }
 
+/* Lokanta menüsü: çatal, bıçak ve üzerinde yemek listesi olan kâğıt */
+export function MenuIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M5 3.5h9.5a1.5 1.5 0 0 1 1.5 1.5v15.5H6.5A1.5 1.5 0 0 1 5 19z" />
+      <path d="M8 8h5M8 11.5h5M8 15h3" />
+      <path d="M19 4v6.5M19 10.5v9" />
+    </svg>
+  );
+}
+
 export function CheckCircleIcon({ className }: IconProps) {
   return (
     <svg {...base} className={className}>

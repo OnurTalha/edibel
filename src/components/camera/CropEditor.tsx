@@ -31,10 +31,15 @@ export function CropEditor({
   file,
   onCancel,
   onConfirm,
+  /* Menü taramasında başlık ve yönerge farklıdır; varsayılan etikettir */
+  title = STR.cropTitle,
+  hint = STR.cropHint,
 }: {
   file: File;
   onCancel: () => void;
   onConfirm: (imageBase64: string) => void;
+  title?: string;
+  hint?: string;
 }) {
   const frameRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -212,8 +217,8 @@ export function CropEditor({
     /* min-h-0: esnek kutuda içerik, kutuyu kendi doğal boyuna şişirmesin */
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="px-6 pt-4">
-        <h1 className="text-lg font-semibold text-white">{STR.cropTitle}</h1>
-        <p className="mt-1 text-sm text-white/70">{STR.cropHint}</p>
+        <h1 className="text-lg font-semibold text-white">{title}</h1>
+        <p className="mt-1 text-sm text-white/70">{hint}</p>
       </div>
 
       <div

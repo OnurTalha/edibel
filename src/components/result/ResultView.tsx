@@ -9,6 +9,7 @@ import { ProblematicSection } from "@/components/result/ProblematicSection";
 import { RawTextSection } from "@/components/result/RawTextSection";
 import { TranslationSection } from "@/components/result/TranslationSection";
 import { VerdictCard } from "@/components/result/VerdictCard";
+import { MenuResultBody } from "@/components/result/MenuResultBody";
 import { CameraIcon, SpinnerIcon, WarningIcon } from "@/components/icons";
 import { errorMessage, fetchScan } from "@/lib/ui/api";
 import { STR } from "@/lib/ui/strings";
@@ -19,6 +20,9 @@ import { STR } from "@/lib/ui/strings";
  * detay alanıdır ve bölümler şu sırayla yer alır: içindekiler tercümesi,
  * alerjen bildirimi, sorunlu malzemeler, mezhep karşılaştırma tablosu,
  * gerekçeler, okunan ham metin, uyarı metni.
+ *
+ * Menü taramasında tek bir karar yerine yemek listesi gösterilir; bu
+ * görünüm MenuResultBody bileşenindedir.
  */
 export function ResultView({ scanId }: { scanId: string }) {
   const query = useQuery({
@@ -49,6 +53,16 @@ export function ResultView({ scanId }: { scanId: string }) {
           {STR.goHome}
         </Link>
       </main>
+    );
+  }
+
+  /* Menü taraması ayrı görünüme gider (karar sözlüğü ve düzeni farklıdır) */
+  if (query.data.scanType === "menu") {
+    return (
+      <MenuResultBody
+        result={query.data.result}
+        principles={query.data.principles}
+      />
     );
   }
 

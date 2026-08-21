@@ -74,13 +74,20 @@ export function HistoryView() {
               >
                 <span className="min-w-0 flex-1">
                   <span className="flex flex-wrap items-center gap-2">
-                    <span
-                      className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${
-                        VERDICT_CHIP[scan.verdict] ?? VERDICT_CHIP.supheli!
-                      }`}
-                    >
-                      {STR.verdictLabels[scan.verdict] ?? scan.verdict}
-                    </span>
+                    {/* Menü taramasının karar sözlüğü ayrıdır; rozet de öyle */}
+                    {scan.scanType === "menu" ? (
+                      <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                        {STR.historyMenuBadge}
+                      </span>
+                    ) : (
+                      <span
+                        className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${
+                          VERDICT_CHIP[scan.verdict] ?? VERDICT_CHIP.supheli!
+                        }`}
+                      >
+                        {STR.verdictLabels[scan.verdict] ?? scan.verdict}
+                      </span>
+                    )}
                     <span className="text-[12px] text-muted">
                       {dateFormat.format(new Date(scan.createdAt))}
                     </span>
@@ -91,7 +98,16 @@ export function HistoryView() {
                   >
                     {scan.preview}
                   </span>
-                  {scan.unmatchedCount > 0 ? (
+                  {scan.scanType === "menu" ? (
+                    <span className="mt-1 block text-[12px] text-muted">
+                      {STR.menuDishCount(scan.dishCount)} ·{" "}
+                      {STR.menuSummary(
+                        scan.summary.kacinilmali,
+                        scan.summary.sorulmali,
+                        scan.summary.muhtemelenUygun,
+                      )}
+                    </span>
+                  ) : scan.unmatchedCount > 0 ? (
                     <span className="mt-1 flex items-center gap-1.5 text-[12px] text-muted">
                       <StatusIcon status="bilinmiyor" className="h-4 w-4" />
                       {STR.historyUnmatched(scan.unmatchedCount)}

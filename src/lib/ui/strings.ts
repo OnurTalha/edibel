@@ -5,11 +5,62 @@
 export const STR = {
   appName: "Edibel",
   appTagline:
-    "Paketli gıdaların içindekiler etiketini fotoğraflayın, helal analizini ve Türkçe çevirisini görün.",
-  appHint: "Japonca, Korece ve Çince etiketleri okur.",
+    "Paketli gıdaların içindekiler etiketini veya lokanta menüsünü fotoğraflayın, helal analizini ve Türkçe çevirisini görün.",
+  appHint: "Japonca, Korece ve Çince okur.",
 
   scan: "Etiketi Tara",
   scanDescription: "İçindekiler bölümünü fotoğraflayın",
+
+  /* Menü taraması (lokanta menüsü) */
+  scanMenu: "Menüyü Tara",
+  menuScanDescription: "Lokanta menüsünü fotoğraflayın",
+  menuTitle: "Menü sonucu",
+  menuCropTitle: "Yemek listesini seçin",
+  menuCropHint:
+    "Parmaklarınızla yakınlaştırıp kaydırarak yemek adlarının yazdığı bölümü çerçeveye alın.",
+  menuPrimaryModeHint:
+    "Menünün yemek adlarının yazdığı bölümü net çekin. Fotoğrafı çektikten sonra yalnızca o bölümü kırpacaksınız.",
+  menuLiveCameraHint: "Yemek listesini çerçeveye hizalayın",
+  menuAnalysisSteps: [
+    "Menü okunuyor",
+    "Dil tespit ediliyor",
+    "Yemek adları çevriliyor",
+    "Yemeklerin malzemeleri çıkarılıyor",
+    "Veritabanı sorgulanıyor",
+    "Sonuç hazırlanıyor",
+  ],
+  menuDishCount: (n: number) => `${n} yemek okundu`,
+  menuVerdictLabels: {
+    kacinilmali: "KAÇININ",
+    sorulmali: "SORUN",
+    muhtemelen_uygun: "MUHTEMELEN UYGUN",
+  } as Record<string, string>,
+  menuVerdictShort: {
+    kacinilmali: "Kaçının",
+    sorulmali: "Sorun",
+    muhtemelen_uygun: "Muhtemelen uygun",
+  } as Record<string, string>,
+  menuSummary: (avoid: number, ask: number, ok: number) =>
+    `${avoid} kaçının · ${ask} sorun · ${ok} muhtemelen uygun`,
+  menuConcernsLabel: "Sorulması gerekenler",
+  menuIngredientsLabel: "Yemeğin tipik malzemeleri",
+  menuCertaintyKesin: "yemeği tanımlar",
+  menuCertaintyOlasi: "lokantaya göre değişir",
+  menuEmpty: "Menüde okunabilen yemek bulunamadı.",
+  menuRawTextTitle: "Menüden okunan metin",
+  historyMenuBadge: "MENÜ",
+  allMadhhabs: "Dört mezhep",
+  /* Kart üzerindeki "?" işaretinin ne demek olduğu */
+  menuUncertainMark:
+    "Sorulacak maddelerin yanındaki “?” işareti, o maddenin lokantaya göre değişebileceğini belirtir.",
+  /*
+   * Menü kararının neden "helal" diyemeyeceğini anlatan uyarı. Bu metin
+   * uyarı metninin yerine geçmez, ona ek olarak gösterilir.
+   */
+  menuInferenceNote:
+    "Menüde malzemeler yazmaz. Buradaki malzemeler yemeğin ne olduğundan çıkarılmıştır ve lokantaya göre değişebilir. Bu sebeple hiçbir yemek için kesin uygunluk bildirilmez; en iyi sonuç \"muhtemelen uygun\"dur.",
+  menuKitchenNote:
+    "Aynı yemek her lokantada aynı pişmez. Kızartma yağı, tencere ve tezgâh başka yemeklerle ortak olabilir; etin kesim usulü de menüden anlaşılmaz.",
 
   cameraModeTitle: "Kamera yöntemi",
   cameraModePrimary: "Telefon kamerası",

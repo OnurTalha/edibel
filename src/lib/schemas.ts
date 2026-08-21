@@ -100,6 +100,108 @@ export const analyzeRequestSchema = z.discriminatedUnion("mode", [
 export type AnalyzeRequest = z.infer<typeof analyzeRequestSchema>;
 
 /*
+ * Menü taraması sonucu (lokanta menüsü).
+ *
+ * Etiket sonucundan ayrılan noktalar:
+ *  - Tek bir karar yerine yemek başına karar vardır; ekran liste gösterir.
+ *  - Karar sözlüğü farklıdır ve "helal" içermez; menüden okunan malzemeler
+ *    yazılı değil çıkarımdır (bkz. src/lib/verdict/menu.ts).
+ *  - Her malzemede "certainty" alanı bulunur: yemeği tanımlayan malzeme mi,
+ *    yoksa lokantaya göre değişen bir malzeme mi.
+ */
+export const dishVerdictSchema = z.enum([
+  "kacinilmali",
+  "sorulmali",
+  "muhtemelen_uygun",
+]);
+
+export const menuResultSchema = z.object({
+  scanId: z.string(),
+  detectedLanguage: detectedLanguageSchema,
+  /* Menüden okunan özgün metnin tamamı; kullanıcı okumayı denetleyebilir */
+  rawBlock: z.string(),
+  dishes: z.array(
+    z.object({
+      /* Menüdeki özgün yazım */
+      rawName: z.string(),
+      nameTr: z.string(),
+      verdict: dishVerdictSchema,
+      madhhabVerdicts: z.object({
+        hanefi: simpleStatusSchema,
+        safii: simpleStatusSchema,
+        maliki: simpleStatusSchema,
+        hanbeli: simpleStatusSchema,
+      }),
+      ingredients: z.array(
+        z.object({
+          rawText: z.string(),
+          translationTr: z.string(),
+          translationSource: z.enum(["database", "model"]),
+          certainty: z.enum(["kesin", "olasi"]),
+          status: lineStatusSchema,
+          matchMethod: z.enum([
+            "exact",
+            "alias",
+            "fuzzy",
+            "embedding",
+            "unmatched",
+          ]),
+          rulings: z.array(
+            z.object({
+              madhhab: z.string(),
+              status: z.string(),
+              principleKey: z.string(),
+              reasoningTr: z.string(),
+              sourceRef: z.string(),
+            }),
+          ),
+        }),
+      ),
+      /*
+       * Karara sebep olan maddeler (lokantaya sorulacaklar), şiddete göre
+       * sıralı: önce haram, sonra şüpheli, en sonda bilinmeyen.
+       */
+      concerns: z.array(
+        z.object({
+          nameTr: z.string(),
+          status: lineStatusSchema,
+          certainty: z.enum(["kesin", "olasi"]),
+        }),
+      ),
+    }),
+  ),
+  summary: z.object({
+    kacinilmali: z.number().int(),
+    sorulmali: z.number().int(),
+    muhtemelenUygun: z.number().int(),
+  }),
+});
+
+export type MenuResult = z.infer<typeof menuResultSchema>;
+export type MenuDish = MenuResult["dishes"][number];
+
+export const analyzeMenuRequestSchema = z.object({
+  imageBase64: z.string().min(100),
+  mediaType: z.enum(["image/jpeg", "image/png", "image/webp"]),
+  deviceId: z.string().min(1).max(128),
+});
+
+export type AnalyzeMenuRequest = z.infer<typeof analyzeMenuRequestSchema>;
+
+export const menuScanResponseSchema = z.object({
+  result: menuResultSchema,
+  principles: z.array(
+    z.object({
+      key: z.string(),
+      titleTr: z.string(),
+      explanationTr: z.string(),
+    }),
+  ),
+});
+
+export type MenuScanResponse = z.infer<typeof menuScanResponseSchema>;
+
+/*
  * /api/scans/[scanId] yanıtı: kaydedilmiş sonuç nesnesi ve sonuçta geçen
  * fıkhi ilkelerin açıklamaları (sonuç ekranındaki "Gerekçeler" bölümü).
  */
@@ -109,23 +211,48 @@ export const fiqhPrincipleSchema = z.object({
   explanationTr: z.string(),
 });
 
-export const scanResponseSchema = z.object({
-  result: analysisResultSchema,
-  principles: z.array(fiqhPrincipleSchema),
-});
+/*
+ * Tarama iki türde olabilir; sonuç ekranı türe göre farklı görünüm açar.
+ * Ayrım "scanType" alanıyla yapılır, böylece eski kayıtlar (tür alanı
+ * olmayanlar) etiket sayılır.
+ */
+export const scanResponseSchema = z.discriminatedUnion("scanType", [
+  z.object({
+    scanType: z.literal("etiket"),
+    result: analysisResultSchema,
+    principles: z.array(fiqhPrincipleSchema),
+  }),
+  z.object({
+    scanType: z.literal("menu"),
+    result: menuResultSchema,
+    principles: z.array(fiqhPrincipleSchema),
+  }),
+]);
 
 export type FiqhPrincipleView = z.infer<typeof fiqhPrincipleSchema>;
 export type ScanResponse = z.infer<typeof scanResponseSchema>;
 
 /* /api/scans?deviceId=... yanıtı: cihazın geçmiş taramaları */
-export const scanListItemSchema = z.object({
-  scanId: z.string(),
-  createdAt: z.string(),
-  detectedLanguage: detectedLanguageSchema,
-  verdict: analysisResultSchema.shape.verdict,
-  unmatchedCount: z.number().int(),
-  preview: z.string(),
-});
+export const scanListItemSchema = z.discriminatedUnion("scanType", [
+  z.object({
+    scanType: z.literal("etiket"),
+    scanId: z.string(),
+    createdAt: z.string(),
+    detectedLanguage: detectedLanguageSchema,
+    verdict: analysisResultSchema.shape.verdict,
+    unmatchedCount: z.number().int(),
+    preview: z.string(),
+  }),
+  z.object({
+    scanType: z.literal("menu"),
+    scanId: z.string(),
+    createdAt: z.string(),
+    detectedLanguage: detectedLanguageSchema,
+    dishCount: z.number().int(),
+    summary: menuResultSchema.shape.summary,
+    preview: z.string(),
+  }),
+]);
 
 export const scanListSchema = z.object({
   scans: z.array(scanListItemSchema),

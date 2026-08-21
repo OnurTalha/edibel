@@ -4,7 +4,11 @@ import { z } from "zod";
 import { getDb } from "@/db/client";
 import { fiqhPrinciples, scans } from "@/db/schema";
 import { errorKind, logEvent } from "@/lib/logger";
-import { analysisResultSchema, type ScanResponse } from "@/lib/schemas";
+import {
+  analysisResultSchema,
+  menuResultSchema,
+  type ScanResponse,
+} from "@/lib/schemas";
 
 /*
  * Kaydedilmiş tarama sonucunu döndürür. Sonuç nesnesi analiz anında
@@ -16,6 +20,19 @@ import { analysisResultSchema, type ScanResponse } from "@/lib/schemas";
 export const dynamic = "force-dynamic";
 
 const paramsSchema = z.object({ scanId: z.uuid() });
+
+/* Sonuçta geçen fıkhi ilkelerin açıklamaları ("Gerekçeler" bölümü) */
+async function readPrinciples(keys: string[]) {
+  if (keys.length === 0) return [];
+  return getDb()
+    .select({
+      key: fiqhPrinciples.key,
+      titleTr: fiqhPrinciples.titleTr,
+      explanationTr: fiqhPrinciples.explanationTr,
+    })
+    .from(fiqhPrinciples)
+    .where(inArray(fiqhPrinciples.key, keys));
+}
 
 export async function GET(
   _request: Request,
@@ -34,7 +51,7 @@ export async function GET(
 
   try {
     const rows = await getDb()
-      .select({ verdict: scans.verdict })
+      .select({ verdict: scans.verdict, scanType: scans.scanType })
       .from(scans)
       .where(eq(scans.id, parsedParams.data.scanId))
       .limit(1);
@@ -48,6 +65,35 @@ export async function GET(
         },
         { status: 404 },
       );
+    }
+
+    /* Menü taraması: yemek başına karar; sözlüğü ve ekranı ayrıdır */
+    if (row.scanType === "menu") {
+      const menu = menuResultSchema.safeParse(row.verdict);
+      if (!menu.success) {
+        return NextResponse.json(
+          {
+            error:
+              "Bu taramanın sonucu okunamadı. Lütfen yeni bir tarama yapın.",
+          },
+          { status: 500 },
+        );
+      }
+      const menuPrincipleKeys = [
+        ...new Set(
+          menu.data.dishes.flatMap((dish) =>
+            dish.ingredients.flatMap((ingredient) =>
+              ingredient.rulings.map((ruling) => ruling.principleKey),
+            ),
+          ),
+        ),
+      ];
+      const response: ScanResponse = {
+        scanType: "menu",
+        result: menu.data,
+        principles: await readPrinciples(menuPrincipleKeys),
+      };
+      return NextResponse.json(response);
     }
 
     const result = analysisResultSchema.safeParse(row.verdict);
@@ -69,19 +115,11 @@ export async function GET(
       ),
     ];
 
-    const principles =
-      principleKeys.length > 0
-        ? await getDb()
-            .select({
-              key: fiqhPrinciples.key,
-              titleTr: fiqhPrinciples.titleTr,
-              explanationTr: fiqhPrinciples.explanationTr,
-            })
-            .from(fiqhPrinciples)
-            .where(inArray(fiqhPrinciples.key, principleKeys))
-        : [];
-
-    const response: ScanResponse = { result: result.data, principles };
+    const response: ScanResponse = {
+      scanType: "etiket",
+      result: result.data,
+      principles: await readPrinciples(principleKeys),
+    };
     return NextResponse.json(response);
   } catch (err) {
     logEvent("error", "scan.read_error", { kind: errorKind(err) });

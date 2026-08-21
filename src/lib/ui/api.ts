@@ -2,11 +2,14 @@
 
 import {
   analysisResultSchema,
+  menuResultSchema,
   scanListSchema,
   scanResponseSchema,
   unmatchedTermsSchema,
   type AnalysisResult,
+  type AnalyzeMenuRequest,
   type AnalyzeRequest,
+  type MenuResult,
   type ScanListItem,
   type ScanResponse,
   type UnmatchedTermView,
@@ -62,6 +65,28 @@ export async function requestAnalysis(
   if (!response.ok) throw new ApiError(errorFromPayload(payload));
 
   const parsed = analysisResultSchema.safeParse(payload);
+  if (!parsed.success) throw new ApiError(STR.genericError);
+  return parsed.data;
+}
+
+/* Lokanta menüsü taraması; yanıt yemek listesidir */
+export async function requestMenuAnalysis(
+  body: AnalyzeMenuRequest,
+  signal: AbortSignal,
+): Promise<MenuResult> {
+  if (typeof navigator !== "undefined" && navigator.onLine === false) {
+    throw new ApiError(STR.offlineError);
+  }
+  const response = await fetch("/api/analyze-menu", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(body),
+    signal,
+  });
+  const payload = await readJson(response);
+  if (!response.ok) throw new ApiError(errorFromPayload(payload));
+
+  const parsed = menuResultSchema.safeParse(payload);
   if (!parsed.success) throw new ApiError(STR.genericError);
   return parsed.data;
 }

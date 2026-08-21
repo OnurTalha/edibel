@@ -20,9 +20,12 @@ type TorchCapabilities = { torch?: boolean };
 export function LiveCamera({
   onCapture,
   fallback,
+  /* Menü taramasında hizalama yönergesi farklıdır; varsayılan etikettir */
+  hint = STR.liveCameraHint,
 }: {
   onCapture: (file: File) => void;
   fallback: React.ReactNode;
+  hint?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -164,7 +167,7 @@ export function LiveCamera({
           <div className="h-3/5 w-full rounded-2xl border-2 border-dashed border-white/70" />
         </div>
         <p className="pointer-events-none absolute inset-x-0 top-4 px-6 text-center text-sm text-white drop-shadow">
-          {status === "starting" ? STR.liveCameraStarting : STR.liveCameraHint}
+          {status === "starting" ? STR.liveCameraStarting : hint}
         </p>
       </div>
 

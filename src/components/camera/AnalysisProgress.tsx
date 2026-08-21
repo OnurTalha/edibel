@@ -15,23 +15,30 @@ import { useWakeLock } from "@/lib/ui/wake-lock";
 
 const STEP_INTERVAL_MS = 2500;
 
-export function AnalysisProgress({ onCancel }: { onCancel: () => void }) {
+export function AnalysisProgress({
+  onCancel,
+  /* Menü taramasında adım metinleri farklıdır; varsayılan etikettir */
+  steps = STR.analysisSteps,
+}: {
+  onCancel: () => void;
+  steps?: readonly string[];
+}) {
   const [step, setStep] = useState(0);
   useWakeLock(true);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setStep((current) => Math.min(current + 1, STR.analysisSteps.length - 1));
+      setStep((current) => Math.min(current + 1, steps.length - 1));
     }, STEP_INTERVAL_MS);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [steps.length]);
 
   return (
     <div className="flex flex-1 flex-col px-6 pb-8 pt-10">
       <h1 className="text-xl font-semibold text-white">{STR.analysisTitle}</h1>
 
       <ol className="mt-8 space-y-4">
-        {STR.analysisSteps.map((label, index) => {
+        {steps.map((label, index) => {
           const done = index < step;
           const active = index === step;
           return (
