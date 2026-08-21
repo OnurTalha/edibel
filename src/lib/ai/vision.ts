@@ -95,8 +95,15 @@ class AnthropicVisionClient implements VisionClient {
     apiKey: string,
     private readonly model: string,
   ) {
-    /* Model çağrısı uzun sürebilir; nginx proxy_read_timeout 120 sn (Bölüm 13) */
-    this.client = new Anthropic({ apiKey, timeout: 110_000, maxRetries: 1 });
+    /*
+     * Zaman bütçesi, önümüzdeki katmanların en dar sınırına göre kurulur:
+     * uygulama Cloudflare arkasındaysa istek 100 saniyede kesilir ve
+     * kullanıcı bizim hata ekranımızı göremez. Bu sebeple tek çağrı 60
+     * saniyeyle sınırlanır ve SDK'nın kendi yeniden denemesi kapatılır;
+     * yeniden deneme yalnızca hızlı başarısızlıklarda (şemaya uymayan
+     * çıktı) yapılır, böylece toplam süre sınırın altında kalır.
+     */
+    this.client = new Anthropic({ apiKey, timeout: 60_000, maxRetries: 0 });
   }
 
   private async run(
@@ -131,6 +138,19 @@ class AnthropicVisionClient implements VisionClient {
       } catch (err) {
         if (err instanceof VisionReadError) throw err;
         lastError = err;
+        /*
+         * Zaman aşımı veya bağlantı hatasında yeniden denenmez: ikinci
+         * çağrı toplam süreyi vekil sunucunun sınırının üstüne taşır ve
+         * kullanıcı hata ekranı yerine kopuk bağlantı görür. Yeniden deneme
+         * yalnızca şemaya uymayan çıktı gibi hızlı başarısızlıklar içindir.
+         */
+        if (
+          err instanceof Anthropic.APIConnectionTimeoutError ||
+          err instanceof Anthropic.APIConnectionError ||
+          err instanceof Anthropic.APIUserAbortError
+        ) {
+          break;
+        }
       }
     }
     throw new VisionReadError(
