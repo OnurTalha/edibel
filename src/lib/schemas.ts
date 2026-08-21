@@ -142,6 +142,18 @@ export const unmatchedTermSchema = z.object({
   modelTranslationTr: z.string().nullable(),
   occurrenceCount: z.number().int(),
   lastSeenAt: z.string(),
+  /*
+   * Terimin GÜNCEL içerik veritabanına karşı yeniden denenmiş hâli.
+   * unmatched_terms geçmiş kaydıdır: bir terim kaydedildikten sonra
+   * veritabanına eklenmiş olabilir. Bu alan, hangi satırların hâlâ eksik
+   * olduğunu gösterir.
+   */
+  resolved: z.object({
+    matched: z.boolean(),
+    /* Hangi yöntemle eşleşti; gömme yöntemi bu denemede çalıştırılmaz */
+    method: z.enum(["exact", "alias", "fuzzy"]).nullable(),
+    ingredientNameTr: z.string().nullable(),
+  }),
 });
 
 export const unmatchedTermsSchema = z.object({

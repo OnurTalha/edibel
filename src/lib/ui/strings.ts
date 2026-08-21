@@ -201,7 +201,7 @@ export const STR = {
 
   adminTitle: "Eşleşmeyen terimler",
   adminIntro:
-    "Etiketlerde karşılaşılan ancak içerik veritabanında bulunmayan malzeme adları. En sık görülenler önce listelenir.",
+    "Etiketlerde karşılaşılan ancak o an içerik veritabanında bulunamayan malzeme adları. Liste geçmiş kaydıdır: sonradan eklenmiş terimler de görünür, durumları işaretlenir. En sık görülenler önce listelenir.",
   adminTokenLabel: "Yönetim anahtarı",
   adminTokenSubmit: "Giriş",
   adminTokenWrong: "Anahtar doğrulanamadı.",
@@ -217,6 +217,24 @@ export const STR = {
   adminColumnTranslation: "Model çevirisi",
   adminColumnCount: "Sayı",
   adminColumnLastSeen: "Son görülme",
+  adminColumnState: "Durum",
+
+  /*
+   * Liste geçmiş kaydıdır: bir terim kaydedildikten sonra içerik
+   * veritabanına eklenmiş olabilir. Bu ayrım gösterilmezse gerçekten eksik
+   * olanlar, çoktan halledilmiş satırların arasında kaybolur.
+   */
+  adminStateMissing: "Hâlâ eksik",
+  adminStateResolved: "Artık eşleşiyor",
+  adminStateResolvedWith: (name: string) => `Artık eşleşiyor: ${name}`,
+  adminShowMissingOnly: "Yalnızca eksikler",
+  adminShowAll: "Tümü",
+  adminMissingSummary: (missing: number, total: number) =>
+    `${total} kayıttan ${missing} tanesi hâlâ eksik`,
+  adminNoneMissing:
+    "Kayıtlı terimlerin tamamı artık içerik veritabanında bulunuyor.",
+  adminRecheckNote:
+    "Durum sütunu, her terimin güncel içerik veritabanına karşı yeniden denenmesiyle üretilir. Deneme, analizle aynı eşleştirme motorunu kullanır; yalnızca gömme vektörü yöntemi çalıştırılmaz.",
 
   newScan: "Yeni tarama",
   back: "Geri",

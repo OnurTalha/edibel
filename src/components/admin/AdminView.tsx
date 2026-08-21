@@ -2,7 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { SpinnerIcon, WarningIcon } from "@/components/icons";
+import {
+  CheckCircleIcon,
+  QuestionIcon,
+  SpinnerIcon,
+  WarningIcon,
+} from "@/components/icons";
 import { errorMessage, fetchUnmatchedTerms } from "@/lib/ui/api";
 import { STR } from "@/lib/ui/strings";
 
@@ -10,6 +15,11 @@ import { STR } from "@/lib/ui/strings";
  * Eşleşmeyen terimler yönetim sayfası (bkz. CLAUDE.md, Bölüm 6 ve Faz 8).
  * Canlı sistemde içerik veritabanını büyütmenin yolu budur: en sık
  * karşılaşılan terimler görülür ve içerik dosyalarına eklenir.
+ *
+ * Liste geçmiş kaydı olduğu için, eklenmiş terimler de listede kalır.
+ * Sunucu her satırı güncel veritabanına karşı yeniden dener ve sonucu
+ * "resolved" alanında döndürür; varsayılan görünüm yalnızca hâlâ eksik
+ * olanları gösterir, çünkü iş listesi odur.
  *
  * Anahtar sunucuda doğrulanır; burada yalnızca oturum boyunca saklanır ve
  * her istekte başlıkla gönderilir.
@@ -26,6 +36,7 @@ export function AdminView() {
   const [token, setToken] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [filter, setFilter] = useState("");
+  const [missingOnly, setMissingOnly] = useState(true);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -40,16 +51,23 @@ export function AdminView() {
     retry: false,
   });
 
+  const missingCount = useMemo(
+    () => (query.data ?? []).filter((term) => !term.resolved.matched).length,
+    [query.data],
+  );
+
   const terms = useMemo(() => {
     if (!query.data) return [];
     const needle = filter.trim().toLocaleLowerCase("tr");
-    if (needle.length === 0) return query.data;
-    return query.data.filter(
-      (term) =>
+    return query.data.filter((term) => {
+      if (missingOnly && term.resolved.matched) return false;
+      if (needle.length === 0) return true;
+      return (
         term.term.toLocaleLowerCase("tr").includes(needle) ||
-        (term.modelTranslationTr ?? "").toLocaleLowerCase("tr").includes(needle),
-    );
-  }, [query.data, filter]);
+        (term.modelTranslationTr ?? "").toLocaleLowerCase("tr").includes(needle)
+      );
+    });
+  }, [query.data, filter, missingOnly]);
 
   if (!ready) return <div className="px-5 py-6" />;
 
@@ -121,6 +139,34 @@ export function AdminView() {
         </button>
       </div>
 
+      {/* Eksik/tümü geçişi: varsayılan olarak yalnızca iş listesi görünür */}
+      <div
+        role="group"
+        aria-label={STR.adminColumnState}
+        className="flex rounded-2xl bg-surface p-1 ring-1 ring-black/5 dark:ring-white/10"
+      >
+        {(
+          [
+            [true, STR.adminShowMissingOnly],
+            [false, STR.adminShowAll],
+          ] as const
+        ).map(([value, label]) => (
+          <button
+            key={label}
+            type="button"
+            aria-pressed={missingOnly === value}
+            onClick={() => setMissingOnly(value)}
+            className={`min-h-[44px] flex-1 rounded-xl px-3 text-[14px] font-medium transition-colors ${
+              missingOnly === value
+                ? "bg-emerald-700 text-white dark:bg-emerald-600"
+                : "text-muted"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
       {query.isPending ? (
         <div className="flex items-center gap-2 py-10 text-muted">
           <SpinnerIcon className="h-5 w-5 animate-spin" />
@@ -128,17 +174,30 @@ export function AdminView() {
         </div>
       ) : terms.length === 0 ? (
         <p className="rounded-2xl bg-surface p-4 text-[14px] text-muted ring-1 ring-black/5 dark:ring-white/10">
-          {STR.adminEmpty}
+          {/*
+           * Hiç kayıt olmaması ile kayıtların tamamının çözülmüş olması
+           * farklı durumlardır; ikincisi tamamlanmış bir iş listesidir.
+           */}
+          {missingOnly && (query.data ?? []).length > 0 && filter.trim() === ""
+            ? STR.adminNoneMissing
+            : STR.adminEmpty}
         </p>
       ) : (
         <>
-          <p className="text-[12px] text-muted">{STR.adminTotal(terms.length)}</p>
+          <p className="text-[12px] text-muted">
+            {missingOnly && filter.trim() === ""
+              ? STR.adminMissingSummary(missingCount, (query.data ?? []).length)
+              : STR.adminTotal(terms.length)}
+          </p>
           <div className="overflow-x-auto rounded-2xl bg-surface ring-1 ring-black/5 dark:ring-white/10">
-            <table className="w-full min-w-[560px] border-collapse text-left text-[13px]">
+            <table className="w-full min-w-[680px] border-collapse text-left text-[13px]">
               <thead>
                 <tr className="border-b border-black/5 dark:border-white/10">
                   <th className="px-3 py-2.5 font-semibold">
                     {STR.adminColumnTerm}
+                  </th>
+                  <th className="px-3 py-2.5 font-semibold">
+                    {STR.adminColumnState}
                   </th>
                   <th className="px-3 py-2.5 font-semibold">
                     {STR.adminColumnLanguage}
@@ -163,6 +222,27 @@ export function AdminView() {
                     <td className="px-3 py-2.5 align-top font-medium">
                       {term.term}
                     </td>
+                    {/* Renk tek başına bilgi taşımaz: simge ve metin eşlik eder */}
+                    <td className="whitespace-nowrap px-3 py-2.5 align-top">
+                      {term.resolved.matched ? (
+                        <span className="flex items-start gap-1.5 text-emerald-700 dark:text-emerald-400">
+                          <CheckCircleIcon className="mt-px h-4 w-4 shrink-0" />
+                          <span>
+                            {STR.adminStateResolved}
+                            {term.resolved.ingredientNameTr ? (
+                              <span className="block text-muted">
+                                {term.resolved.ingredientNameTr}
+                              </span>
+                            ) : null}
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="flex items-start gap-1.5 text-amber-700 dark:text-amber-500">
+                          <QuestionIcon className="mt-px h-4 w-4 shrink-0" />
+                          <span>{STR.adminStateMissing}</span>
+                        </span>
+                      )}
+                    </td>
                     <td className="px-3 py-2.5 align-top text-muted">
                       {STR.languageNames[term.language] ?? term.language}
                     </td>
@@ -181,6 +261,12 @@ export function AdminView() {
             </table>
           </div>
         </>
+      )}
+
+      {query.isPending ? null : (
+        <p className="text-[12px] leading-relaxed text-muted">
+          {STR.adminRecheckNote}
+        </p>
       )}
 
       <button

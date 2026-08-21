@@ -329,7 +329,7 @@ export async function matchIngredient(
   }
 
   /* Yöntem 4: gömme benzerliği (seyrek; harici arayüz) */
-  if (!result) {
+  if (!result && opts.skipEmbedding !== true) {
     const emb = await lookupEmbedding(searchTerm);
     if (emb) {
       result = {

@@ -80,4 +80,13 @@ export interface MatchOptions {
   allergenContainsPork: boolean;
   /* Eşleşmeyen terimlerin unmatched_terms tablosuna yazılması (varsayılan açık) */
   recordUnmatched?: boolean;
+  /*
+   * Gömme vektörü yöntemini atlar (varsayılan kapalı, yani yöntem çalışır).
+   *
+   * Analiz akışında ASLA kullanılmaz; yalnızca yönetim sayfasının, kayıtlı
+   * eşleşmeyen terimleri güncel içerik veritabanına karşı toplu olarak
+   * yeniden denemesi içindir. Gömme yöntemi terim başına harici arayüz
+   * çağrısı gerektirir; onlarca terimi listelerken bu çağrılar yapılmaz.
+   */
+  skipEmbedding?: boolean;
 }
