@@ -204,30 +204,110 @@ sudo chmod +x /etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh
 
 ## 8. Yedekleme
 
+### Ne korunuyor
+
+İçerik veritabanı (malzemeler, takma adlar, hükümler) `data/ingredients`
+altında depoda durur ve `db:seed` ile geri gelir. Yedeğin asıl koruduğu şey
+**yalnızca veritabanında bulunan** veridir:
+
+| Veri | Kaybedilirse |
+|---|---|
+| `unmatched_terms` | Eşleşmeyen malzeme listesi gider; içerik veritabanını hangi yönde büyüteceğiniz bilgisi kaybolur |
+| `scans` | Kullanıcıların geçmiş taramaları gider |
+| Gömme vektörleri | Yeniden üretilebilir ama harici arayüz çağrısı ve süre ister |
+
+### Elle çalıştırma
+
 ```bash
 cd /opt/edibel/deploy
-./backup.sh                       # deploy/backups altına sıkıştırılmış yedek
-BACKUP_DIR=/yedek/yol ./backup.sh # başka dizine
+BACKUP_DIR=/var/backups/edibel ./backup.sh
 ```
 
-Her gece 03:15'te çalıştırmak için (`crontab -e`):
+`BACKUP_DIR` verilmezse yedek `deploy/backups` altına yazılır. Depo dizininin
+dışında bir yer tercih edin; `git clean` gibi komutlardan etkilenmez.
+
+Betik son 14 günü saklar (`KEEP_DAYS` ile değiştirilir). Boş yedek dosyası
+bırakılmaz, hata durumunda çıkış kodu 1'dir ve mesaj `HATA:` ile başlar.
+
+### Her gece otomatik çalıştırma
+
+Yedek dizinini oluşturun ve `crontab -e` ile şu satırı **mevcut satırlara
+dokunmadan** ekleyin:
 
 ```
-15 3 * * * cd /opt/edibel/deploy && ./backup.sh >> /var/log/edibel-backup.log 2>&1
+23 0 * * * { echo "=== $(date -Is) ==="; BACKUP_DIR=/var/backups/edibel /opt/edibel/deploy/backup.sh; } >> /var/log/edibel-backup.log 2>&1
 ```
 
-Betik varsayılan olarak son 14 günü saklar (`KEEP_DAYS` ile değiştirilir).
+Saat sunucunun saat dilimindedir (`timedatectl` ile bakın). Sunucu UTC ise
+`23 0` Türkiye saatiyle 03:23 demektir. Dakikayı 5 ve 15'in katı olmayan bir
+değerde tutmak, aynı makinedeki diğer cron işleriyle çakışmayı önler.
 
-Geri yükleme:
+Cron kısıtlı bir ortamda çalışır (profil dosyalarını okumaz, `PATH=/usr/bin:/bin`).
+Betik yalnızca `docker` çağırdığı ve `/usr/bin/docker` bu yolda olduğu için ek
+ayar gerekmez. Satırı kurmadan önce cron ortamında denemek isterseniz:
 
 ```bash
-gunzip -c deploy/backups/edibel-YYYYMMDD-HHMMSS.sql.gz | \
-  docker compose -f deploy/compose.prod.yml exec -T db \
-  psql -U <kullanici> -d <veritabani>
+env -i PATH=/usr/bin:/bin HOME=/root /bin/sh -c \
+  'BACKUP_DIR=/var/backups/edibel /opt/edibel/deploy/backup.sh'
 ```
 
-Yedekler parola içermez ama **içerik veritabanının tamamını** içerir; sunucu
-dışına da bir kopya almanız önerilir.
+Günlük dosyasının sınırsız büyümemesi için `/etc/logrotate.d/edibel-backup`:
+
+```
+/var/log/edibel-backup.log {
+    monthly
+    rotate 12
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0600 root root
+}
+```
+
+### Denetleme
+
+Cron sessizce başarısız olabilir; ayda bir bakın:
+
+```bash
+tail -5 /var/log/edibel-backup.log     # son çalışma
+grep HATA /var/log/edibel-backup.log   # hiçbir şey dönmemeli
+ls -lt /var/backups/edibel | head       # en yeni dosya dünden olmalı
+```
+
+### Geri yükleme
+
+Yedeğin işe yaradığını **denemeden** bilemezsiniz. Üretim veritabanının
+üstüne yazmadan, geçici bir veritabanına geri yükleyip satır sayılarını
+karşılaştırın:
+
+```bash
+cd /opt/edibel/deploy
+PGU=$(grep '^POSTGRES_USER=' .env | cut -d= -f2-)
+
+docker compose -f compose.prod.yml exec -T db \
+  psql -U "$PGU" -d postgres -c 'CREATE DATABASE edibel_restore_test'
+
+gunzip -c /var/backups/edibel/edibel-YYYYMMDD-HHMMSS.sql.gz | \
+  docker compose -f compose.prod.yml exec -T db \
+  psql -U "$PGU" -d edibel_restore_test -v ON_ERROR_STOP=1 -q
+
+docker compose -f compose.prod.yml exec -T db psql -U "$PGU" \
+  -d edibel_restore_test -tAc 'select count(*) from ingredients'
+
+docker compose -f compose.prod.yml exec -T db \
+  psql -U "$PGU" -d postgres -c 'DROP DATABASE edibel_restore_test'
+```
+
+Dump `pg_trgm` ve `vector` eklentilerini de yeniden oluşturur, bu yüzden boş
+bir veritabanına doğrudan yüklenebilir.
+
+Gerçek geri yüklemede hedef veritabanı adını üretim veritabanıyla değiştirin;
+dump `--clean --if-exists` ile alındığı için mevcut tabloları düşürüp yeniden
+kurar.
+
+Yedekler parola içermez ama **veritabanının tamamını** içerir; sunucu dışına da
+bir kopya almanız önerilir.
 
 ## 9. Güncelleme
 

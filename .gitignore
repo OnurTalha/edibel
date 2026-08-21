@@ -24,3 +24,6 @@ next-env.d.ts
 
 # işletim sistemi
 .DS_Store
+
+# veritabanı yedekleri (BACKUP_DIR verilmezse buraya yazılır)
+/deploy/backups/
