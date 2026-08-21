@@ -98,12 +98,16 @@ class AnthropicVisionClient implements VisionClient {
     /*
      * Zaman bütçesi, önümüzdeki katmanların en dar sınırına göre kurulur:
      * uygulama Cloudflare arkasındaysa istek 100 saniyede kesilir ve
-     * kullanıcı bizim hata ekranımızı göremez. Bu sebeple tek çağrı 60
-     * saniyeyle sınırlanır ve SDK'nın kendi yeniden denemesi kapatılır;
-     * yeniden deneme yalnızca hızlı başarısızlıklarda (şemaya uymayan
-     * çıktı) yapılır, böylece toplam süre sınırın altında kalır.
+     * kullanıcı bizim hata ekranımızı göremez. Bu sebeple SDK'nın kendi
+     * yeniden denemesi kapatılır ve yeniden deneme yalnızca hızlı
+     * başarısızlıklarda (şemaya uymayan çıktı) yapılır.
+     *
+     * Süre sınırı üretim ölçümüyle belirlendi: gerçek etiketlerde başarılı
+     * okumalar 32-43 saniye sürdü, kalabalık bir etiket 60 saniyelik ilk
+     * sınıra takılıp başarısız oldu. Sınır 85 saniyeye çıkarıldı; tek çağrı
+     * artı işlem payı 100 saniyenin altında kalır.
      */
-    this.client = new Anthropic({ apiKey, timeout: 60_000, maxRetries: 0 });
+    this.client = new Anthropic({ apiKey, timeout: 85_000, maxRetries: 0 });
   }
 
   private async run(

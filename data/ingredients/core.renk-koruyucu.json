@@ -409,5 +409,29 @@
     "defaultStatus": "helal",
     "descTr": "Deniz suyundan elde edilen magnezyum klorür; tofu yapımında pıhtılaştırıcıdır (にがり / 豆腐用凝固剤).",
     "rulings": "mineral-helal"
+  },
+  {
+    "slug": "biberiye-ekstrakti",
+    "nameTr": "Biberiye ekstraktı",
+    "nameEn": "Rosemary extract",
+    "insCode": "392",
+    "eCode": "E392",
+    "category": "koruyucu",
+    "sourceType": "bitkisel",
+    "defaultStatus": "helal",
+    "descTr": "Biberiye yaprağından elde edilen doğal antioksidan (ローズマリー抽出物); yağların bozulmasını geciktirir.",
+    "rulings": "bitkisel-helal"
+  },
+  {
+    "slug": "tbhq",
+    "nameTr": "TBHQ (tersiyer bütilhidrokinon)",
+    "nameEn": "TBHQ (tertiary butylhydroquinone)",
+    "insCode": "319",
+    "eCode": "E319",
+    "category": "koruyucu",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Kızartma yağlarında kullanılan sentetik antioksidan (特丁基对苯二酚); Çin etiketlerinde sıktır.",
+    "rulings": "sentetik-helal"
   }
 ]

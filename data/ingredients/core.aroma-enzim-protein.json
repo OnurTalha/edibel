@@ -228,5 +228,76 @@
     "defaultStatus": "supheli",
     "descTr": "Kore etiketlerinde 조미액 biçiminde geçen toplu ad; içeriği et suyu, deniz ürünü özü veya bitkisel çeşni olabilir ve kaynak belirtilmedikçe bilinemez.",
     "rulings": "kaynak-belirsiz-supheli"
+  },
+  {
+    "slug": "niasin",
+    "nameTr": "Niasin (B3 vitamini)",
+    "nameEn": "Niacin (vitamin B3)",
+    "insCode": "375",
+    "category": "diger",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Zenginleştirilmiş gevrek ve içeceklerde kullanılan B3 vitamini (ナイアシン); kimyasal sentezle üretilir.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "pantotenik-asit",
+    "nameTr": "Pantotenik asit (kalsiyum pantotenat)",
+    "nameEn": "Pantothenic acid (calcium pantothenate)",
+    "category": "diger",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "B5 vitamini (パントテン酸Ca); zenginleştirici olarak kullanılır, kimyasal sentezle üretilir.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "folik-asit",
+    "nameTr": "Folik asit (B9 vitamini)",
+    "nameEn": "Folic acid (vitamin B9)",
+    "category": "diger",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Zenginleştirici olarak eklenen folik asit (葉酸); kimyasal sentezle üretilir.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "vitamin-b-grubu",
+    "nameTr": "B grubu vitaminleri",
+    "nameEn": "B-group vitamins",
+    "category": "diger",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "B1, B2, B6 ve B12 vitaminleri; kimyasal sentez veya mikrobiyal fermantasyonla üretilir, hayvansal doku içermez.",
+    "rulings": "sentetik-helal"
+  },
+  {
+    "slug": "vitamin-a",
+    "nameTr": "A vitamini (retinol)",
+    "nameEn": "Vitamin A (retinol)",
+    "category": "diger",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Zenginleştirici A vitamini (ビタミンA). Vitaminin kendisi sentetik üretilse de toz formda taşıyıcı olarak jelatin kullanılabilir; etikette taşıyıcı belirtilmediğinden kaynak kesin bilinemez.",
+    "rulings": "kaynak-belirsiz-supheli"
+  },
+  {
+    "slug": "vitamin-d",
+    "nameTr": "D vitamini",
+    "nameEn": "Vitamin D",
+    "category": "diger",
+    "sourceType": "belirsiz",
+    "defaultStatus": "supheli",
+    "descTr": "Zenginleştirici D vitamini (ビタミンD). D2 mantar kaynaklıdır; D3 genellikle koyun yününden (lanolin) veya balıktan elde edilir ve toz formunda jelatin taşıyıcı kullanılabilir. Etiket ayrım yapmadığından şüpheli sayılır.",
+    "rulings": "kaynak-belirsiz-supheli"
+  },
+  {
+    "slug": "demir-tuzlari",
+    "nameTr": "Demir tuzları (zenginleştirici)",
+    "nameEn": "Iron salts (fortification)",
+    "category": "diger",
+    "sourceType": "sentetik",
+    "defaultStatus": "helal",
+    "descTr": "Demir sodyum sitrat, ferro sülfat gibi demir bileşikleri (クエン酸鉄Na); mineral kaynaklıdır.",
+    "rulings": "mineral-helal"
   }
 ]

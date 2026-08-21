@@ -230,6 +230,36 @@ async function main() {
     }
   }
 
+  /*
+   * Aynı yazımın birden çok malzemeye bağlanması eşleştirmeyi belirsiz
+   * hale getirir: motor iki kayıt bulur ve hangisini seçtiği sıralamaya
+   * kalır. Bu, içerik eklerken kolayca yapılan bir hatadır; yükleme
+   * durdurulur.
+   */
+  const aliasConflicts: string[] = [];
+  for (const [language, file] of Object.entries(aliasFiles)) {
+    if (!file) continue;
+    const owners = new Map<string, string[]>();
+    for (const [slug, items] of Object.entries(file)) {
+      for (const item of items) {
+        const alias = typeof item === "string" ? item : item.alias;
+        owners.set(alias, [...(owners.get(alias) ?? []), slug]);
+      }
+    }
+    for (const [alias, slugs] of owners) {
+      if (slugs.length > 1) {
+        aliasConflicts.push(
+          `${language}: '${alias}' birden çok malzemeye bağlı (${slugs.join(", ")})`,
+        );
+      }
+    }
+  }
+  if (aliasConflicts.length > 0) {
+    console.error("Takma ad çakışmaları:");
+    for (const c of aliasConflicts) console.error("  - " + c);
+    process.exit(1);
+  }
+
   /* 3. Fıkhi ilkeler */
   for (const p of principles) {
     await db
