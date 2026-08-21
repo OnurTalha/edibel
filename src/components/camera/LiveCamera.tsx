@@ -147,12 +147,17 @@ export function LiveCamera({
   return (
     <div className="relative flex flex-1 flex-col">
       <div className="relative flex-1 overflow-hidden bg-black">
+        {/*
+          Önizleme kırpılmadan gösterilir (object-contain): yakalanan kare
+          kameranın tam görüntüsüdür; önizleme kırpılsaydı kullanıcı
+          çerçeveye hizaladığı şeyden fazlasını çekmiş olurdu.
+        */}
         <video
           ref={videoRef}
           playsInline
           muted
           autoPlay
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
         />
         {/* Hizalama çerçevesi */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-6">

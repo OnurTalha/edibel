@@ -23,8 +23,22 @@ export function coverScale(image: Size, frame: Size): number {
   return Math.max(frame.w / image.w, frame.h / image.h);
 }
 
+/* Görüntünün tamamının çerçeveye sığdığı en büyük ölçek */
+export function containScale(image: Size, frame: Size): number {
+  return Math.min(frame.w / image.w, frame.h / image.h);
+}
+
+/*
+ * Başlangıç görünümü fotoğrafın TAMAMINI gösterir.
+ *
+ * Kaplama (cover) kullanılmaz: çerçeve dikey, telefon fotoğrafları ise
+ * çoğunlukla yataydır; kaplama, kullanıcı daha hiçbir şey yapmadan
+ * görüntünün kenarlarını kırpar ve etiketin bir kısmı görünmeden analize
+ * gider. Kullanıcı isterse yakınlaştırıp yalnızca içindekiler bölümünü
+ * seçer (bkz. CLAUDE.md, Bölüm 9: Ekran 2).
+ */
 export function centeredView(image: Size, frame: Size): CropView {
-  const scale = coverScale(image, frame);
+  const scale = containScale(image, frame);
   return {
     scale,
     tx: (frame.w - image.w * scale) / 2,
@@ -33,8 +47,9 @@ export function centeredView(image: Size, frame: Size): CropView {
 }
 
 /*
- * Ölçeği [cover, cover * maxZoom] aralığına, kaydırmayı da çerçevenin
- * dışında boşluk kalmayacak biçimde sınırlar.
+ * Ölçeği [sığdırma, sığdırma * maxZoom] aralığına sınırlar. Kaydırma:
+ * görüntü çerçeveden büyükse kenarların içeri kaçmasına izin verilmez,
+ * küçükse (sığdırma görünümünde) ilgili eksende ortalanır.
  */
 export function clampCropView(
   view: CropView,
@@ -42,24 +57,46 @@ export function clampCropView(
   frame: Size,
   maxZoom: number,
 ): CropView {
-  const lower = coverScale(image, frame);
+  const lower = containScale(image, frame);
   const scale = Math.min(Math.max(view.scale, lower), lower * maxZoom);
   const displayedW = image.w * scale;
   const displayedH = image.h * scale;
   return {
     scale,
-    tx: Math.min(0, Math.max(frame.w - displayedW, view.tx)),
-    ty: Math.min(0, Math.max(frame.h - displayedH, view.ty)),
+    tx:
+      displayedW <= frame.w
+        ? (frame.w - displayedW) / 2
+        : Math.min(0, Math.max(frame.w - displayedW, view.tx)),
+    ty:
+      displayedH <= frame.h
+        ? (frame.h - displayedH) / 2
+        : Math.min(0, Math.max(frame.h - displayedH, view.ty)),
   };
 }
 
-/* Çerçevede görünen alanın görüntü pikseli cinsinden karşılığı */
+/*
+ * Çerçevede görünen alanın görüntü pikseli cinsinden karşılığı.
+ * Sığdırma görünümünde bu dikdörtgen görüntünün dışına taşabilir (kenarda
+ * boş alan görünür); gerçek kırpma clampCropRectToImage ile sınırlanır.
+ */
 export function viewToCropRect(view: CropView, frame: Size): CropRect {
   return {
     sx: -view.tx / view.scale,
     sy: -view.ty / view.scale,
     sw: frame.w / view.scale,
     sh: frame.h / view.scale,
+  };
+}
+
+/* Kırpma dikdörtgenini görüntü sınırlarına indirger; boş alan kırpılmaz */
+export function clampCropRectToImage(rect: CropRect, image: Size): CropRect {
+  const sx = Math.max(0, Math.min(rect.sx, image.w - 1));
+  const sy = Math.max(0, Math.min(rect.sy, image.h - 1));
+  return {
+    sx,
+    sy,
+    sw: Math.max(1, Math.min(rect.sw, image.w - sx)),
+    sh: Math.max(1, Math.min(rect.sh, image.h - sy)),
   };
 }
 
@@ -99,10 +136,10 @@ export function cropToJpegBase64(
   image: HTMLImageElement,
   rect: CropRect,
 ): string {
-  const sx = Math.max(0, Math.min(rect.sx, image.naturalWidth - 1));
-  const sy = Math.max(0, Math.min(rect.sy, image.naturalHeight - 1));
-  const sw = Math.max(1, Math.min(rect.sw, image.naturalWidth - sx));
-  const sh = Math.max(1, Math.min(rect.sh, image.naturalHeight - sy));
+  const { sx, sy, sw, sh } = clampCropRectToImage(rect, {
+    w: image.naturalWidth,
+    h: image.naturalHeight,
+  });
 
   /* Yalnızca küçültme yapılır; küçük etiket fotoğrafı büyütülmez */
   const ratio = Math.min(1, MAX_LONG_EDGE / Math.max(sw, sh));

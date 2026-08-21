@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   centeredView,
   clampCropView,
-  coverScale,
+  containScale,
   cropToJpegBase64,
   loadImage,
   viewToCropRect,
@@ -19,9 +19,10 @@ import { STR } from "@/lib/ui/strings";
  * dağılmaz. Parmakla yakınlaştırma ve kaydırma desteklenir (pointer olayları;
  * fare üzerine gelme durumuna bağlı hiçbir işlev yoktur).
  *
- * Görüntü her zaman çerçeveyi tamamen kaplar: ölçek alt sınırı "cover"
- * ölçeğidir ve kaydırma, çerçevenin dışına boşluk bırakmayacak biçimde
- * sınırlandırılır.
+ * Başlangıçta fotoğrafın TAMAMI görünür (sığdırma). Kaplama kullanılsaydı
+ * dikey çerçeve, yatay çekilmiş bir fotoğrafın kenarlarını kullanıcı daha
+ * hiçbir şey yapmadan kırpardı. Yakınlaştırıldığında kaydırma, çerçevenin
+ * dışına boşluk bırakmayacak biçimde sınırlandırılır.
  */
 
 const MAX_ZOOM = 8;
@@ -82,7 +83,7 @@ export function CropEditor({
   const minScale = useCallback(() => {
     const image = imageSize();
     if (!image || frame.current.w === 0) return 1;
-    return coverScale(image, frame.current);
+    return containScale(image, frame.current);
   }, [imageSize]);
 
   const applyTransform = useCallback(() => {
@@ -208,7 +209,8 @@ export function CropEditor({
   };
 
   return (
-    <div className="flex flex-1 flex-col">
+    /* min-h-0: esnek kutuda içerik, kutuyu kendi doğal boyuna şişirmesin */
+    <div className="flex min-h-0 flex-1 flex-col">
       <div className="px-6 pt-4">
         <h1 className="text-lg font-semibold text-white">{STR.cropTitle}</h1>
         <p className="mt-1 text-sm text-white/70">{STR.cropHint}</p>
@@ -220,7 +222,7 @@ export function CropEditor({
         onPointerMove={onPointerMove}
         onPointerUp={endPointer}
         onPointerCancel={endPointer}
-        className="relative mx-4 mt-4 flex-1 touch-none select-none overflow-hidden rounded-2xl border border-white/25 bg-black"
+        className="relative mx-4 mt-4 min-h-0 flex-1 touch-none select-none overflow-hidden rounded-2xl border border-white/25 bg-black"
       >
         {source ? (
           // eslint-disable-next-line @next/next/no-img-element -- yerel nesne bağlantısı; next/image kullanılamaz
@@ -235,7 +237,8 @@ export function CropEditor({
               transformOrigin: "0 0",
               willChange: "transform",
             }}
-            className="max-w-none origin-top-left"
+            /* absolute: doğal boyutuyla çerçevenin ölçüsünü etkilemesin */
+            className="absolute left-0 top-0 max-w-none origin-top-left"
           />
         ) : null}
         {error ? (
